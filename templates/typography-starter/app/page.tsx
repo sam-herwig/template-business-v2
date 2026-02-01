@@ -1,363 +1,21 @@
 'use client'
 
-import { useRef, useEffect, useState, useMemo } from 'react'
-import { motion, useScroll, useTransform, useInView, useMotionValue, useSpring, AnimatePresence } from 'framer-motion'
+import { useRef } from 'react'
+import { motion, useScroll, useTransform, useInView } from 'framer-motion'
 import Image from 'next/image'
-
-// ═══════════════════════════════════════════════════════════════
-// ANIMATED SPLIT TEXT (renamed to avoid GSAP SplitText collision)
-// ═══════════════════════════════════════════════════════════════
-function AnimatedSplitText({ 
-  children, 
-  className = '',
-  delay = 0,
-  stagger = 0.03,
-  type = 'chars'
-}: { 
-  children: string
-  className?: string
-  delay?: number
-  stagger?: number
-  type?: 'chars' | 'words' | 'lines'
-}) {
-  const items = useMemo(() => {
-    if (type === 'words') return children.split(' ')
-    if (type === 'lines') return children.split('\n')
-    return children.split('')
-  }, [children, type])
-
-  return (
-    <span className={className} aria-label={children} role="text">
-      {items.map((item, i) => (
-        <motion.span
-          key={i}
-          className="inline-block"
-          aria-hidden="true"
-          initial={{ opacity: 0, y: 60, rotateX: -90 }}
-          animate={{ opacity: 1, y: 0, rotateX: 0 }}
-          transition={{
-            duration: 0.6,
-            delay: delay + i * stagger,
-            ease: [0.215, 0.61, 0.355, 1]
-          }}
-          style={{ transformOrigin: 'bottom' }}
-        >
-          {item === ' ' ? '\u00A0' : item}
-          {type === 'words' && i < items.length - 1 ? '\u00A0' : ''}
-        </motion.span>
-      ))}
-    </span>
-  )
-}
-
-// ═══════════════════════════════════════════════════════════════
-// MAGNETIC TEXT (Desktop only)
-// ═══════════════════════════════════════════════════════════════
-function MagneticText({ children, className = '' }: { children: React.ReactNode; className?: string }) {
-  const ref = useRef<HTMLDivElement>(null)
-  const x = useMotionValue(0)
-  const y = useMotionValue(0)
-  
-  const springConfig = { damping: 25, stiffness: 150 }
-  const springX = useSpring(x, springConfig)
-  const springY = useSpring(y, springConfig)
-
-  const handleMouseMove = (e: React.MouseEvent) => {
-    if (!ref.current || window.innerWidth < 768) return
-    const rect = ref.current.getBoundingClientRect()
-    const centerX = rect.left + rect.width / 2
-    const centerY = rect.top + rect.height / 2
-    x.set((e.clientX - centerX) * 0.15)
-    y.set((e.clientY - centerY) * 0.15)
-  }
-
-  const handleMouseLeave = () => {
-    x.set(0)
-    y.set(0)
-  }
-
-  return (
-    <motion.div
-      ref={ref}
-      className={className}
-      onMouseMove={handleMouseMove}
-      onMouseLeave={handleMouseLeave}
-      style={{ x: springX, y: springY }}
-    >
-      {children}
-    </motion.div>
-  )
-}
-
-// ═══════════════════════════════════════════════════════════════
-// WAVE TEXT (Hover animation)
-// ═══════════════════════════════════════════════════════════════
-function WaveText({ children, className = '' }: { children: string; className?: string }) {
-  const [isHovered, setIsHovered] = useState(false)
-  const chars = children.split('')
-
-  return (
-    <motion.span
-      className={`inline-flex ${className}`}
-      onMouseEnter={() => setIsHovered(true)}
-      onMouseLeave={() => setIsHovered(false)}
-    >
-      {chars.map((char, i) => (
-        <motion.span
-          key={i}
-          className="inline-block"
-          animate={isHovered ? {
-            y: [0, -20, 0],
-            color: ['#ffffff', '#60a5fa', '#ffffff']
-          } : { y: 0 }}
-          transition={{
-            duration: 0.4,
-            delay: i * 0.03,
-            ease: 'easeOut'
-          }}
-        >
-          {char === ' ' ? '\u00A0' : char}
-        </motion.span>
-      ))}
-    </motion.span>
-  )
-}
-
-// ═══════════════════════════════════════════════════════════════
-// SCRAMBLE TEXT
-// ═══════════════════════════════════════════════════════════════
-const SCRAMBLE_CHARS = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*'
-
-function ScrambleText({ children, className = '' }: { children: string; className?: string }) {
-  const ref = useRef(null)
-  const isInView = useInView(ref, { once: true, margin: '-50px' })
-  const [displayText, setDisplayText] = useState(children)
-
-  useEffect(() => {
-    if (!isInView) return
-    
-    let iteration = 0
-    const interval = setInterval(() => {
-      setDisplayText(
-        children
-          .split('')
-          .map((char, i) => {
-            if (i < iteration) return children[i]
-            return SCRAMBLE_CHARS[Math.floor(Math.random() * SCRAMBLE_CHARS.length)]
-          })
-          .join('')
-      )
-      
-      iteration += 1/3
-      if (iteration >= children.length) {
-        clearInterval(interval)
-        setDisplayText(children)
-      }
-    }, 30)
-
-    return () => clearInterval(interval)
-  }, [isInView, children])
-
-  return (
-    <span ref={ref} className={className} aria-label={children}>
-      <span aria-hidden="true">{displayText}</span>
-    </span>
-  )
-}
-
-// ═══════════════════════════════════════════════════════════════
-// TYPEWRITER EFFECT
-// ═══════════════════════════════════════════════════════════════
-function Typewriter({ words, className = '' }: { words: string[]; className?: string }) {
-  const [currentWordIndex, setCurrentWordIndex] = useState(0)
-  const [currentText, setCurrentText] = useState('')
-  const [isDeleting, setIsDeleting] = useState(false)
-
-  useEffect(() => {
-    const currentWord = words[currentWordIndex]
-    const timeout = setTimeout(() => {
-      if (!isDeleting) {
-        if (currentText.length < currentWord.length) {
-          setCurrentText(currentWord.slice(0, currentText.length + 1))
-        } else {
-          setTimeout(() => setIsDeleting(true), 2000)
-        }
-      } else {
-        if (currentText.length > 0) {
-          setCurrentText(currentText.slice(0, -1))
-        } else {
-          setIsDeleting(false)
-          setCurrentWordIndex((prev) => (prev + 1) % words.length)
-        }
-      }
-    }, isDeleting ? 50 : 100)
-
-    return () => clearTimeout(timeout)
-  }, [currentText, isDeleting, currentWordIndex, words])
-
-  return (
-    <span className={className} role="text" aria-label={words.join(', ')}>
-      <span aria-hidden="true">{currentText}</span>
-      <motion.span
-        animate={{ opacity: [1, 0] }}
-        transition={{ duration: 0.5, repeat: Infinity, repeatType: 'reverse' }}
-        className="cursor"
-        aria-hidden="true"
-      >
-        |
-      </motion.span>
-    </span>
-  )
-}
-
-// ═══════════════════════════════════════════════════════════════
-// ROTATING WORDS
-// ═══════════════════════════════════════════════════════════════
-function RotatingWords({ words, className = '' }: { words: string[]; className?: string }) {
-  const [index, setIndex] = useState(0)
-
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setIndex((prev) => (prev + 1) % words.length)
-    }, 3000)
-    return () => clearInterval(interval)
-  }, [words.length])
-
-  return (
-    <span 
-      className={`inline-block relative ${className}`} 
-      style={{ perspective: '500px', minWidth: '4ch' }}
-      role="text"
-      aria-label={words.join(', ')}
-    >
-      <AnimatePresence mode="wait">
-        <motion.span
-          key={index}
-          className="inline-block gradient-text italic"
-          aria-hidden="true"
-          initial={{ y: 50, opacity: 0, rotateX: -90 }}
-          animate={{ y: 0, opacity: 1, rotateX: 0 }}
-          exit={{ y: -50, opacity: 0, rotateX: 90 }}
-          transition={{ duration: 0.5, ease: [0.215, 0.61, 0.355, 1] }}
-          style={{ transformOrigin: 'center bottom' }}
-        >
-          {words[index]}
-        </motion.span>
-      </AnimatePresence>
-    </span>
-  )
-}
-
-// ═══════════════════════════════════════════════════════════════
-// MARQUEE
-// ═══════════════════════════════════════════════════════════════
-function Marquee({ children, speed = 20, direction = 'left' }: { 
-  children: React.ReactNode
-  speed?: number
-  direction?: 'left' | 'right'
-}) {
-  return (
-    <div className="marquee-container" aria-hidden="true" role="presentation">
-      <motion.div
-        className="marquee-track"
-        animate={{ 
-          x: direction === 'left' ? ['0%', '-50%'] : ['-50%', '0%']
-        }}
-        transition={{
-          duration: speed,
-          ease: 'linear',
-          repeat: Infinity
-        }}
-      >
-        {children}
-        {children}
-      </motion.div>
-    </div>
-  )
-}
-
-// ═══════════════════════════════════════════════════════════════
-// SCROLL REVEAL TEXT
-// ═══════════════════════════════════════════════════════════════
-function ScrollRevealText({ 
-  children, 
-  className = '',
-  direction = 'up' 
-}: { 
-  children: React.ReactNode
-  className?: string
-  direction?: 'up' | 'down' | 'left' | 'right'
-}) {
-  const ref = useRef(null)
-  const isInView = useInView(ref, { once: true, margin: '-100px' })
-  
-  const variants = {
-    hidden: {
-      opacity: 0,
-      y: direction === 'up' ? 80 : direction === 'down' ? -80 : 0,
-      x: direction === 'left' ? 80 : direction === 'right' ? -80 : 0,
-    },
-    visible: {
-      opacity: 1,
-      y: 0,
-      x: 0,
-    }
-  }
-
-  return (
-    <motion.div
-      ref={ref}
-      className={className}
-      initial="hidden"
-      animate={isInView ? 'visible' : 'hidden'}
-      variants={variants}
-      transition={{ duration: 0.8, ease: [0.215, 0.61, 0.355, 1] }}
-    >
-      {children}
-    </motion.div>
-  )
-}
-
-// ═══════════════════════════════════════════════════════════════
-// NAVIGATION
-// ═══════════════════════════════════════════════════════════════
-function Nav() {
-  return (
-    <motion.nav
-      className="fixed top-0 left-0 right-0 z-[100] px-4 md:px-8 py-6"
-      initial={{ y: -100, opacity: 0 }}
-      animate={{ y: 0, opacity: 1 }}
-      transition={{ duration: 0.8, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
-      style={{ background: 'linear-gradient(to bottom, rgba(10, 10, 11, 0.9), transparent)', backdropFilter: 'blur(8px)' }}
-      aria-label="Main navigation"
-    >
-      <div className="max-w-7xl mx-auto flex justify-between items-center">
-        <MagneticText className="text-2xl font-bold tracking-tight">
-          <a href="/" className="nav-link" aria-label="Kinetic - Home">
-            <WaveText>kinetic.</WaveText>
-          </a>
-        </MagneticText>
-        <div className="nav-links hidden sm:flex gap-10 items-center" role="list">
-          {['Work', 'About', 'Contact'].map((item, i) => (
-            <motion.a
-              key={item}
-              href={`#${item.toLowerCase()}`}
-              className="nav-link text-kinetic-muted font-medium hover:text-kinetic-text transition-colors"
-              whileHover={{ y: -2 }}
-              whileTap={{ scale: 0.95 }}
-              initial={{ opacity: 0, y: -20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.3 + i * 0.1 }}
-              role="listitem"
-            >
-              {item}
-            </motion.a>
-          ))}
-        </div>
-      </div>
-    </motion.nav>
-  )
-}
+import Link from 'next/link'
+import { Nav } from '@/components/Nav'
+import { Footer } from '@/components/Footer'
+import {
+  AnimatedSplitText,
+  MagneticText,
+  WaveText,
+  ScrambleText,
+  Typewriter,
+  RotatingWords,
+  Marquee,
+  ScrollRevealText
+} from '@/components/motion'
 
 // ═══════════════════════════════════════════════════════════════
 // HERO SECTION
@@ -419,21 +77,25 @@ function Hero() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 1.5 }}
         >
-          <motion.button
-            className="btn-primary"
-            whileHover={{ scale: 1.05, y: -3 }}
-            whileTap={{ scale: 0.95 }}
-          >
-            Start a Project
-            <motion.span initial={{ x: 0 }} whileHover={{ x: 5 }}>→</motion.span>
-          </motion.button>
-          <motion.button
-            className="btn-secondary"
-            whileHover={{ scale: 1.02 }}
-            whileTap={{ scale: 0.98 }}
-          >
-            View Reel
-          </motion.button>
+          <Link href="/contact">
+            <motion.span
+              className="btn-primary inline-flex items-center gap-2"
+              whileHover={{ scale: 1.05, y: -3 }}
+              whileTap={{ scale: 0.95 }}
+            >
+              Start a Project
+              <motion.span initial={{ x: 0 }} whileHover={{ x: 5 }}>→</motion.span>
+            </motion.span>
+          </Link>
+          <Link href="/work">
+            <motion.span
+              className="btn-secondary inline-block"
+              whileHover={{ scale: 1.02 }}
+              whileTap={{ scale: 0.98 }}
+            >
+              View Work
+            </motion.span>
+          </Link>
         </motion.div>
       </motion.div>
 
@@ -510,7 +172,7 @@ function Services() {
               <WaveText>{service.title}</WaveText>
             </h3>
             <p className="text-kinetic-muted leading-relaxed mb-6">{service.description}</p>
-            <motion.span className="text-xl text-kinetic-accent" whileHover={{ x: 5 }} aria-hidden="true">→</motion.span>
+            <Link href="/services" className="text-xl text-kinetic-accent hover:translate-x-1 transition-transform inline-block" aria-hidden="true">→</Link>
           </motion.article>
         ))}
       </div>
@@ -577,9 +239,9 @@ function Stats() {
 // ═══════════════════════════════════════════════════════════════
 function Work() {
   const projects = [
-    { title: 'Nike Motion', category: 'Brand Animation', image: 'https://picsum.photos/800/600?random=1' },
-    { title: 'Spotify Wrapped', category: 'Type System', image: 'https://picsum.photos/800/600?random=2' },
-    { title: 'Apple Events', category: 'Title Sequence', image: 'https://picsum.photos/800/600?random=3' }
+    { title: 'Nike Motion', category: 'Brand Animation', image: 'https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=800&q=80', slug: 'nike-motion' },
+    { title: 'Spotify Wrapped', category: 'Type System', image: 'https://images.unsplash.com/photo-1614680376593-902f74cf0d41?w=800&q=80', slug: 'spotify-wrapped' },
+    { title: 'Apple Events', category: 'Title Sequence', image: 'https://images.unsplash.com/photo-1517336714731-489689fd1ca8?w=800&q=80', slug: 'apple-events' }
   ]
 
   return (
@@ -602,8 +264,8 @@ function Work() {
             transition={{ delay: i * 0.15, duration: 0.7 }}
             role="listitem"
           >
-            <a 
-              href={`#project-${project.title.toLowerCase().replace(/\s+/g, '-')}`}
+            <Link 
+              href={`/work/${project.slug}`}
               className="block focus-ring rounded-2xl"
               aria-label={`View ${project.title} project - ${project.category}`}
             >
@@ -632,10 +294,27 @@ function Work() {
                 <span className="block text-xs text-kinetic-accent uppercase tracking-widest mb-2">{project.category}</span>
                 <h3 className="text-xl font-bold tracking-tight">{project.title}</h3>
               </div>
-            </a>
+            </Link>
           </motion.article>
         ))}
       </div>
+
+      <motion.div
+        className="text-center mt-16"
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+      >
+        <Link href="/work">
+          <motion.span
+            className="btn-secondary inline-flex items-center gap-2"
+            whileHover={{ scale: 1.02 }}
+          >
+            View All Work
+            <span>→</span>
+          </motion.span>
+        </Link>
+      </motion.div>
     </section>
   )
 }
@@ -659,84 +338,22 @@ function CTA() {
         viewport={{ once: true }}
         transition={{ delay: 0.3 }}
       >
-        <motion.a
-          href="#"
-          className="btn-primary text-lg px-12 py-5"
-          whileHover={{ scale: 1.05, backgroundColor: '#60a5fa' }}
-          whileTap={{ scale: 0.95 }}
-        >
-          <WaveText>Let&apos;s Talk</WaveText>
-        </motion.a>
+        <MagneticText>
+          <Link href="/contact">
+            <motion.span
+              className="btn-primary text-lg px-12 py-5 inline-block"
+              whileHover={{ scale: 1.05, backgroundColor: '#60a5fa' }}
+              whileTap={{ scale: 0.95 }}
+            >
+              <WaveText>Let&apos;s Talk</WaveText>
+            </motion.span>
+          </Link>
+        </MagneticText>
       </motion.div>
     </section>
   )
 }
 
-// ═══════════════════════════════════════════════════════════════
-// FOOTER
-// ═══════════════════════════════════════════════════════════════
-function Footer() {
-  return (
-    <footer className="border-t border-kinetic-border" role="contentinfo">
-      <div className="flex flex-col md:flex-row justify-between items-start gap-8 py-16 px-4 md:px-8 max-w-7xl mx-auto">
-        <div className="flex-1 min-w-[200px]">
-          <MagneticText className="text-3xl font-extrabold tracking-tight mb-2 block">
-            <a href="/" className="nav-link" aria-label="Kinetic - Home">kinetic.</a>
-          </MagneticText>
-          <p className="text-sm text-kinetic-subtle">Typography in motion since 2014</p>
-        </div>
-        <nav className="flex gap-16 flex-wrap" aria-label="Footer navigation">
-          <div className="flex flex-col gap-3">
-            <h4 className="text-xs font-semibold text-kinetic-muted uppercase tracking-widest mb-2">Connect</h4>
-            {[
-              { name: 'Twitter', url: 'https://twitter.com/kinetic' },
-              { name: 'Instagram', url: 'https://instagram.com/kinetic' },
-              { name: 'LinkedIn', url: 'https://linkedin.com/company/kinetic' }
-            ].map((link) => (
-              <a 
-                key={link.name} 
-                href={link.url}
-                className="footer-link text-kinetic-muted hover:text-kinetic-accent transition-colors"
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label={`Follow us on ${link.name} (opens in new tab)`}
-              >
-                {link.name}
-              </a>
-            ))}
-          </div>
-          <div className="flex flex-col gap-3">
-            <h4 className="text-xs font-semibold text-kinetic-muted uppercase tracking-widest mb-2">Contact</h4>
-            <a 
-              href="mailto:hello@kinetic.design" 
-              className="footer-link text-kinetic-muted hover:text-kinetic-accent transition-colors"
-            >
-              hello@kinetic.design
-            </a>
-            <a 
-              href="tel:+15551234567" 
-              className="footer-link text-kinetic-muted hover:text-kinetic-accent transition-colors"
-            >
-              +1 (555) 123-4567
-            </a>
-          </div>
-        </nav>
-      </div>
-      <div className="border-t border-kinetic-border py-6 overflow-hidden">
-        <p className="sr-only">© 2026 Kinetic Design Studio. All Rights Reserved.</p>
-        <Marquee speed={40}>
-          <span className="footer-marquee">
-            © 2026 Kinetic Design Studio • All Rights Reserved • Made with ♥ and lots of keyframes • 
-          </span>
-        </Marquee>
-      </div>
-    </footer>
-  )
-}
-
-// ═══════════════════════════════════════════════════════════════
-// MAIN PAGE EXPORT
-// ═══════════════════════════════════════════════════════════════
 // ═══════════════════════════════════════════════════════════════
 // SKIP LINK
 // ═══════════════════════════════════════════════════════════════
