@@ -11,3 +11,9 @@ export type { BookingConfig, BookingProvider, BookingButtonProps, BookingEmbedPr
 
 export { PaymentEmbed, PaymentButton, StripePricingTable } from './PaymentEmbed'
 export type { PaymentConfig, PaymentProvider, PaymentEmbedProps, PaymentButtonProps, StripePricingTableProps } from './PaymentEmbed'
+
+// Layout components
+export { Nav, Footer } from './layout'
+
+// Shared components
+export { PageHero, Breadcrumbs, Lightbox, MapEmbed, ContactForm } from './shared'

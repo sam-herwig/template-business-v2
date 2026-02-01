@@ -1,10 +1,9 @@
 'use client'
 
-import { motion, useScroll, useTransform, AnimatePresence } from 'framer-motion'
-import { useState, useEffect, useRef, useCallback } from 'react'
-import { useGSAP } from '@gsap/react'
-import { gsap, ScrollTrigger } from '@/lib/gsap'
+import { motion, useScroll, useTransform } from 'framer-motion'
+import { useState } from 'react'
 import Image from 'next/image'
+import Link from 'next/link'
 import { 
   Scissors, 
   Palette, 
@@ -18,10 +17,9 @@ import {
   Phone,
   ArrowRight,
   ChevronDown,
-  Heart,
-  Menu,
-  X
+  Heart
 } from 'lucide-react'
+import { Nav, Footer } from '@/components/layout'
 
 // ═══════════════════════════════════════════════════════════════
 // SALON STARTER TEMPLATE
@@ -38,7 +36,7 @@ const SALON = {
   address: "456 Style Avenue, Suite 100",
   hours: { weekday: "9am - 7pm", saturday: "9am - 5pm", sunday: "Closed" },
   heroImage: "https://images.unsplash.com/photo-1560066984-138dadb4c035?w=1920&h=1080&fit=crop&q=90",
-  bookingUrl: "#book",
+  bookingUrl: "/book",
 }
 
 // Service category icons mapping
@@ -199,174 +197,6 @@ function SkipLink() {
 // COMPONENTS
 // ═══════════════════════════════════════════════════════════════
 
-function Nav() {
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
-  const [scrolled, setScrolled] = useState(false)
-  const menuRef = useRef<HTMLDivElement>(null)
-  const menuButtonRef = useRef<HTMLButtonElement>(null)
-  
-  useEffect(() => {
-    const handleScroll = () => setScrolled(window.scrollY > 50)
-    window.addEventListener('scroll', handleScroll)
-    return () => window.removeEventListener('scroll', handleScroll)
-  }, [])
-
-  // Handle escape key to close menu
-  useEffect(() => {
-    const handleEscape = (e: KeyboardEvent) => {
-      if (e.key === 'Escape' && mobileMenuOpen) {
-        setMobileMenuOpen(false)
-        menuButtonRef.current?.focus()
-      }
-    }
-    document.addEventListener('keydown', handleEscape)
-    return () => document.removeEventListener('keydown', handleEscape)
-  }, [mobileMenuOpen])
-
-  // Focus trap for mobile menu
-  useEffect(() => {
-    if (mobileMenuOpen && menuRef.current) {
-      const focusableElements = menuRef.current.querySelectorAll(
-        'a[href], button:not([disabled])'
-      )
-      const firstElement = focusableElements[0] as HTMLElement
-      const lastElement = focusableElements[focusableElements.length - 1] as HTMLElement
-
-      const handleTabKey = (e: KeyboardEvent) => {
-        if (e.key !== 'Tab') return
-        
-        if (e.shiftKey && document.activeElement === firstElement) {
-          e.preventDefault()
-          lastElement.focus()
-        } else if (!e.shiftKey && document.activeElement === lastElement) {
-          e.preventDefault()
-          firstElement.focus()
-        }
-      }
-
-      document.addEventListener('keydown', handleTabKey)
-      firstElement?.focus()
-      
-      return () => document.removeEventListener('keydown', handleTabKey)
-    }
-  }, [mobileMenuOpen])
-  
-  const navLinks = [
-    { href: '#services', label: 'Services' },
-    { href: '#team', label: 'Our Team' },
-    { href: '#gallery', label: 'Gallery' },
-    { href: '#contact', label: 'Contact' },
-  ]
-  
-  return (
-    <nav 
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
-        scrolled 
-          ? 'bg-white/95 backdrop-blur-lg shadow-sm border-b border-neutral-100/50' 
-          : 'bg-transparent'
-      }`}
-      role="navigation"
-      aria-label="Main navigation"
-    >
-      <div className="max-w-6xl mx-auto px-6">
-        <div className="flex items-center justify-between h-20">
-          <a 
-            href="/" 
-            className={`font-display text-2xl font-semibold transition-colors duration-300 ${
-              scrolled ? 'text-neutral-900' : 'text-white'
-            }`}
-            aria-label={`${SALON.name} - Home`}
-          >
-            {SALON.name}
-          </a>
-          
-          <div className="hidden md:flex items-center gap-10">
-            {navLinks.map((item) => (
-              <a 
-                key={item.href}
-                href={item.href} 
-                className={`relative font-medium transition-colors duration-200 group ${
-                  scrolled ? 'text-neutral-600 hover:text-primary-600' : 'text-white/90 hover:text-white'
-                }`}
-              >
-                {item.label}
-                <span className={`absolute -bottom-1 left-0 w-0 h-0.5 rounded-full transition-all duration-300 group-hover:w-full ${
-                  scrolled ? 'bg-primary-500' : 'bg-white'
-                }`} aria-hidden="true" />
-              </a>
-            ))}
-          </div>
-          
-          <a 
-            href={SALON.bookingUrl} 
-            className={`hidden md:inline-flex btn-primary ${
-              !scrolled && 'bg-white text-neutral-900 hover:bg-white/90'
-            }`}
-          >
-            Book Now
-          </a>
-          
-          <button 
-            ref={menuButtonRef}
-            className={`md:hidden p-2 transition-colors rounded-lg focus:outline-none focus-visible:ring-2 focus-visible:ring-primary-500 ${
-              scrolled ? 'text-neutral-900' : 'text-white'
-            }`}
-            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            aria-label={mobileMenuOpen ? 'Close menu' : 'Open menu'}
-            aria-expanded={mobileMenuOpen}
-            aria-controls="mobile-menu"
-          >
-            {mobileMenuOpen ? (
-              <X className="w-6 h-6" aria-hidden="true" />
-            ) : (
-              <Menu className="w-6 h-6" aria-hidden="true" />
-            )}
-          </button>
-        </div>
-        
-        {/* Mobile menu */}
-        <AnimatePresence>
-          {mobileMenuOpen && (
-            <motion.div 
-              ref={menuRef}
-              id="mobile-menu"
-              role="dialog"
-              aria-modal="true"
-              aria-label="Mobile navigation menu"
-              initial={{ opacity: 0, height: 0 }}
-              animate={{ opacity: 1, height: 'auto' }}
-              exit={{ opacity: 0, height: 0 }}
-              className="md:hidden overflow-hidden bg-white rounded-b-2xl shadow-lg"
-            >
-              <div className="py-6 px-2 space-y-4">
-                {navLinks.map((item) => (
-                  <a 
-                    key={item.href}
-                    href={item.href} 
-                    className="block px-4 py-2 text-neutral-600 hover:text-primary-600 font-medium transition-colors rounded-lg focus:outline-none focus-visible:ring-2 focus-visible:ring-primary-500"
-                    onClick={() => setMobileMenuOpen(false)}
-                  >
-                    {item.label}
-                  </a>
-                ))}
-                <div className="pt-4 px-4">
-                  <a 
-                    href={SALON.bookingUrl} 
-                    className="btn-primary w-full text-center"
-                    onClick={() => setMobileMenuOpen(false)}
-                  >
-                    Book Now
-                  </a>
-                </div>
-              </div>
-            </motion.div>
-          )}
-        </AnimatePresence>
-      </div>
-    </nav>
-  )
-}
-
 function Hero() {
   const { scrollY } = useScroll()
   const y = useTransform(scrollY, [0, 500], [0, 150])
@@ -414,13 +244,13 @@ function Hero() {
           
           {/* CTAs */}
           <motion.div variants={fadeInUp} className="flex flex-col sm:flex-row items-center justify-center gap-4">
-            <a href={SALON.bookingUrl} className="btn-primary text-lg px-10 group">
+            <Link href={SALON.bookingUrl} className="btn-primary text-lg px-10 group">
               Book Your Appointment
               <ArrowRight className="w-5 h-5 ml-2 transition-transform group-hover:translate-x-1" aria-hidden="true" />
-            </a>
-            <a href="#services" className="btn-outline text-lg">
+            </Link>
+            <Link href="/services" className="btn-outline text-lg">
               View Services
-            </a>
+            </Link>
           </motion.div>
         </motion.div>
       </motion.div>
@@ -520,10 +350,13 @@ function Services() {
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
         >
-          <a href={SALON.bookingUrl} className="btn-primary group">
+          <Link href="/services" className="btn-secondary group mr-4">
+            View All Services
+          </Link>
+          <Link href={SALON.bookingUrl} className="btn-primary group">
             Book Your Service
             <ArrowRight className="w-5 h-5 ml-2 transition-transform group-hover:translate-x-1" aria-hidden="true" />
-          </a>
+          </Link>
         </motion.div>
       </div>
     </section>
@@ -581,6 +414,18 @@ function Team() {
             </motion.li>
           ))}
         </motion.ul>
+        
+        <motion.div 
+          className="text-center mt-12"
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true }}
+        >
+          <Link href="/team" className="btn-secondary group">
+            Meet the Full Team
+            <ArrowRight className="w-5 h-5 ml-2 transition-transform group-hover:translate-x-1" aria-hidden="true" />
+          </Link>
+        </motion.div>
       </div>
     </section>
   )
@@ -637,6 +482,10 @@ function GallerySection() {
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
         >
+          <Link href="/gallery" className="btn-secondary group mr-4">
+            View Full Gallery
+            <ArrowRight className="w-4 h-4 ml-2 transition-transform group-hover:translate-x-1" aria-hidden="true" />
+          </Link>
           <a 
             href="#" 
             className="inline-flex items-center gap-2 text-primary-600 hover:text-primary-700 font-medium transition-colors group"
@@ -644,7 +493,6 @@ function GallerySection() {
           >
             <Instagram className="w-5 h-5" aria-hidden="true" />
             Follow us on Instagram
-            <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" aria-hidden="true" />
           </a>
         </motion.div>
       </div>
@@ -723,10 +571,10 @@ function BookingCTA() {
             <p className="text-neutral-300 mb-10 max-w-xl mx-auto text-lg">
               Book your appointment online and let our talented stylists create your perfect look.
             </p>
-            <a href={SALON.bookingUrl} className="btn-primary text-lg px-10 group">
-              Book on Fresha
+            <Link href={SALON.bookingUrl} className="btn-primary text-lg px-10 group">
+              Book Your Appointment
               <ArrowRight className="w-5 h-5 ml-2 transition-transform group-hover:translate-x-1" aria-hidden="true" />
-            </a>
+            </Link>
             <p className="text-neutral-400 text-sm mt-6">
               Or call us at{' '}
               <a 
@@ -823,6 +671,13 @@ function Contact() {
                 <Star className="w-5 h-5" aria-hidden="true" />
               </a>
             </nav>
+            
+            <div className="mt-8">
+              <Link href="/contact" className="btn-secondary group">
+                Contact Us
+                <ArrowRight className="w-5 h-5 ml-2 transition-transform group-hover:translate-x-1" />
+              </Link>
+            </div>
           </motion.div>
           
           <motion.div
@@ -844,40 +699,6 @@ function Contact() {
   )
 }
 
-function Footer() {
-  const currentYear = new Date().getFullYear()
-  
-  return (
-    <footer className="bg-neutral-900 text-white py-12" role="contentinfo">
-      <div className="max-w-6xl mx-auto px-6">
-        <div className="flex flex-col md:flex-row items-center justify-between gap-6">
-          <div>
-            <div className="font-display text-2xl font-semibold mb-2">{SALON.name}</div>
-            <p className="text-neutral-400 text-sm">{SALON.tagline}</p>
-          </div>
-          
-          <nav className="flex items-center gap-6" aria-label="Footer social links">
-            {['Instagram', 'Facebook', 'Yelp'].map((social) => (
-              <a 
-                key={social} 
-                href="#" 
-                className="text-neutral-400 hover:text-white transition-colors text-sm focus:outline-none focus-visible:ring-2 focus-visible:ring-primary-500 rounded"
-                aria-label={`Follow us on ${social}`}
-              >
-                {social}
-              </a>
-            ))}
-          </nav>
-        </div>
-        
-        <div className="border-t border-neutral-800 mt-8 pt-8 text-center text-neutral-400 text-sm">
-          © {currentYear} {SALON.name}. All rights reserved.
-        </div>
-      </div>
-    </footer>
-  )
-}
-
 // ═══════════════════════════════════════════════════════════════
 // MAIN PAGE
 // ═══════════════════════════════════════════════════════════════
@@ -886,7 +707,7 @@ export default function Home() {
   return (
     <>
       <SkipLink />
-      <Nav />
+      <Nav transparent />
       <main id="main-content">
         <Hero />
         <Services />
