@@ -2,19 +2,29 @@
 
 import { motion, AnimatePresence } from 'framer-motion'
 import { useState, useRef, useEffect } from 'react'
+import Link from 'next/link'
 import MagneticButton from './MagneticButton'
 
 // ═══════════════════════════════════════════════════════════════
 // NAVIGATION COMPONENT
 // Fixed nav with mobile menu and accessibility features
+// Updated for multi-page routing
 // ═══════════════════════════════════════════════════════════════
+
+const NAV_LINKS = [
+  { href: '/work', label: 'Work' },
+  { href: '/services', label: 'Services' },
+  { href: '/about', label: 'About' },
+  { href: '/blog', label: 'Blog' },
+  { href: '/contact', label: 'Contact' },
+]
 
 export default function Nav() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
   const mobileMenuRef = useRef<HTMLDivElement>(null)
   const menuButtonRef = useRef<HTMLButtonElement>(null)
   const firstFocusableRef = useRef<HTMLAnchorElement>(null)
-  const lastFocusableRef = useRef<HTMLButtonElement>(null)
+  const lastFocusableRef = useRef<HTMLAnchorElement>(null)
   
   // Handle Escape key and focus trapping
   useEffect(() => {
@@ -62,21 +72,28 @@ export default function Nav() {
       
       <div className="max-w-7xl mx-auto px-6">
         <div className="flex items-center justify-between h-20">
-          <a href="/" className="font-display text-2xl font-bold tracking-tight">
+          <Link href="/" className="font-display text-2xl font-bold tracking-tight">
             STUDIO<span className="text-primary-500">.</span>
-          </a>
+          </Link>
           
           <div className="hidden md:flex items-center gap-10">
-            <a href="#work" className="text-dark-300 hover:text-white transition-colors text-sm uppercase tracking-wider">Work</a>
-            <a href="#services" className="text-dark-300 hover:text-white transition-colors text-sm uppercase tracking-wider">Services</a>
-            <a href="#about" className="text-dark-300 hover:text-white transition-colors text-sm uppercase tracking-wider">About</a>
-            <a href="#contact" className="text-dark-300 hover:text-white transition-colors text-sm uppercase tracking-wider">Contact</a>
+            {NAV_LINKS.map((link) => (
+              <Link 
+                key={link.href}
+                href={link.href} 
+                className="text-dark-300 hover:text-white transition-colors text-sm uppercase tracking-wider"
+              >
+                {link.label}
+              </Link>
+            ))}
           </div>
           
           <div className="hidden md:block">
-            <MagneticButton className="btn-outline text-sm uppercase tracking-wider">
-              Start a Project
-            </MagneticButton>
+            <Link href="/contact">
+              <MagneticButton className="btn-outline text-sm uppercase tracking-wider">
+                Start a Project
+              </MagneticButton>
+            </Link>
           </div>
           
           <button 
@@ -117,46 +134,26 @@ export default function Nav() {
                 exit={{ y: -20 }}
                 transition={{ duration: 0.2, delay: 0.1 }}
               >
-                <a 
-                  ref={firstFocusableRef}
-                  href="#work" 
-                  className="text-white text-lg focus:outline-none focus:text-primary-400"
+                {NAV_LINKS.map((link, index) => (
+                  <Link 
+                    key={link.href}
+                    ref={index === 0 ? firstFocusableRef : index === NAV_LINKS.length - 1 ? lastFocusableRef : undefined}
+                    href={link.href} 
+                    className="text-white text-lg focus:outline-none focus:text-primary-400"
+                    onClick={() => setMobileMenuOpen(false)}
+                    role="menuitem"
+                  >
+                    {link.label}
+                  </Link>
+                ))}
+                <Link 
+                  href="/contact"
+                  className="btn-primary w-full text-center"
+                  role="menuitem"
                   onClick={() => setMobileMenuOpen(false)}
-                  role="menuitem"
-                >
-                  Work
-                </a>
-                <a 
-                  href="#services" 
-                  className="text-white text-lg focus:outline-none focus:text-primary-400"
-                  onClick={() => setMobileMenuOpen(false)}
-                  role="menuitem"
-                >
-                  Services
-                </a>
-                <a 
-                  href="#about" 
-                  className="text-white text-lg focus:outline-none focus:text-primary-400"
-                  onClick={() => setMobileMenuOpen(false)}
-                  role="menuitem"
-                >
-                  About
-                </a>
-                <a 
-                  href="#contact" 
-                  className="text-white text-lg focus:outline-none focus:text-primary-400"
-                  onClick={() => setMobileMenuOpen(false)}
-                  role="menuitem"
-                >
-                  Contact
-                </a>
-                <button 
-                  ref={lastFocusableRef}
-                  className="btn-primary w-full"
-                  role="menuitem"
                 >
                   Start a Project
-                </button>
+                </Link>
               </motion.div>
             </motion.div>
           )}

@@ -1,7 +1,24 @@
+import Link from 'next/link'
+
 // ═══════════════════════════════════════════════════════════════
 // FOOTER COMPONENT (Server Component)
-// Static footer - no client-side interactivity needed
+// Static footer - updated for multi-page routing
 // ═══════════════════════════════════════════════════════════════
+
+const NAV_LINKS = [
+  { href: '/work', label: 'Work' },
+  { href: '/services', label: 'Services' },
+  { href: '/about', label: 'About' },
+  { href: '/blog', label: 'Blog' },
+  { href: '/contact', label: 'Contact' },
+]
+
+const SOCIAL_LINKS = [
+  { href: 'https://instagram.com', label: 'Instagram' },
+  { href: 'https://twitter.com', label: 'Twitter' },
+  { href: 'https://dribbble.com', label: 'Dribbble' },
+  { href: 'https://linkedin.com', label: 'LinkedIn' },
+]
 
 export default function Footer() {
   return (
@@ -9,9 +26,9 @@ export default function Footer() {
       <div className="max-w-7xl mx-auto px-6">
         <div className="grid md:grid-cols-4 gap-8 mb-12">
           <div className="md:col-span-2">
-            <a href="/" className="font-display text-2xl font-bold tracking-tight block mb-4">
+            <Link href="/" className="font-display text-2xl font-bold tracking-tight block mb-4">
               STUDIO<span className="text-primary-500">.</span>
-            </a>
+            </Link>
             <p className="text-dark-400 max-w-sm">
               Award-winning digital studio crafting bold brands and unforgettable digital experiences.
             </p>
@@ -20,20 +37,31 @@ export default function Footer() {
           <div>
             <h4 className="font-bold text-sm uppercase tracking-wider mb-4">Navigation</h4>
             <ul className="space-y-2 text-dark-400">
-              <li><a href="#work" className="hover:text-white transition-colors">Work</a></li>
-              <li><a href="#services" className="hover:text-white transition-colors">Services</a></li>
-              <li><a href="#about" className="hover:text-white transition-colors">About</a></li>
-              <li><a href="#contact" className="hover:text-white transition-colors">Contact</a></li>
+              {NAV_LINKS.map((link) => (
+                <li key={link.href}>
+                  <Link href={link.href} className="hover:text-white transition-colors">
+                    {link.label}
+                  </Link>
+                </li>
+              ))}
             </ul>
           </div>
           
           <div>
             <h4 className="font-bold text-sm uppercase tracking-wider mb-4">Social</h4>
             <ul className="space-y-2 text-dark-400">
-              <li><a href="#" className="hover:text-white transition-colors">Instagram</a></li>
-              <li><a href="#" className="hover:text-white transition-colors">Twitter</a></li>
-              <li><a href="#" className="hover:text-white transition-colors">Dribbble</a></li>
-              <li><a href="#" className="hover:text-white transition-colors">LinkedIn</a></li>
+              {SOCIAL_LINKS.map((link) => (
+                <li key={link.href}>
+                  <a 
+                    href={link.href} 
+                    target="_blank" 
+                    rel="noopener noreferrer" 
+                    className="hover:text-white transition-colors"
+                  >
+                    {link.label}
+                  </a>
+                </li>
+              ))}
             </ul>
           </div>
         </div>
@@ -43,8 +71,8 @@ export default function Footer() {
             © {new Date().getFullYear()} Studio Inc. All rights reserved.
           </p>
           <div className="flex items-center gap-6 text-dark-500 text-sm">
-            <a href="#" className="hover:text-white transition-colors">Privacy</a>
-            <a href="#" className="hover:text-white transition-colors">Terms</a>
+            <Link href="/privacy" className="hover:text-white transition-colors">Privacy</Link>
+            <Link href="/terms" className="hover:text-white transition-colors">Terms</Link>
           </div>
         </div>
       </div>

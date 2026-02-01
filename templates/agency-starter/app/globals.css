@@ -316,11 +316,8 @@ html.lenis, html.lenis body {
   
   /* ─────────────────────────────────────────────────────────────
      TEAM CARDS
+     Note: Add 'group' class directly to the element, not via @apply
      ───────────────────────────────────────────────────────────── */
-  .team-card {
-    @apply group;
-  }
-  
   .team-card-image {
     @apply relative overflow-hidden mb-5 aspect-[3/4];
   }
@@ -489,5 +486,73 @@ html.lenis, html.lenis body {
   
   ::-webkit-scrollbar-thumb:hover {
     @apply bg-dark-600;
+  }
+  
+  /* ─────────────────────────────────────────────────────────────
+     PROSE / BLOG CONTENT
+     ───────────────────────────────────────────────────────────── */
+  .prose {
+    @apply text-dark-300;
+  }
+  
+  .prose p {
+    @apply mb-6 leading-relaxed;
+  }
+  
+  .prose h2 {
+    @apply font-display text-2xl md:text-3xl font-bold text-white mt-12 mb-6;
+  }
+  
+  .prose h3 {
+    @apply font-display text-xl md:text-2xl font-bold text-white mt-10 mb-4;
+  }
+  
+  .prose ul {
+    @apply mb-6 space-y-3 list-none;
+  }
+  
+  .prose ul li {
+    @apply pl-6 relative;
+  }
+  
+  .prose ul li::before {
+    content: '';
+    @apply absolute left-0 top-3 w-2 h-2 bg-primary-500 rounded-full;
+  }
+  
+  .prose strong {
+    @apply text-white font-semibold;
+  }
+  
+  .prose a {
+    @apply text-primary-400 hover:text-primary-300 transition-colors;
+  }
+  
+  .prose blockquote {
+    @apply border-l-2 border-primary-500 pl-6 italic text-dark-400 my-8;
+  }
+  
+  .prose code {
+    @apply bg-dark-800 px-1.5 py-0.5 text-sm text-primary-400;
+  }
+  
+  .prose pre {
+    @apply bg-dark-800 p-4 overflow-x-auto my-6;
+  }
+  
+  .prose pre code {
+    @apply bg-transparent p-0;
+  }
+  
+  .prose img {
+    @apply w-full my-8;
+  }
+  
+  .prose-lg {
+    @apply text-lg;
+  }
+  
+  .prose-lg p {
+    @apply mb-8;
   }
 }

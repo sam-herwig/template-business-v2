@@ -5,6 +5,8 @@ import { useState, useRef } from 'react'
 import { useGSAP } from '@gsap/react'
 import { gsap, ScrollTrigger, SplitText } from '@/lib/gsap'
 import Image from 'next/image'
+import Link from 'next/link'
+import { Nav, Footer } from '@/components'
 
 // ═══════════════════════════════════════════════════════════════
 // COACH STARTER TEMPLATE
@@ -69,49 +71,6 @@ const FAQ = [
 // ═══════════════════════════════════════════════════════════════
 // COMPONENTS
 // ═══════════════════════════════════════════════════════════════
-
-function Nav() {
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
-  
-  return (
-    <nav className="fixed top-0 left-0 right-0 z-50 bg-cream-100/90 backdrop-blur-lg border-b border-cream-300">
-      <div className="max-w-6xl mx-auto px-6">
-        <div className="flex items-center justify-between h-20">
-          <a href="/" className="font-display text-2xl text-primary-700">Sarah Mitchell</a>
-          
-          <div className="hidden md:flex items-center gap-8">
-            <a href="#about" className="text-primary-800/70 hover:text-primary-800 transition-colors">About</a>
-            <a href="#services" className="text-primary-800/70 hover:text-primary-800 transition-colors">Services</a>
-            <a href="#testimonials" className="text-primary-800/70 hover:text-primary-800 transition-colors">Results</a>
-            <a href="#faq" className="text-primary-800/70 hover:text-primary-800 transition-colors">FAQ</a>
-          </div>
-          
-          <div className="hidden md:block">
-            <button className="bg-primary-500 hover:bg-primary-600 text-white px-6 py-3 rounded-full font-medium transition-colors">Work With Me</button>
-          </div>
-          
-          <button className="md:hidden p-2 text-primary-800" onClick={() => setMobileMenuOpen(!mobileMenuOpen)}>
-            <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              {mobileMenuOpen ? <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" /> : <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />}
-            </svg>
-          </button>
-        </div>
-        
-        {mobileMenuOpen && (
-          <div className="md:hidden py-4 border-t border-cream-300">
-            <div className="flex flex-col gap-4">
-              <a href="#about" className="text-primary-800/70 hover:text-primary-800">About</a>
-              <a href="#services" className="text-primary-800/70 hover:text-primary-800">Services</a>
-              <a href="#testimonials" className="text-primary-800/70 hover:text-primary-800">Results</a>
-              <a href="#faq" className="text-primary-800/70 hover:text-primary-800">FAQ</a>
-              <button className="bg-primary-500 text-white px-6 py-3 rounded-full font-medium w-full">Work With Me</button>
-            </div>
-          </div>
-        )}
-      </div>
-    </nav>
-  )
-}
 
 function Hero() {
   const heroRef = useRef<HTMLElement>(null)
@@ -650,49 +609,6 @@ function CTA() {
         <p className="text-white/50 text-sm mt-6">30 minutes • Video or phone • Zero obligation</p>
       </div>
     </section>
-  )
-}
-
-function Footer() {
-  return (
-    <footer className="bg-cream-200 py-12 border-t border-cream-300">
-      <div className="max-w-6xl mx-auto px-6">
-        <div className="grid md:grid-cols-4 gap-8 mb-8">
-          <div className="md:col-span-2">
-            <a href="/" className="font-display text-2xl text-primary-700 block mb-4">Sarah Mitchell</a>
-            <p className="text-primary-800/60 max-w-sm">Helping ambitious women build businesses that give them freedom, fulfillment, and a really good income.</p>
-          </div>
-          
-          <div>
-            <h4 className="font-medium text-primary-900 mb-4">Quick Links</h4>
-            <ul className="space-y-2 text-primary-800/60 text-sm">
-              <li><a href="#about" className="hover:text-primary-700">About</a></li>
-              <li><a href="#services" className="hover:text-primary-700">Services</a></li>
-              <li><a href="#testimonials" className="hover:text-primary-700">Results</a></li>
-              <li><a href="#faq" className="hover:text-primary-700">FAQ</a></li>
-            </ul>
-          </div>
-          
-          <div>
-            <h4 className="font-medium text-primary-900 mb-4">Connect</h4>
-            <ul className="space-y-2 text-primary-800/60 text-sm">
-              <li><a href="#" className="hover:text-primary-700">Instagram</a></li>
-              <li><a href="#" className="hover:text-primary-700">LinkedIn</a></li>
-              <li><a href="#" className="hover:text-primary-700">Podcast</a></li>
-              <li><a href="#" className="hover:text-primary-700">Contact</a></li>
-            </ul>
-          </div>
-        </div>
-        
-        <div className="border-t border-cream-300 pt-8 flex flex-col md:flex-row items-center justify-between gap-4">
-          <p className="text-primary-800/50 text-sm">© {new Date().getFullYear()} Sarah Mitchell Coaching. All rights reserved.</p>
-          <div className="flex items-center gap-6 text-primary-800/50 text-sm">
-            <a href="#" className="hover:text-primary-700">Privacy</a>
-            <a href="#" className="hover:text-primary-700">Terms</a>
-          </div>
-        </div>
-      </div>
-    </footer>
   )
 }
 
