@@ -91,7 +91,7 @@ const PROJECTS: CaseStudy[] = [
     title: 'Healthcare Platform',
     category: 'Product',
     tags: ['product', 'web'],
-    image: 'https://images.unsplash.com/photo-1576091160399-112ba8d25d1f?w=800&h=600&fit=crop',
+    image: 'https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=800&h=600&fit=crop',
     description: 'Patient-first digital health experience',
     link: '/work/healthcare-platform',
   },

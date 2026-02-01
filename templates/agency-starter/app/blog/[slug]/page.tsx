@@ -83,6 +83,216 @@ const BLOG_POSTS: Record<string, BlogPost & { content: string }> = {
       <p>Here's the catch: emotional design only works when it's authentic. Audiences can spot manufactured emotion from a mile away. The brands that create genuine connections are those that start with genuine values.</p>
     `,
   },
+  'our-design-process-revealed': {
+    slug: 'our-design-process-revealed',
+    title: 'Our Design Process, Revealed',
+    excerpt: 'A behind-the-scenes look at how we approach projects from brief to launch. Frameworks, tools, and lessons learned.',
+    category: 'Process',
+    publishedAt: '2025-01-14',
+    readTime: 8,
+    featuredImage: 'https://images.unsplash.com/photo-1531403009284-440f080d1e12?w=1920&h=1080&fit=crop',
+    author: { name: 'Maya Chen', image: 'https://randomuser.me/api/portraits/women/68.jpg' },
+    content: `
+      <p>After 12 years of refining our approach, we've developed a process that consistently delivers exceptional results. Today, we're pulling back the curtain to share exactly how we work.</p>
+
+      <h2>Phase 1: Discovery</h2>
+      <p>Every project begins with deep listening. We don't just take briefs at face value—we dig deeper to understand the real problem we're solving. This phase typically takes 1-2 weeks and includes:</p>
+      
+      <ul>
+        <li><strong>Stakeholder interviews:</strong> Conversations with key decision-makers to understand goals and constraints.</li>
+        <li><strong>Competitive analysis:</strong> Understanding the landscape and identifying opportunities for differentiation.</li>
+        <li><strong>Audience research:</strong> Getting to know the people we're designing for through surveys, interviews, and data analysis.</li>
+        <li><strong>Technical assessment:</strong> Evaluating existing systems and infrastructure requirements.</li>
+      </ul>
+
+      <h2>Phase 2: Strategy</h2>
+      <p>Armed with insights from discovery, we develop a strategic foundation that guides all creative decisions. This is where we define the "why" behind the work.</p>
+      
+      <p>Deliverables include brand positioning, messaging frameworks, and experience principles. We present these as a "Strategy Playbook" that becomes the north star for the project.</p>
+
+      <h2>Phase 3: Exploration</h2>
+      <p>This is where creativity meets strategy. Our team generates multiple directions, each rooted in the strategic foundation but exploring different creative expressions.</p>
+      
+      <p>We believe in showing work early and often. Clients see rough concepts before we've fallen in love with any particular direction. This keeps the process collaborative and efficient.</p>
+
+      <h2>Phase 4: Refinement</h2>
+      <p>Once a direction is selected, we go deep. Every detail is considered, from color values to micro-interactions. This is where good work becomes great work.</p>
+
+      <h2>Phase 5: Delivery</h2>
+      <p>We don't just hand over files—we ensure successful implementation. This includes comprehensive documentation, developer handoffs, and launch support.</p>
+
+      <h2>The Secret Ingredient</h2>
+      <p>If there's one thing that makes our process work, it's communication. We maintain constant dialogue with clients, sharing progress and gathering feedback at every stage. No surprises, no last-minute changes—just steady progress toward a shared vision.</p>
+    `,
+  },
+  'typography-trends-2025': {
+    slug: 'typography-trends-2025',
+    title: 'Typography Trends to Watch in 2025',
+    excerpt: 'From variable fonts to kinetic type, explore the typographic innovations shaping visual communication this year.',
+    category: 'Design',
+    publishedAt: '2025-01-07',
+    readTime: 6,
+    featuredImage: 'https://images.unsplash.com/photo-1561070791-2526d30994b5?w=1920&h=1080&fit=crop',
+    author: { name: 'Jordan Kim', image: 'https://randomuser.me/api/portraits/women/44.jpg' },
+    content: `
+      <p>Typography has always been the backbone of great design. But in 2025, we're seeing type take center stage in ways that feel genuinely new. Here are the trends we're most excited about.</p>
+
+      <h2>Variable Fonts Go Mainstream</h2>
+      <p>Variable fonts have been around since 2016, but 2025 is the year they truly hit their stride. Designers are using the technology not just for performance benefits, but for creative expression—creating fluid typography that responds to user interaction and scrolling.</p>
+      
+      <p>We're particularly excited about variable fonts that include multiple axes, allowing for real-time adjustment of weight, width, slant, and optical size.</p>
+
+      <h2>Kinetic Typography</h2>
+      <p>Static text is becoming the exception. From subtle micro-animations to full-screen typographic experiences, motion is being used to guide attention and create emotional impact.</p>
+      
+      <ul>
+        <li><strong>Scroll-triggered animations:</strong> Text that reveals, transforms, or reacts as users scroll.</li>
+        <li><strong>Responsive kinetics:</strong> Typography that responds to cursor movement or device orientation.</li>
+        <li><strong>Narrative type:</strong> Animated text that tells a story through motion.</li>
+      </ul>
+
+      <h2>Neo-Brutalist Type</h2>
+      <p>The brutalist web design movement has evolved into something more refined. We're seeing bold, heavy typefaces used in ways that feel intentional rather than aggressive. Think Helvetica Now at 900 weight, set tight, in all caps.</p>
+
+      <h2>Custom Typefaces</h2>
+      <p>Brands are increasingly investing in custom typefaces as a way to stand out. A unique typeface is something competitors can't copy—it becomes a distinctive asset that compounds over time.</p>
+
+      <h2>Accessibility-First Typography</h2>
+      <p>The best designers are now considering accessibility from the start, not as an afterthought. This means generous line heights, appropriate contrast ratios, and typefaces designed for readability at all sizes.</p>
+
+      <h2>Our Prediction</h2>
+      <p>Typography in 2025 will be more dynamic, more expressive, and more personal than ever. The brands that invest in thoughtful type choices will have a significant advantage in capturing attention and building recognition.</p>
+    `,
+  },
+  'building-design-systems-scale': {
+    slug: 'building-design-systems-scale',
+    title: 'Building Design Systems That Scale',
+    excerpt: 'Lessons from creating design systems for enterprise clients. How to balance flexibility with consistency.',
+    category: 'Process',
+    publishedAt: '2024-12-28',
+    readTime: 7,
+    featuredImage: 'https://images.unsplash.com/photo-1545235617-9465d2a55698?w=1920&h=1080&fit=crop',
+    author: { name: 'Maya Chen', image: 'https://randomuser.me/api/portraits/women/68.jpg' },
+    content: `
+      <p>A design system is like a living organism. Build it too rigid, and it breaks under pressure. Build it too loose, and chaos ensues. After creating systems for companies ranging from startups to Fortune 500s, here's what we've learned.</p>
+
+      <h2>Start With Principles, Not Components</h2>
+      <p>The most common mistake we see is jumping straight into component design. Instead, start by establishing the principles that will guide decisions when the system doesn't have an answer.</p>
+      
+      <p>Good principles are specific enough to be useful but flexible enough to allow creativity. "Use consistent spacing" is too vague. "Maintain an 8px spacing grid with exceptions allowed for optical adjustments" is actionable.</p>
+
+      <h2>Design for the Edges</h2>
+      <p>Your system will be judged not by how it handles common cases, but by how gracefully it handles edge cases. Consider:</p>
+      
+      <ul>
+        <li>What happens when text is unexpectedly long?</li>
+        <li>How do components behave at extreme viewport sizes?</li>
+        <li>What if a user has high contrast mode enabled?</li>
+        <li>How does the system accommodate content in different languages?</li>
+      </ul>
+
+      <h2>Documentation Is the Product</h2>
+      <p>A design system without good documentation is just a component library. The documentation is what transforms raw materials into a usable tool.</p>
+      
+      <p>We recommend documenting not just the "what" but the "why." When people understand the reasoning behind decisions, they make better choices when the documentation doesn't cover their exact situation.</p>
+
+      <h2>Plan for Evolution</h2>
+      <p>The best design systems have built-in processes for change. This includes clear governance (who can propose changes?), versioning strategies, and deprecation policies.</p>
+
+      <h2>Measure Adoption, Not Completeness</h2>
+      <p>A 100-component system used by 10% of teams is less valuable than a 20-component system used by everyone. Focus on adoption metrics: How many teams are using the system? How often are they reaching for external solutions?</p>
+
+      <h2>The Investment Pays Off</h2>
+      <p>Design systems require significant upfront investment, but the returns compound over time. Teams ship faster, products are more consistent, and onboarding new designers becomes dramatically easier.</p>
+    `,
+  },
+  'state-of-creative-industry': {
+    slug: 'state-of-creative-industry',
+    title: 'The State of the Creative Industry',
+    excerpt: 'Our annual review of trends, challenges, and opportunities in the design and branding space.',
+    category: 'Industry',
+    publishedAt: '2024-12-20',
+    readTime: 10,
+    featuredImage: 'https://images.unsplash.com/photo-1497366216548-37526070297c?w=1920&h=1080&fit=crop',
+    author: { name: 'Sam Okonkwo', image: 'https://randomuser.me/api/portraits/men/52.jpg' },
+    content: `
+      <p>As we close out another year, it's worth stepping back to assess the state of our industry. Where are we now, and where are we headed?</p>
+
+      <h2>The Macro Picture</h2>
+      <p>The creative industry continues to grow, but the nature of that growth is changing. We're seeing consolidation at the top, with major agencies acquiring specialized studios. At the same time, the barrier to entry has never been lower, creating a vibrant ecosystem of independent practitioners.</p>
+      
+      <p>Client expectations have evolved significantly. The demand isn't just for beautiful work—it's for work that performs, that can be measured, and that delivers ROI.</p>
+
+      <h2>Key Trends We're Tracking</h2>
+      
+      <h3>AI Integration</h3>
+      <p>The conversation has shifted from "Will AI replace designers?" to "How do we work alongside AI?" The agencies that figure out the right balance will have a significant competitive advantage.</p>
+      
+      <h3>Sustainability in Design</h3>
+      <p>Clients are increasingly asking about the environmental impact of their brand decisions. From sustainable packaging to carbon-conscious digital design, sustainability is becoming a core consideration.</p>
+      
+      <h3>Global-Local Tension</h3>
+      <p>Brands need to work globally but feel local. This is driving demand for culturally nuanced design work that respects regional differences while maintaining brand coherence.</p>
+
+      <h2>Challenges Ahead</h2>
+      <p>The biggest challenge facing the industry is talent. Finding and retaining skilled designers is harder than ever. Remote work has expanded the talent pool geographically but created new challenges around culture and collaboration.</p>
+      
+      <p>Economic uncertainty is also impacting client budgets, leading to longer sales cycles and more competitive pitches.</p>
+
+      <h2>Opportunities</h2>
+      <p>Despite the challenges, we're optimistic. The companies that invest in brand during uncertain times emerge stronger when conditions improve. Smart clients understand this, creating opportunity for agencies that can demonstrate clear value.</p>
+
+      <h2>Our Outlook</h2>
+      <p>The next year will reward agencies that combine strategic thinking with execution excellence. Pure aesthetics aren't enough—clients want partners who understand their business and can connect creative work to business outcomes.</p>
+    `,
+  },
+  'brand-strategy-startups': {
+    slug: 'brand-strategy-startups',
+    title: 'Brand Strategy for Startups: Where to Begin',
+    excerpt: 'You don\'t need a massive budget to build a great brand. Here\'s how early-stage companies can punch above their weight.',
+    category: 'Strategy',
+    publishedAt: '2024-12-15',
+    readTime: 5,
+    featuredImage: 'https://images.unsplash.com/photo-1559136555-9303baea8ebd?w=1920&h=1080&fit=crop',
+    author: { name: 'Sam Okonkwo', image: 'https://randomuser.me/api/portraits/men/52.jpg' },
+    content: `
+      <p>Startups often think brand is something you worry about later—after you've found product-market fit, after you've raised your Series A. This is a mistake. Brand isn't a luxury; it's leverage.</p>
+
+      <h2>Start With Why (Seriously)</h2>
+      <p>Yes, Simon Sinek's advice has become cliché, but that's because it's true. Before you design anything, articulate why your company exists beyond making money. This becomes the foundation everything else builds on.</p>
+      
+      <p>The best startup brands have a clear, compelling reason for being. It doesn't need to be world-changing, but it needs to be genuine.</p>
+
+      <h2>Find Your Edge</h2>
+      <p>What can you credibly say that your competitors can't? This is your brand's edge. It might be your founder's unique background, your technical approach, or your business model. Whatever it is, lean into it.</p>
+      
+      <ul>
+        <li>What's the story only you can tell?</li>
+        <li>What perspective do you bring that's genuinely different?</li>
+        <li>What customer truth have you uncovered that others have missed?</li>
+      </ul>
+
+      <h2>Invest in the Fundamentals</h2>
+      <p>You don't need a comprehensive brand system at the start. Focus on getting these three things right:</p>
+      
+      <ul>
+        <li><strong>Name:</strong> Choose something memorable, easy to spell, and available as a domain.</li>
+        <li><strong>Logo:</strong> Simple and versatile beats complex and beautiful. You'll use it everywhere.</li>
+        <li><strong>Voice:</strong> Define how you communicate. Formal or casual? Technical or accessible? Consistent voice builds recognition over time.</li>
+      </ul>
+
+      <h2>Be Consistent, Even When It's Hard</h2>
+      <p>The power of brand comes from repetition. Every inconsistency dilutes your message. Use templates, create guidelines (even simple ones), and resist the urge to reinvent your look for every campaign.</p>
+
+      <h2>Punch Above Your Weight</h2>
+      <p>Great brand work can make a 10-person startup feel like a much larger company. This isn't about deception—it's about projecting confidence and professionalism that earns trust.</p>
+      
+      <p>Focus your brand investment where it matters most: your website, your pitch deck, and your product experience. These are the moments that make or break perception.</p>
+
+      <h2>Plan to Evolve</h2>
+      <p>Your first brand won't be your last. That's okay. Build something that works for now, with the understanding that you'll refine it as you grow. The goal isn't perfection—it's progress.</p>
+    `,
+  },
 }
 
 const RELATED_POSTS: BlogPost[] = [
