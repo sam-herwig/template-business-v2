@@ -1,21 +1,30 @@
 'use client'
 
 import { useState, useEffect } from 'react'
+import { usePathname } from 'next/navigation'
+import Link from 'next/link'
 import { motion, AnimatePresence, useReducedMotion } from 'framer-motion'
 import { GYM } from './data'
 import { MenuIcon, CloseIcon } from './icons'
 import { mobileMenu, mobileMenuReduced, useVariant } from './animations'
 
 // ═══════════════════════════════════════════════════════════════
-// Navigation Component
+// Navigation Component - Multi-Page Support
 // ═══════════════════════════════════════════════════════════════
 
-const NAV_ITEMS = ['Classes', 'Membership', 'Trainers', 'Contact'] as const
+const NAV_ITEMS = [
+  { label: 'Classes', href: '/classes' },
+  { label: 'Memberships', href: '/memberships' },
+  { label: 'Trainers', href: '/trainers' },
+  { label: 'About', href: '/about' },
+  { label: 'Contact', href: '/contact' },
+] as const
 
 export function Nav() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
   const [scrolled, setScrolled] = useState(false)
   const prefersReducedMotion = useReducedMotion()
+  const pathname = usePathname()
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 50)
@@ -23,7 +32,14 @@ export function Nav() {
     return () => window.removeEventListener('scroll', handleScroll)
   }, [])
 
+  // Close mobile menu on route change
+  useEffect(() => {
+    setMobileMenuOpen(false)
+  }, [pathname])
+
   const menuVariants = useVariant(mobileMenu, mobileMenuReduced, prefersReducedMotion)
+
+  const isActive = (href: string) => pathname === href
 
   return (
     <nav
@@ -35,21 +51,25 @@ export function Nav() {
     >
       <div className="max-w-6xl mx-auto px-6">
         <div className="flex items-center justify-between h-20">
-          <a href="/" className="font-display text-2xl text-white tracking-[0.2em]">
+          <Link href="/" className="font-display text-2xl text-white tracking-[0.2em]">
             {GYM.name}
-          </a>
+          </Link>
 
           <div className="hidden md:flex items-center gap-10">
             {NAV_ITEMS.map((item) => (
-              <a key={item} href={`#${item.toLowerCase()}`} className="nav-link">
-                {item}
-              </a>
+              <Link
+                key={item.href}
+                href={item.href}
+                className={`nav-link ${isActive(item.href) ? 'text-primary-500' : ''}`}
+              >
+                {item.label}
+              </Link>
             ))}
           </div>
 
-          <a href={GYM.bookingUrl} className="hidden md:inline-flex btn-primary text-sm">
+          <Link href={GYM.bookingUrl} className="hidden md:inline-flex btn-primary text-sm">
             Start Free Trial
-          </a>
+          </Link>
 
           <button
             className="md:hidden p-3 -m-1 text-white min-w-[48px] min-h-[48px] flex items-center justify-center"
@@ -73,21 +93,27 @@ export function Nav() {
             >
               <div className="py-6 space-y-2">
                 {NAV_ITEMS.map((item) => (
-                  <a
-                    key={item}
-                    href={`#${item.toLowerCase()}`}
-                    className="block py-3 px-4 text-gray-400 uppercase tracking-widest text-sm font-medium hover:text-white hover:bg-dark-800 transition-colors min-h-[48px] flex items-center"
-                    onClick={() => setMobileMenuOpen(false)}
+                  <Link
+                    key={item.href}
+                    href={item.href}
+                    className={`block py-3 px-4 uppercase tracking-widest text-sm font-medium hover:text-white hover:bg-dark-800 transition-colors min-h-[48px] flex items-center ${
+                      isActive(item.href) ? 'text-primary-500' : 'text-gray-400'
+                    }`}
                   >
-                    {item}
-                  </a>
+                    {item.label}
+                  </Link>
                 ))}
-                <a
-                  href={GYM.bookingUrl}
-                  className="btn-primary text-center block mt-4 min-h-[48px] flex items-center justify-center"
-                >
-                  Start Free Trial
-                </a>
+                <div className="pt-4 px-4 space-y-3">
+                  <Link href="/blog" className="block py-2 text-gray-500 text-sm hover:text-gray-300 transition-colors">
+                    Blog & Tips
+                  </Link>
+                  <Link
+                    href={GYM.bookingUrl}
+                    className="btn-primary text-center block min-h-[48px] flex items-center justify-center"
+                  >
+                    Start Free Trial
+                  </Link>
+                </div>
               </div>
             </motion.div>
           )}
