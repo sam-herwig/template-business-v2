@@ -389,13 +389,17 @@ function Menu() {
     const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches
     if (prefersReducedMotion) return
     
-    gsap.from('.menu-item', {
-      y: 30,
-      opacity: 0,
-      stagger: 0.08,
-      duration: 0.6,
-      ease: 'power2.out',
-    })
+    gsap.fromTo('.menu-item', 
+      { y: 30, opacity: 0 },
+      { 
+        y: 0, 
+        opacity: 1, 
+        stagger: 0.08,
+        duration: 0.6,
+        ease: 'power2.out',
+        clearProps: 'all'
+      }
+    )
   }, [activeCategory])
   
   return (
@@ -421,7 +425,7 @@ function Menu() {
               onClick={() => setActiveCategory(cat.id)}
               className={`category-tab focus-visible:ring-2 focus-visible:ring-primary-500 focus-visible:ring-offset-2 ${activeCategory === cat.id ? 'category-tab-active' : 'category-tab-inactive'}`}
             >
-              <span className="mr-2" aria-hidden="true">{cat.icon}</span>
+              <span aria-hidden="true">{cat.icon}</span>
               {cat.name}
             </button>
           ))}
