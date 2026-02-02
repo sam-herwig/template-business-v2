@@ -180,8 +180,8 @@ export const pricingTiers = [
   {
     id: "basic",
     name: "Essential",
-    price: 297,
-    originalPrice: 497,
+    price: 197,
+    originalPrice: 397,
     description: "Perfect for self-starters who want core skills",
     features: [
       "Full course access (40+ hours)",
@@ -223,8 +223,8 @@ export const pricingTiers = [
   {
     id: "vip",
     name: "VIP Mentorship",
-    price: 1497,
-    originalPrice: 2497,
+    price: 997,
+    originalPrice: 1997,
     description: "For those who want personal guidance",
     features: [
       "Everything in Professional",

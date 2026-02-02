@@ -1,7 +1,6 @@
 {
-  "name": "course-starter",
+  "name": "photographer-starter",
   "version": "0.1.0",
-  "description": "A premium, conversion-focused online course platform template with modern design, smooth animations, and comprehensive pages for curriculum, pricing, testimonials, and instructor profiles.",
   "private": true,
   "scripts": {
     "dev": "next dev",
