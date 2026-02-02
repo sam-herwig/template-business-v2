@@ -7,7 +7,7 @@ import { Check, Sparkles, Zap, Crown } from 'lucide-react';
 const pricingTiers = [
   {
     name: 'Single Template',
-    price: '$49-79',
+    price: '$79-129',
     description: 'Pick your favorite template and start building today',
     icon: Zap,
     features: [
@@ -22,8 +22,9 @@ const pricingTiers = [
   },
   {
     name: 'Full Bundle',
-    price: '$249',
-    description: 'Get all 13 templates and save over $500',
+    price: '$299',
+    originalPrice: '$499',
+    description: 'Get all 13 templates — launch pricing',
     icon: Crown,
     features: [
       'All 13 templates included',
@@ -36,11 +37,13 @@ const pricingTiers = [
     ],
     cta: 'Get Full Bundle',
     popular: true,
-    savings: 'Save $500+',
+    savings: 'Launch Price — Save $800+',
+    urgent: true,
   },
   {
     name: 'Category Pack',
-    price: '$129',
+    price: '$149',
+    originalPrice: '$249',
     description: 'All templates in one category',
     icon: Sparkles,
     features: [
@@ -48,14 +51,15 @@ const pricingTiers = [
       'Full source code',
       'Documentation',
       'Email support',
-      'Free updates for 1 year',
+      'Lifetime updates',
     ],
     cta: 'Choose Category',
     popular: false,
+    savings: 'Launch Price',
   },
 ];
 
-function PricingCard({ tier, index }: { tier: typeof pricingTiers[0]; index: number }) {
+function PricingCard({ tier, index }: { tier: typeof pricingTiers[0] & { originalPrice?: string; urgent?: boolean }; index: number }) {
   const cardRef = useRef<HTMLDivElement>(null);
   const isInView = useInView(cardRef, { once: true, margin: '-50px' });
   const Icon = tier.icon;
@@ -107,8 +111,16 @@ function PricingCard({ tier, index }: { tier: typeof pricingTiers[0]; index: num
 
           {/* Price */}
           <div className="mb-4">
+            {tier.originalPrice && (
+              <span className="text-2xl text-gray-500 line-through mr-3">{tier.originalPrice}</span>
+            )}
             <span className="text-4xl md:text-5xl font-bold">{tier.price}</span>
             <span className="text-gray-400 ml-2">one-time</span>
+            {tier.urgent && (
+              <div className="mt-2">
+                <span className="text-sm text-orange-400 font-medium animate-pulse">🔥 Limited time offer</span>
+              </div>
+            )}
           </div>
 
           {/* Description */}
