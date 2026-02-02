@@ -1,6 +1,7 @@
 {
   "name": "typography-starter",
   "version": "1.0.0",
+  "description": "A bold kinetic typography template for motion design studios. Features animated text effects, scroll reveals, and a dark theme optimized for showcasing creative work.",
   "private": true,
   "scripts": {
     "dev": "next dev",

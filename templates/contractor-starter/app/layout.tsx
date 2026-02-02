@@ -16,12 +16,23 @@ const inter = Inter({
 })
 
 export const metadata: Metadata = {
-  title: 'Company Name | Professional Contractors',
-  description: 'Licensed and insured contractors serving your area. Quality work, fair prices, guaranteed satisfaction.',
+  title: 'BuildRight Construction | Denver Home Remodeling & Repair',
+  description: 'Licensed & insured contractors with 25+ years serving Denver. Kitchen & bath remodels, basement finishing, repairs. 1,500+ projects completed. Free estimates.',
+  keywords: 'contractor Denver, home remodeling, kitchen remodel, bathroom renovation, basement finishing, home repair, licensed contractor Colorado',
   openGraph: {
-    title: 'Company Name | Professional Contractors',
-    description: 'Licensed and insured contractors serving your area.',
+    title: 'BuildRight Construction | Denver Home Remodeling & Repair',
+    description: 'Licensed & insured contractors with 25+ years serving Denver. Kitchen & bath remodels, basement finishing, repairs. Free estimates.',
     type: 'website',
+    locale: 'en_US',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'BuildRight Construction | Denver Contractors',
+    description: 'Licensed & insured contractors with 25+ years serving Denver. Free estimates.',
+  },
+  robots: {
+    index: true,
+    follow: true,
   },
 }
 

@@ -47,14 +47,16 @@ export function Nav() {
               {item.label}
             </Link>
           ))}
-          <motion.button 
-            className="nav-cta"
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-            aria-label="Get started with Lumina"
-          >
-            Get Started
-          </motion.button>
+          <Link href="/pricing">
+            <motion.button 
+              className="nav-cta"
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              aria-label="Get started with Lumina"
+            >
+              Get Started
+            </motion.button>
+          </Link>
         </div>
 
         {/* Mobile Menu Button */}
@@ -110,15 +112,17 @@ export function Nav() {
                   </Link>
                 </motion.div>
               ))}
-              <motion.button 
-                className="btn-primary mt-4"
-                initial={{ y: 20, opacity: 0 }}
-                animate={{ y: 0, opacity: 1 }}
-                transition={{ delay: 0.4 }}
-                whileTap={{ scale: 0.95 }}
-              >
-                Get Started
-              </motion.button>
+              <Link href="/pricing" onClick={() => setMobileOpen(false)}>
+                <motion.button 
+                  className="btn-primary mt-4"
+                  initial={{ y: 20, opacity: 0 }}
+                  animate={{ y: 0, opacity: 1 }}
+                  transition={{ delay: 0.4 }}
+                  whileTap={{ scale: 0.95 }}
+                >
+                  Get Started
+                </motion.button>
+              </Link>
             </motion.div>
           </motion.div>
         )}

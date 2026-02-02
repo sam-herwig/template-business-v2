@@ -39,7 +39,7 @@ export const GYM: GymInfo = {
   state: "CO",
   zip: "80202",
   heroImage: "https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=1920&h=1080&fit=crop&q=90",
-  bookingUrl: "#join",
+  bookingUrl: "/contact",
   hours: {
     memberAccess: "24/7",
     staffed: "6am - 10pm Daily",

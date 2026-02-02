@@ -36,9 +36,9 @@ const ABOUT_CONTENT = {
 }
 
 const SERVICES = [
-  { name: '1:1 Coaching', description: 'Personalized support to build your business strategy, overcome mindset blocks, and take consistent action.', features: ['12 weekly sessions', 'Unlimited Voxer access', 'Custom action plans', 'Accountability check-ins'], price: 'Starting at $3,500', cta: 'Apply Now' },
-  { name: 'Group Program', description: 'Join a community of ambitious women building businesses together. Learn, grow, and celebrate wins as a group.', features: ['8-week program', 'Weekly group calls', 'Private community', 'Templates & resources'], price: '$997', cta: 'Join Waitlist' },
-  { name: 'VIP Intensive', description: 'A full day together to map out your entire business strategy. Leave with clarity and a complete action plan.', features: ['6-hour session', 'Full business audit', '90-day roadmap', '30 days follow-up support'], price: '$2,500', cta: 'Book Your Day' },
+  { name: '1:1 Coaching', description: 'Personalized support to build your business strategy, overcome mindset blocks, and take consistent action.', features: ['12 weekly sessions', 'Unlimited Voxer access', 'Custom action plans', 'Accountability check-ins'], price: 'Starting at $3,500', cta: 'Apply Now', href: '/book?program=1on1' },
+  { name: 'Group Program', description: 'Join a community of ambitious women building businesses together. Learn, grow, and celebrate wins as a group.', features: ['8-week program', 'Weekly group calls', 'Private community', 'Templates & resources'], price: '$997', cta: 'Join Waitlist', href: '/book?program=group' },
+  { name: 'VIP Intensive', description: 'A full day together to map out your entire business strategy. Leave with clarity and a complete action plan.', features: ['6-hour session', 'Full business audit', '90-day roadmap', '30 days follow-up support'], price: '$2,500', cta: 'Book Your Day', href: '/book?program=vip' },
 ]
 
 const RESULTS = [
@@ -151,12 +151,12 @@ function Hero() {
             </p>
             
             <div className="flex flex-col sm:flex-row gap-4">
-              <button className="hero-cta bg-primary-500 hover:bg-primary-600 text-white px-8 py-4 rounded-full font-medium text-lg transition-all hover:shadow-lg">
+              <Link href="/book" className="hero-cta bg-primary-500 hover:bg-primary-600 text-white px-8 py-4 rounded-full font-medium text-lg transition-all hover:shadow-lg hover:-translate-y-0.5">
                 {HERO_CONTENT.primaryCta}
-              </button>
-              <button className="hero-cta text-primary-700 hover:text-primary-800 px-8 py-4 font-medium text-lg transition-colors">
+              </Link>
+              <Link href="/about" className="hero-cta text-primary-700 hover:text-primary-800 px-8 py-4 font-medium text-lg transition-colors">
                 {HERO_CONTENT.secondaryCta} →
-              </button>
+              </Link>
             </div>
           </div>
           
@@ -371,7 +371,7 @@ function Services() {
               
               <div className="pt-6 border-t border-cream-200">
                 <div className="text-2xl font-display text-primary-900 mb-4">{service.price}</div>
-                <button className="w-full bg-primary-500 hover:bg-primary-600 text-white py-3 rounded-full font-medium transition-colors">{service.cta}</button>
+                <Link href={service.href} className="block w-full bg-primary-500 hover:bg-primary-600 text-white py-3 rounded-full font-medium transition-colors text-center">{service.cta}</Link>
               </div>
             </div>
           ))}
@@ -605,7 +605,7 @@ function CTA() {
       <div className="max-w-4xl mx-auto px-6 text-center cta-content">
         <h2 className="font-display text-3xl md:text-4xl text-white mb-6">Ready to Build a Business You Love?</h2>
         <p className="text-white/70 text-lg max-w-2xl mx-auto mb-10">Let's start with a free discovery call. No pressure, no pitch — just a conversation about where you are and where you want to go.</p>
-        <button className="bg-white hover:bg-cream-100 text-primary-700 px-10 py-5 rounded-full font-medium text-lg transition-all hover:shadow-lg">Book Your Free Call →</button>
+        <Link href="/book" className="inline-block bg-white hover:bg-cream-100 text-primary-700 px-10 py-5 rounded-full font-medium text-lg transition-all hover:shadow-lg hover:-translate-y-0.5">Book Your Free Call →</Link>
         <p className="text-white/50 text-sm mt-6">30 minutes • Video or phone • Zero obligation</p>
       </div>
     </section>

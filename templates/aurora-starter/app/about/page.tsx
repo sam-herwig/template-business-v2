@@ -340,14 +340,16 @@ export default function AboutPage() {
             <p className="text-white/80 mb-8">
               We&apos;re always looking for talented people who share our passion for design and innovation.
             </p>
-            <motion.button 
-              className="btn-primary"
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-            >
-              View Open Positions
-              <ArrowRight className="w-5 h-5" />
-            </motion.button>
+            <Link href="/contact">
+              <motion.button 
+                className="btn-primary"
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+              >
+                View Open Positions
+                <ArrowRight className="w-5 h-5" />
+              </motion.button>
+            </Link>
           </div>
         </motion.div>
       </section>

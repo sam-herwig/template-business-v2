@@ -1,6 +1,7 @@
 {
   "name": "brunch-starter",
   "version": "1.0.0",
+  "description": "A warm, inviting Next.js template for brunch cafes, breakfast spots, and restaurants. Features a beautiful menu system, reservations, gallery, and contact pages with dark mode support.",
   "private": true,
   "scripts": {
     "dev": "next dev",

@@ -1,6 +1,7 @@
 'use client'
 
 import { useRef } from 'react'
+import Link from 'next/link'
 import { useGSAP } from '@gsap/react'
 import { gsap, SplitText } from '@/lib/gsap'
 import MagneticButton from './MagneticButton'
@@ -77,9 +78,11 @@ export default function CTA() {
             Have a project in mind? We'd love to hear about it. Drop us a line and let's see what we can create together.
           </p>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-            <MagneticButton className="btn-primary text-sm uppercase tracking-wider">
-              Start a Project →
-            </MagneticButton>
+            <Link href="/contact">
+              <MagneticButton className="btn-primary text-sm uppercase tracking-wider">
+                Start a Project →
+              </MagneticButton>
+            </Link>
             <a href="mailto:hello@studio.com" className="text-dark-300 hover:text-white transition-colors text-sm uppercase tracking-wider">
               hello@studio.com
             </a>

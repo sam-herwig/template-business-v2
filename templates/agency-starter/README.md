@@ -1,123 +1,255 @@
 # Agency Portfolio Template
 
-A bold, dark-mode landing page for design agencies, creative studios, and freelancers. Showcase your work with filterable case studies and a modern, editorial aesthetic.
+A bold, dark, portfolio-focused Next.js template for creative agencies. Features premium GSAP animations including SplitText, horizontal scroll galleries, and magnetic button effects.
 
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2FYOUR_USERNAME%2Fagency-template&env=NEXT_PUBLIC_SANITY_PROJECT_ID,NEXT_PUBLIC_SANITY_DATASET)
-
-![Template Preview](preview.png)
-
----
+![Preview](./screenshots/preview-desktop.png)
 
 ## ✨ Features
 
-- **Dark Mode First** — Modern, editorial aesthetic that makes visuals pop
-- **Filterable Portfolio** — Case studies with category filters and smooth animations
-- **Bold Typography** — Statement headlines with Space Grotesk
-- **Interactive Services** — Accordion-style service showcase
-- **Team Section** — Grayscale-to-color hover effects
-- **Sanity CMS** — Edit all content visually
-- **One-Click Deploy** — Live in under 5 minutes
+### Design
+- **Dark, premium aesthetic** - Bold typography and sophisticated color palette
+- **Portfolio-focused layout** - Horizontal scroll work gallery with case study pages
+- **Responsive design** - Optimized for desktop, tablet, and mobile
+- **Smooth scrolling** - Lenis smooth scroll integration
 
----
+### Animations (GSAP + Framer Motion)
+- **SplitText headlines** - Character-by-character text reveals
+- **Horizontal scroll gallery** - Pin-and-scroll work showcase with ScrollTrigger
+- **Magnetic buttons** - Interactive hover effects
+- **Counter animations** - Animated statistics on scroll
+- **Parallax effects** - Layered depth throughout
+- **Reduced motion support** - Respects `prefers-reduced-motion`
 
-## 🎯 Perfect For
+### Pages & Routes
+- **Homepage** - Hero, work gallery, services, about, process, CTA
+- **Work** - Filterable portfolio grid with category tabs
+- **Work/[slug]** - Individual case study pages with results, gallery, testimonials
+- **Services** - Detailed service offerings with pricing indicators
+- **About** - Team, values, stats, clients, awards
+- **Blog** - Category-filtered posts with featured article
+- **Blog/[slug]** - Full article pages with related posts
+- **Contact** - Contact form with info sidebar
 
-- Design agencies and studios
-- Creative freelancers
-- Web development agencies
-- Branding consultancies
-- Digital product studios
-
----
-
-## 📐 Sections Included
-
-1. **Hero** — Bold statement headline with gradient accents
-2. **Work** — Filterable case study grid (masonry-style)
-3. **Services** — Interactive accordion with deliverables
-4. **About** — Stats + team members with hover effects
-5. **Process** — 4-step methodology showcase
-6. **Contact** — Large CTA with ambient background
-
----
+### Components
+- Reusable shared components (PageHero, ContactForm, FilterTabs, etc.)
+- Custom cursor (optional)
+- Mobile-responsive navigation with focus trapping
+- Newsletter signup
+- Breadcrumbs navigation
 
 ## 🚀 Quick Start
 
-1. Click **Deploy with Vercel** above
-2. Create a [Sanity](https://sanity.io) account
-3. Add your Project ID
-4. Your site is live!
+```bash
+# Install dependencies
+npm install
 
-See the full setup guide in the main [README](../README.md).
+# Start development server
+npm run dev
 
----
+# Build for production
+npm run build
+
+# Start production server
+npm start
+```
+
+## 📁 Project Structure
+
+```
+├── app/
+│   ├── components/          # Homepage components
+│   │   ├── Hero.tsx
+│   │   ├── Nav.tsx
+│   │   ├── Services.tsx
+│   │   ├── About.tsx
+│   │   ├── Process.tsx
+│   │   ├── HorizontalWork.tsx
+│   │   ├── CTA.tsx
+│   │   ├── Footer.tsx
+│   │   └── shared/          # Reusable components
+│   ├── about/page.tsx
+│   ├── blog/
+│   │   ├── page.tsx
+│   │   └── [slug]/page.tsx
+│   ├── contact/page.tsx
+│   ├── services/page.tsx
+│   ├── work/
+│   │   ├── page.tsx
+│   │   └── [slug]/page.tsx
+│   ├── types/index.ts       # TypeScript types
+│   ├── layout.tsx
+│   ├── page.tsx
+│   └── globals.css
+├── components/
+│   └── CustomCursor.tsx
+├── lib/
+│   ├── gsap.ts              # GSAP configuration with plugins
+│   └── lenis.tsx            # Smooth scroll provider
+├── public/
+├── screenshots/
+└── tailwind.config.ts
+```
 
 ## 🎨 Customization
 
-### Color Scheme
+### Brand Colors
 
-Default dark mode with vibrant red accent:
-- Background: Near black (#030712)
-- Primary: Vibrant red (#ef4444)
-- Accent colors: Electric blue, lime, violet
-
-Change colors in `tailwind.config.js`:
-
-```js
-colors: {
-  primary: {
-    500: '#ef4444',  // Change accent color
-  },
-  dark: {
-    950: '#030712',  // Background
-  },
-}
-```
-
-### Fonts
-
-Default fonts:
-- Headlines: Space Grotesk (bold, modern)
-- Body: Inter (clean, readable)
-
----
-
-## 📁 Case Study Format
-
-Each case study in the CMS should include:
+Edit `tailwind.config.ts` to customize the color palette:
 
 ```ts
-{
-  title: "Project Name",
-  category: "Brand Identity",      // Displayed as label
-  tags: ["branding", "web"],       // For filtering
-  image: "url-to-image",           // 4:3 or 4:5 aspect ratio
-  description: "Brief description",
-  link: "/work/project-slug"       // Detail page link
+colors: {
+  dark: {
+    950: '#030014',  // Darkest background
+    900: '#0a0a1a',  // Section backgrounds
+    800: '#1a1a2e',  // Borders
+    // ...
+  },
+  primary: {
+    500: '#6366f1',  // Primary accent color
+    400: '#818cf8',
+    // ...
+  },
 }
 ```
 
-The first project displays larger (spans 2 rows) for visual hierarchy.
-
----
-
-## 💡 Design Tips
-
-### Portfolio Images
-- Use high-contrast images that pop against dark background
-- 4:3 ratio for standard cards, 4:5 for featured project
-- Consider mockups that show the actual work
-
 ### Typography
-- Headlines: All caps or sentence case, never title case
-- Use tracking-wider for labels and navigation
-- Large type scales: 5xl to 8xl for hero headlines
+
+The template uses Inter as a fallback font. For production, download [Satoshi](https://www.fontshare.com/fonts/satoshi) and configure in `app/layout.tsx`:
+
+```ts
+import localFont from 'next/font/local'
+
+const satoshi = localFont({
+  src: [
+    { path: '../public/fonts/Satoshi-Regular.woff2', weight: '400' },
+    { path: '../public/fonts/Satoshi-Medium.woff2', weight: '500' },
+    { path: '../public/fonts/Satoshi-Bold.woff2', weight: '700' },
+  ],
+  variable: '--font-satoshi',
+})
+```
+
+### Content
+
+All content is currently stored as static data in each page file. To connect to a CMS:
+
+1. The template includes Sanity client dependencies
+2. Replace static data with fetch calls in server components
+3. Create corresponding Sanity schemas
+
+### Adding Case Studies
+
+Add new case studies in `app/work/[slug]/page.tsx`:
+
+```ts
+const CASE_STUDIES = {
+  'your-project-slug': {
+    title: 'Project Title',
+    category: 'Brand Identity',
+    client: 'Client Name',
+    timeline: '8 weeks',
+    services: ['Brand Strategy', 'Visual Design'],
+    challenge: 'The problem you solved...',
+    solution: 'How you solved it...',
+    results: [
+      { value: '200', suffix: '%', label: 'Metric Increase' },
+    ],
+    // ...
+  }
+}
+```
+
+## 🛠️ Tech Stack
+
+- **Framework:** Next.js 14 (App Router)
+- **Styling:** Tailwind CSS
+- **Animations:** GSAP (with SplitText, ScrollTrigger) + Framer Motion
+- **Smooth Scroll:** Lenis
+- **TypeScript:** Full type safety
+- **CMS Ready:** Sanity client included
+
+## 📦 Dependencies
+
+### Core
+- `next` - React framework
+- `react` / `react-dom` - UI library
+- `typescript` - Type safety
 
 ### Animations
-- Keep it subtle — fade-in and scale on scroll
-- Stagger children in grids
-- Use easing curves for smooth motion
+- `gsap` - Premium animation library
+- `@gsap/react` - React integration
+- `framer-motion` - Declarative animations
+
+### Smooth Scroll
+- `lenis` - Smooth scroll library
+
+### CMS (Optional)
+- `@sanity/client` - Sanity.io client
+- `@sanity/image-url` - Image URL builder
+- `next-sanity` - Next.js integration
+
+## 🔧 Environment Variables
+
+No environment variables required for basic usage. For CMS integration:
+
+```env
+NEXT_PUBLIC_SANITY_PROJECT_ID=your-project-id
+NEXT_PUBLIC_SANITY_DATASET=production
+```
+
+## 📱 Browser Support
+
+- Chrome (latest)
+- Firefox (latest)
+- Safari (latest)
+- Edge (latest)
+
+## ♿ Accessibility
+
+- Skip to content link
+- Focus trapping in mobile menu
+- ARIA labels and roles
+- Keyboard navigation
+- Reduced motion support
+- Semantic HTML structure
+
+## 🚢 Deployment
+
+### Vercel (Recommended)
+```bash
+npm i -g vercel
+vercel
+```
+
+### Docker
+```dockerfile
+FROM node:18-alpine
+WORKDIR /app
+COPY package*.json ./
+RUN npm ci
+COPY . .
+RUN npm run build
+EXPOSE 3000
+CMD ["npm", "start"]
+```
+
+### Static Export
+```bash
+# Add to next.config.js: output: 'export'
+npm run build
+# Deploy the 'out' folder
+```
+
+## 📄 License
+
+MIT License - feel free to use for personal or commercial projects.
+
+## 🤝 Credits
+
+- Images: [Unsplash](https://unsplash.com)
+- Font: [Satoshi](https://www.fontshare.com/fonts/satoshi) by Indian Type Foundry
+- Icons: [Lucide](https://lucide.dev)
 
 ---
 
-Made with 🖤 for agencies that push boundaries
+Built with ❤️ for creative agencies that refuse to blend in.

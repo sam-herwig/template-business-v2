@@ -87,14 +87,16 @@ function Hero() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.7, duration: 0.8 }}
         >
-          <motion.button 
-            className="btn-primary"
-            whileHover={{ scale: 1.05, boxShadow: '0 20px 40px rgba(99, 102, 241, 0.4)' }}
-            whileTap={{ scale: 0.95 }}
-          >
-            Start Free Trial
-            <ArrowRight className="w-5 h-5" />
-          </motion.button>
+          <Link href="/pricing">
+            <motion.button 
+              className="btn-primary"
+              whileHover={{ scale: 1.05, boxShadow: '0 20px 40px rgba(99, 102, 241, 0.4)' }}
+              whileTap={{ scale: 0.95 }}
+            >
+              Start Free Trial
+              <ArrowRight className="w-5 h-5" />
+            </motion.button>
+          </Link>
           <Link href="/features">
             <motion.button 
               className="btn-secondary"
@@ -370,14 +372,16 @@ function CTA() {
           Join 50,000+ designers who are already creating the future.
         </p>
         <div className="flex flex-col sm:flex-row gap-4 justify-center">
-          <motion.button 
-            className="btn-primary"
-            whileHover={{ scale: 1.05, boxShadow: '0 25px 60px rgba(255, 255, 255, 0.3)' }}
-            whileTap={{ scale: 0.95 }}
-            aria-label="Start your free trial today"
-          >
-            Start Your Free Trial
-          </motion.button>
+          <Link href="/pricing">
+            <motion.button 
+              className="btn-primary"
+              whileHover={{ scale: 1.05, boxShadow: '0 25px 60px rgba(255, 255, 255, 0.3)' }}
+              whileTap={{ scale: 0.95 }}
+              aria-label="Start your free trial today"
+            >
+              Start Your Free Trial
+            </motion.button>
+          </Link>
           <Link href="/pricing">
             <motion.button 
               className="btn-secondary w-full sm:w-auto"

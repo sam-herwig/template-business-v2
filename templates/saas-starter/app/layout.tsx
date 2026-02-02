@@ -19,12 +19,20 @@ const inter = Inter({
 })
 
 export const metadata: Metadata = {
-  title: 'SaaS Starter - Launch Your Product Today',
-  description: 'A premium landing page template for SaaS products, startups, and web apps.',
+  metadataBase: new URL('https://example.com'),
+  title: 'LaunchKit - Build Products Faster Than Ever',
+  description: 'The all-in-one platform that helps teams ship better products. From idea to launch in days, not months. Trusted by 10,000+ teams worldwide.',
+  keywords: ['SaaS', 'product development', 'team collaboration', 'startup tools', 'project management'],
   openGraph: {
-    title: 'SaaS Starter - Launch Your Product Today',
-    description: 'A premium landing page template for SaaS products, startups, and web apps.',
+    title: 'LaunchKit - Build Products Faster Than Ever',
+    description: 'The all-in-one platform that helps teams ship better products. From idea to launch in days, not months.',
     type: 'website',
+    images: ['/og-image.png'],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'LaunchKit - Build Products Faster Than Ever',
+    description: 'The all-in-one platform that helps teams ship better products. From idea to launch in days, not months.',
   },
 }
 

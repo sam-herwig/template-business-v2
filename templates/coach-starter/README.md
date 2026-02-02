@@ -1,206 +1,285 @@
-# Coach & Consultant Template
+# Coach Starter Template
 
-A premium landing page template for coaches, consultants, and course creators. Warm, personal design that builds trust and converts visitors into clients.
+A warm, personal Next.js template for coaches, consultants, and creators. Premium GSAP animations, Sanity CMS integration, booking embeds, and a sophisticated warm color palette designed to build trust and convert visitors into clients.
 
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2FYOUR_USERNAME%2Fcoach-template&env=NEXT_PUBLIC_SANITY_PROJECT_ID,NEXT_PUBLIC_SANITY_DATASET)
+![Preview Desktop](./screenshots/preview-desktop.png)
 
 ---
 
 ## ✨ Features
 
-- **Personal Branding Focus** — Hero section designed around your photo and story
-- **Trust Building** — Testimonials, credentials, and results sections
-- **Lead Capture** — Email signup and lead magnet sections
-- **Booking Integration** — Calendly, Cal.com, and more built-in
-- **Payment Integration** — Stripe Pricing Table for programs/packages
-- **Warm Design** — Professional but approachable aesthetic
-- **Sanity CMS** — Edit all content visually
-- **One-Click Deploy** — Live in under 5 minutes
+### Design & Experience
+- **Warm, Personal Aesthetic** — Terracotta, cream, and sage color palette that feels approachable yet professional
+- **Premium GSAP Animations** — SplitText headlines, scroll-triggered reveals, counter animations, and smooth parallax
+- **Responsive Mobile Design** — Beautiful on all devices with optimized mobile navigation
+- **Accessibility First** — Skip links, reduced motion support, semantic HTML, ARIA labels
+- **Lenis Smooth Scroll** — Buttery smooth scrolling experience
 
----
+### Content & Pages
+- **Homepage** — Hero with coach photo, about section, services, testimonials, lead magnet, FAQ, and CTA
+- **About Page** — Full story, photo gallery, beliefs/philosophy, media features, and fun facts
+- **Programs Page** — Program cards, comparison table, process timeline, testimonials, and FAQ
+- **Results Page** — Stats bar, featured case studies, video testimonials, testimonial grid, before/after
+- **Blog Page** — Category filtering, featured posts, resource cards, newsletter signup
+- **Book Page** — Calendly/Cal.com embed, contact form, expectations, FAQ
 
-## 🎯 Perfect For
-
-- Life coaches and business coaches
-- Consultants and advisors
-- Course creators and educators
-- Therapists and wellness practitioners
-- Speakers and authors
-
----
-
-## 📐 Sections Included
-
-1. **Hero** — Your photo, headline, and primary CTA
-2. **About** — Your story, credentials, and approach
-3. **Services** — What you offer and how you help
-4. **Results** — Client transformations and outcomes
-5. **Testimonials** — Social proof from past clients
-6. **Lead Magnet** — Free resource opt-in
-7. **FAQ** — Common questions answered
-8. **Contact** — Booking/inquiry form
-
----
-
-## 🔗 Integrations
-
-### Booking Integration (Discovery Calls & Sessions)
-
-Configure your scheduling system directly in Sanity Studio:
-
-**Supported Providers:**
-- **Calendly** (recommended)
-- Cal.com (free, open source)
-- Acuity Scheduling
-- Custom URL
-
-**Setup in Sanity:**
-1. Go to **Coach Settings** → **Booking Integration**
-2. Select your provider (e.g., `Calendly`)
-3. Paste your booking URL (e.g., `https://calendly.com/yourname`)
-4. Optional: Add specific event type slug for different call types
-5. Customize button text ("Book Free Discovery Call")
-6. Enable modal popup for seamless booking
-
-**Getting Your Calendly URL:**
-1. Log in to [Calendly](https://calendly.com)
-2. Go to **Event Types** → Select your event
-3. Copy the **Event Link** (e.g., `https://calendly.com/yourname/discovery`)
-4. Paste in Sanity
-
-**Using Cal.com (Free Alternative):**
-1. Create account at [Cal.com](https://cal.com)
-2. Set up your event types
-3. Copy your booking link
-4. Select "Cal.com" as provider in Sanity
-
-### Payment Integration (Programs & Packages)
-
-Configure payment processing for your coaching programs:
-
-**Supported Providers:**
-- **Stripe Pricing Table** (recommended for subscriptions/tiers)
-- Stripe Checkout Links
-- PayPal
-- Gumroad
-- LemonSqueezy
-- Custom checkout URL
-
-**Setup Stripe Pricing Table:**
-1. Go to [Stripe Dashboard](https://dashboard.stripe.com) → Product Catalog
-2. Create your products/prices
-3. Go to **Pricing Tables** → Create a pricing table
-4. Design your pricing table UI
-5. Copy the **Pricing Table ID** (`prctbl_xxx`)
-6. Copy your **Publishable Key** (from Developers → API Keys)
-7. Add both to Sanity **Coach Settings** → **Payment Integration**
-
-**Example Pricing Structure:**
-- Discovery Call: Free (handled by booking)
-- 1:1 Coaching Package: $997 (Stripe Checkout Link)
-- VIP Day: $2,500 (Stripe Checkout Link)
-- Group Program: $197/month (Stripe Pricing Table)
+### Integrations
+- **Sanity CMS** — Full schema for testimonials, services, FAQ, settings, and more
+- **Booking Systems** — Calendly, Cal.com, Acuity, and custom URL support
+- **Payment Systems** — Stripe Pricing Tables, checkout links, PayPal, Gumroad, LemonSqueezy
+- **Analytics Ready** — Easy to add Google Analytics, Plausible, or Fathom
 
 ---
 
 ## 🚀 Quick Start
 
-1. Click **Deploy with Vercel** above
-2. Create a [Sanity](https://sanity.io) account
-3. Add your Project ID
-4. Your site is live!
+### Prerequisites
+- Node.js 18+ 
+- npm or yarn
+- Sanity account (free tier available)
 
-See the full setup guide in the main [README](../README.md).
+### Installation
+
+```bash
+# Clone the template
+git clone https://github.com/YOUR_USERNAME/coach-starter.git
+cd coach-starter
+
+# Install dependencies
+npm install
+
+# Start development server
+npm run dev
+```
+
+Visit `http://localhost:3000` to see your site.
+
+### Environment Variables
+
+Create a `.env.local` file:
+
+```env
+NEXT_PUBLIC_SANITY_PROJECT_ID=your_project_id
+NEXT_PUBLIC_SANITY_DATASET=production
+```
 
 ---
 
 ## 🎨 Customization
 
-### Color Scheme
+### Colors
 
-The default warm color scheme uses:
-- Primary: Terracotta/Coral (#E07A5F)
-- Secondary: Cream (#F4F1DE)
-- Accent: Sage (#81B29A)
-
-Change colors in `tailwind.config.js`:
+The default warm color scheme in `tailwind.config.js`:
 
 ```js
 colors: {
-  primary: '#E07A5F',
-  secondary: '#F4F1DE',
-  accent: '#81B29A',
+  primary: {
+    100: '#fdf5f3',
+    200: '#f9e7e2',
+    300: '#f2cec4',
+    400: '#e8a999',
+    500: '#d97254',  // Main brand color (terracotta)
+    600: '#c45d3f',
+    700: '#a44b32',
+    800: '#6b3424',
+    900: '#4a2519',
+  },
+  sage: {
+    100: '#f0f5f1',
+    200: '#dce8de',
+    300: '#b8d4bd',
+    400: '#81b29a',  // Accent color
+    500: '#5a9a7a',
+    600: '#467a60',
+    700: '#385f4c',
+  },
+  cream: {
+    100: '#fffcf7',
+    200: '#f8f4ed',  // Background color
+    300: '#efe8dc',
+  },
 }
 ```
 
-### Using Booking Components
+### Typography
+
+The template uses Google Fonts:
+- **Display/Headlines:** Fraunces (elegant serif)
+- **Body:** Outfit (modern sans-serif)
+
+Change fonts in `app/layout.tsx`:
+
+```tsx
+import { Fraunces, Outfit } from 'next/font/google'
+
+const fraunces = Fraunces({ subsets: ['latin'], variable: '--font-display' })
+const outfit = Outfit({ subsets: ['latin'], variable: '--font-body' })
+```
+
+### Content
+
+All demo content is in the page files. To customize:
+
+1. **Homepage:** Edit `app/page.tsx` — update HERO_CONTENT, ABOUT_CONTENT, SERVICES, TESTIMONIALS, etc.
+2. **About:** Edit `app/about/page.tsx` — update ABOUT object, PHOTOS, BELIEFS, FUN_FACTS
+3. **Programs:** Edit `app/programs/page.tsx` — update PROGRAMS array with your offerings
+4. **Results:** Edit `app/results/page.tsx` — update STATS, case studies, testimonials
+5. **Blog:** Edit `app/blog/page.tsx` — update BLOG_POSTS or connect to Sanity
+
+---
+
+## 📐 Project Structure
+
+```
+coach-starter/
+├── app/
+│   ├── layout.tsx        # Root layout with fonts & metadata
+│   ├── page.tsx          # Homepage
+│   ├── about/page.tsx    # About page
+│   ├── programs/page.tsx # Programs/services page
+│   ├── results/page.tsx  # Results/testimonials page
+│   ├── blog/page.tsx     # Blog listing
+│   ├── blog/[slug]/      # Individual blog posts
+│   └── book/page.tsx     # Booking/contact page
+├── components/
+│   ├── layout/           # Nav, Footer, PageHero, SectionHeader
+│   ├── shared/           # CTASection, FAQAccordion, TestimonialCard, NewsletterForm
+│   ├── about/            # MediaLogos, PhotoGallery, BeliefCard
+│   ├── blog/             # BlogCard, CategoryFilter, ResourceCard, AuthorBio
+│   ├── results/          # StatsBar, CaseStudy, VideoTestimonial
+│   ├── programs/         # ProgramCard, ComparisonTable, ProcessTimeline
+│   ├── book/             # ContactForm, ExpectationStep
+│   ├── BookingButton.tsx # Booking integration component
+│   └── PaymentEmbed.tsx  # Payment integration component
+├── sanity/
+│   ├── schemas/          # Sanity CMS schemas
+│   └── lib/              # Sanity client & queries
+├── lib/
+│   ├── gsap.ts           # GSAP configuration with plugins
+│   └── lenis.tsx         # Smooth scroll provider
+├── hooks/
+│   └── useGsapAnimations.ts
+└── public/
+    └── screenshots/      # Template preview images
+```
+
+---
+
+## 🔗 Integrations
+
+### Booking (Calendly/Cal.com)
+
+The `BookingButton` and `BookingEmbed` components support multiple providers:
 
 ```tsx
 import { BookingButton, BookingEmbed } from '@/components/BookingButton'
 
-// Button that opens Calendly popup:
-<BookingButton config={settings.booking} text="Book Free Discovery Call" />
+// Popup button
+<BookingButton 
+  config={{
+    provider: 'calendly',
+    embedUrl: 'https://calendly.com/yourname/discovery',
+    buttonText: 'Book Free Call',
+    openInModal: true,
+  }} 
+/>
 
-// Inline embed on a booking page:
-<BookingEmbed config={settings.booking} height={700} />
-```
-
-### Using Payment Components
-
-```tsx
-import { PaymentEmbed, StripePricingTable } from '@/components/PaymentEmbed'
-
-// Stripe Pricing Table for program tiers:
-<PaymentEmbed config={settings.payment} />
-
-// Or render the pricing table directly:
-<StripePricingTable 
-  pricingTableId="prctbl_xxx"
-  publishableKey="pk_live_xxx"
+// Inline embed
+<BookingEmbed 
+  config={{
+    provider: 'calendly',
+    embedUrl: 'https://calendly.com/yourname/discovery',
+  }}
+  height={650}
 />
 ```
+
+### Payments (Stripe)
+
+```tsx
+import { PaymentEmbed } from '@/components/PaymentEmbed'
+
+<PaymentEmbed 
+  config={{
+    provider: 'stripe',
+    pricingTableId: 'prctbl_xxx',
+    publishableKey: 'pk_live_xxx',
+  }}
+/>
+```
+
+---
+
+## 🏗️ Build & Deploy
+
+### Build for Production
+
+```bash
+npm run build
+npm run start
+```
+
+### Deploy to Vercel
+
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2FYOUR_USERNAME%2Fcoach-starter)
+
+1. Click the button above
+2. Connect your GitHub repository
+3. Add environment variables
+4. Deploy!
+
+### Other Platforms
+
+Works with Netlify, Railway, or any Node.js hosting platform.
 
 ---
 
 ## 📝 Content Tips
 
 ### Hero Section
-- Use a professional, approachable photo
-- Lead with the transformation you provide
+- Use a professional, approachable photo (4:5 aspect ratio works best)
+- Lead with the transformation you provide, not what you do
 - Example: "Helping ambitious women build businesses they love"
 
-### About Section
-- Share your story and credentials
-- Connect emotionally with your ideal client
-- Show why you understand their struggles
+### Testimonials
+- Include specific results ("$10K month in 3 months")
+- Use real names and roles for credibility
+- Video testimonials convert better than text
 
-### Services Section
+### Services/Programs
 - Focus on outcomes, not features
 - Use clear pricing or "starting at" ranges
-- Include a CTA for each service
+- Include a CTA for each offering
 
-### Testimonials
-- Video testimonials work best
-- Include specific results when possible
-- Show diversity in client types
+### Stats
+- Use believable numbers that build trust
+- Example: "200+ clients", "$2.4M revenue generated", "94% hit their goals"
 
 ---
 
-## 📁 Structure
+## 🎭 Animation Details
 
-```
-coach-starter/
-├── app/
-│   ├── page.tsx          # Main landing page
-│   └── studio/           # Sanity Studio route
-├── components/
-│   ├── BookingButton.tsx # Calendly/Cal.com widget
-│   └── PaymentEmbed.tsx  # Stripe payment widget
-├── sanity/
-│   └── schemas/          # Sanity schema definitions
-└── lib/
-    └── sanity.ts         # Sanity client config
-```
+The template uses GSAP for premium animations:
+
+- **SplitText:** Headlines animate word-by-word on load
+- **ScrollTrigger:** Sections fade/slide in as you scroll
+- **Counter Animation:** Stats count up when visible
+- **Parallax:** Hero image has subtle depth effect
+- **Reduced Motion:** All animations respect `prefers-reduced-motion`
+
+---
+
+## 📄 License
+
+MIT License — use this template for personal or commercial projects.
+
+---
+
+## 🤝 Support
+
+- **Issues:** Open a GitHub issue
+- **Questions:** Start a discussion
+- **Updates:** Star & watch for new features
 
 ---
 

@@ -30,7 +30,7 @@ export function TrialCTA() {
             No commitment. No credit card. Just show up and see what you&apos;re made of.
           </p>
           <a
-            href="#"
+            href="/contact"
             className="inline-flex items-center justify-center px-12 py-5 bg-white text-dark-950 font-bold uppercase tracking-widest text-lg hover:bg-gray-100 transition-colors group"
           >
             Claim Free Trial

@@ -1,6 +1,7 @@
 {
-  "name": "coach-consultant-template",
+  "name": "coach-starter",
   "version": "1.0.0",
+  "description": "A warm, personal Next.js template for coaches, consultants, and creators. Features premium GSAP animations, Sanity CMS integration, booking embeds, and a sophisticated warm color palette.",
   "private": true,
   "scripts": {
     "dev": "next dev",

@@ -1,6 +1,7 @@
 'use client'
 
 import { useRef } from 'react'
+import Link from 'next/link'
 import { useGSAP } from '@gsap/react'
 import { gsap, ScrollTrigger, SplitText } from '@/lib/gsap'
 import MagneticButton from './MagneticButton'
@@ -122,12 +123,16 @@ export default function Hero({ content }: HeroProps) {
           
           {/* CTA */}
           <div className="flex flex-wrap gap-4 mb-20">
-            <MagneticButton className="hero-cta btn-primary text-sm uppercase tracking-wider">
-              {content.cta} ↓
-            </MagneticButton>
-            <MagneticButton className="hero-cta btn-outline text-sm uppercase tracking-wider">
-              Get in Touch
-            </MagneticButton>
+            <Link href="/work">
+              <MagneticButton className="hero-cta btn-primary text-sm uppercase tracking-wider">
+                {content.cta} ↓
+              </MagneticButton>
+            </Link>
+            <Link href="/contact">
+              <MagneticButton className="hero-cta btn-outline text-sm uppercase tracking-wider">
+                Get in Touch
+              </MagneticButton>
+            </Link>
           </div>
           
           {/* Clients marquee */}

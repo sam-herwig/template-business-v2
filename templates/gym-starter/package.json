@@ -1,6 +1,7 @@
 {
   "name": "gym-starter-template",
   "version": "1.0.0",
+  "description": "Bold, high-energy Next.js template for gyms, fitness studios, and boutique fitness businesses. Features class scheduling, membership tiers, trainer profiles, and 24/7 booking.",
   "private": true,
   "scripts": {
     "dev": "next dev",

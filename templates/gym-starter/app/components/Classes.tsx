@@ -87,7 +87,7 @@ export function Classes() {
           variants={fadeVariants}
         >
           <a
-            href="#"
+            href="/classes"
             className="inline-flex items-center gap-2 text-primary-400 hover:text-primary-300 font-bold uppercase tracking-widest text-sm transition-colors group"
           >
             View Full Schedule

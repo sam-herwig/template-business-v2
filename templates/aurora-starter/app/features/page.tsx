@@ -1,6 +1,7 @@
 'use client'
 
 import { useState } from 'react'
+import Link from 'next/link'
 import { motion, AnimatePresence } from 'framer-motion'
 import { PageLayout } from '@/components/page-layout'
 import { SectionHeader } from '@/components/ui/section-header'
@@ -304,14 +305,16 @@ export default function FeaturesPage() {
             Ready to experience the future?
           </h2>
           <p className="text-white/80 mb-8">Start your free trial today. No credit card required.</p>
-          <motion.button 
-            className="btn-primary"
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-          >
-            Start Free Trial
-            <ArrowRight className="w-5 h-5" />
-          </motion.button>
+          <Link href="/pricing">
+            <motion.button 
+              className="btn-primary"
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+            >
+              Start Free Trial
+              <ArrowRight className="w-5 h-5" />
+            </motion.button>
+          </Link>
         </motion.div>
       </section>
     </PageLayout>

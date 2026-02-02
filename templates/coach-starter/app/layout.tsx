@@ -16,12 +16,21 @@ const outfit = Outfit({
 })
 
 export const metadata: Metadata = {
-  title: 'Coach Name | Transform Your Life',
-  description: 'Personal coaching and consulting to help you achieve your biggest goals.',
+  metadataBase: new URL('https://sarahmitchell.co'),
+  title: 'Sarah Mitchell | Business Coach for Ambitious Women',
+  description: 'Transform your expertise into a thriving business. 1:1 coaching, group programs, and VIP intensives to help you build the business and life you deserve.',
+  keywords: ['business coach', 'women entrepreneur', 'coaching program', 'business strategy', 'mindset coach'],
+  authors: [{ name: 'Sarah Mitchell' }],
   openGraph: {
-    title: 'Coach Name | Transform Your Life',
-    description: 'Personal coaching and consulting to help you achieve your biggest goals.',
+    title: 'Sarah Mitchell | Business Coach for Ambitious Women',
+    description: 'Transform your expertise into a thriving business. 1:1 coaching, group programs, and VIP intensives for ambitious women.',
     type: 'website',
+    images: ['/og-image.png'],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Sarah Mitchell | Business Coach',
+    description: 'Helping ambitious women build businesses they love.',
   },
 }
 

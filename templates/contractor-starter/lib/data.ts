@@ -61,25 +61,25 @@ export interface TeamMember {
 export const COMPANY = {
   name: "BuildRight Construction",
   tagline: "Quality Craftsmanship, Honest Service",
-  phone: "(555) 987-6543",
-  email: "info@buildright.com",
+  phone: "(303) 555-0147",
+  email: "info@buildrightdenver.com",
   address: {
-    street: "123 Main Street",
+    street: "4521 W Colfax Ave",
     city: "Denver",
     state: "CO",
-    zip: "80202"
+    zip: "80204"
   },
-  license: "License #ABC123456",
+  license: "Licensed #CON-2024-78432",
   insurance: "Fully Insured & Bonded",
-  yearsInBusiness: 15,
-  projectsCompleted: 500,
+  yearsInBusiness: 25,
+  projectsCompleted: 1500,
   heroImage: "https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=1920&h=1080&fit=crop&q=90",
   hours: [
-    { days: "Monday - Friday", hours: "7am - 6pm" },
-    { days: "Saturday", hours: "8am - 4pm" },
+    { days: "Monday - Friday", hours: "7:00 AM - 6:00 PM" },
+    { days: "Saturday", hours: "8:00 AM - 2:00 PM" },
     { days: "Sunday", hours: "Closed" },
   ],
-  emergencyPhone: "(555) 987-6543",
+  emergencyPhone: "(303) 555-0199",
 }
 
 export const SERVICE_CATEGORIES = [
@@ -412,39 +412,39 @@ export const PROJECTS: Project[] = [
 
 export const TESTIMONIALS: Testimonial[] = [
   { 
-    quote: "BuildRight completely transformed our kitchen. Professional from start to finish, and they finished ahead of schedule!", 
-    author: "Jennifer M.", 
+    quote: "We got three quotes and BuildRight was the most thorough. Mike walked us through every option and never pushed unnecessary upgrades. Our kitchen is stunning and they finished a week early.", 
+    author: "Jennifer & Rob Morrison", 
     location: "Denver, CO", 
     rating: 5,
     project: "Kitchen Remodel"
   },
   { 
-    quote: "Honest, reliable, and skilled. They fixed issues that other contractors missed. Highly recommend!", 
-    author: "Michael S.", 
+    quote: "Had a water leak that damaged our drywall and flooring. BuildRight came out same day, gave an honest assessment, and fixed everything right. No games, no upselling. Just good honest work.", 
+    author: "Michael Hernandez", 
     location: "Aurora, CO", 
     rating: 5,
-    project: "Home Repair"
+    project: "Water Damage Repair"
   },
   { 
-    quote: "Our deck is beautiful and built to last. Fair price, great communication, quality work.", 
-    author: "David & Lisa T.", 
+    quote: "After a bad experience with another contractor, BuildRight restored our faith. They showed up when they said, cleaned up every day, and the deck is exactly what we wanted. Worth every penny.", 
+    author: "David & Lisa Thompson", 
     location: "Lakewood, CO", 
     rating: 5,
-    project: "Deck Build"
+    project: "Composite Deck"
   },
   {
-    quote: "They turned our unfinished basement into the best room in our house. Amazing work!",
-    author: "The Martinez Family",
+    quote: "Tom and his crew turned our dark, unfinished basement into an amazing space for the kids. The built-in entertainment center was my husband's idea and they made it perfect. Highly recommend!",
+    author: "Maria Martinez",
     location: "Littleton, CO",
     rating: 5,
     project: "Basement Finish"
   },
   {
-    quote: "Professional, punctual, and perfectionists. Our bathroom remodel exceeded expectations.",
-    author: "Sarah K.",
-    location: "Aurora, CO",
+    quote: "Professional from start to finish. Sarah helped us pick finishes that worked with our budget, and the tile work is magazine-quality. We've already recommended them to two neighbors.",
+    author: "Karen Patel",
+    location: "Centennial, CO",
     rating: 5,
-    project: "Bathroom Remodel"
+    project: "Master Bath Renovation"
   },
 ]
 
@@ -475,21 +475,21 @@ export const GENERAL_FAQ: FAQItem[] = [
 
 export const TEAM_MEMBERS: TeamMember[] = [
   {
-    name: "Mike Johnson",
+    name: "Mike Callahan",
     role: "Founder & Lead Contractor",
-    experience: "20+ years in construction",
+    experience: "25+ years in construction",
     photo: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=400&fit=crop&q=85"
   },
   {
-    name: "Sarah Chen",
-    role: "Project Manager",
-    experience: "10 years experience",
+    name: "Sarah Mitchell",
+    role: "Project Manager & Designer",
+    experience: "12 years experience",
     photo: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=400&h=400&fit=crop&q=85"
   },
   {
-    name: "Tom Williams",
-    role: "Lead Carpenter",
-    experience: "15 years experience",
+    name: "Tom Reyes",
+    role: "Lead Carpenter & Foreman",
+    experience: "18 years experience",
     photo: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=400&h=400&fit=crop&q=85"
   },
 ]

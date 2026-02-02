@@ -1,6 +1,7 @@
 {
   "name": "aurora-starter",
   "version": "1.0.0",
+  "description": "A stunning Next.js 14 SaaS landing page template with aurora gradient mesh, glass-morphism UI, and smooth GSAP/Framer Motion animations.",
   "private": true,
   "scripts": {
     "dev": "next dev",

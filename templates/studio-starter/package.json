@@ -1,6 +1,7 @@
 {
   "name": "studio-starter",
   "version": "1.0.0",
+  "description": "A premium design studio portfolio template featuring Bento grid layouts, GSAP/Framer Motion animations, smooth Lenis scrolling, and a dark glassmorphic aesthetic. Built with Next.js 14, TypeScript, and Tailwind CSS.",
   "private": true,
   "scripts": {
     "dev": "next dev",

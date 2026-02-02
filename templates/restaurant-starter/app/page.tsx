@@ -1,11 +1,13 @@
 'use client'
 
 import Image from 'next/image'
+import Link from 'next/link'
 import { motion, AnimatePresence } from 'framer-motion'
 import { useState, useEffect, useRef, useCallback } from 'react'
 import { useGSAP } from '@gsap/react'
 import { gsap, ScrollTrigger, SplitText } from '@/lib/gsap'
 import { SkipLink } from '@/components/SkipLink'
+import { Nav, Footer } from './_components'
 import { 
   Salad, 
   UtensilsCrossed, 
@@ -32,14 +34,14 @@ import type {
 
 const RESTAURANT: RestaurantConfig = {
   name: "The Golden Fork",
-  tagline: "Farm to Table Excellence",
-  description: "Experience the finest locally-sourced ingredients prepared with passion and creativity. Every dish tells a story of the land and the people who cultivate it.",
-  phone: "(555) 123-4567",
-  email: "hello@goldenfork.com",
-  address: "123 Main Street, Downtown",
+  tagline: "Where Every Bite Tells a Story",
+  description: "Savor the season's finest ingredients, thoughtfully sourced from local farms and transformed into dishes that linger in memory long after the last bite.",
+  phone: "(555) 847-2630",
+  email: "hello@thegoldenfork.com",
+  address: "742 Willow Street, Historic Downtown",
   hours: {
-    weekday: "11:00 AM - 10:00 PM",
-    weekend: "10:00 AM - 11:00 PM",
+    weekday: "5:00 PM - 10:00 PM",
+    weekend: "11:00 AM - 11:00 PM",
   },
   heroImage: "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=1920&h=1080&fit=crop&q=90",
 }
@@ -52,20 +54,20 @@ const MENU_CATEGORIES: { id: string; name: string; icon: React.ReactNode }[] = [
 ]
 
 const MENU_ITEMS: MenuItem[] = [
-  { id: 1, category: 'starters', name: 'Burrata & Heirloom Tomatoes', description: 'Fresh burrata, seasonal tomatoes, basil oil, aged balsamic', price: 16, dietary: ['v', 'gf'] },
-  { id: 2, category: 'starters', name: 'Crispy Calamari', description: 'Lightly fried, lemon aioli, fresh herbs', price: 14, dietary: [] },
-  { id: 3, category: 'starters', name: 'Soup of the Day', description: 'Chef\'s daily creation, artisan bread', price: 9, dietary: ['v'] },
-  { id: 4, category: 'starters', name: 'Roasted Beet Salad', description: 'Goat cheese, candied walnuts, arugula, honey vinaigrette', price: 13, dietary: ['v', 'gf'] },
-  { id: 5, category: 'mains', name: 'Pan-Seared Salmon', description: 'Wild-caught salmon, lemon butter, seasonal vegetables, herb rice', price: 32, dietary: ['gf'] },
-  { id: 6, category: 'mains', name: 'Grilled Ribeye', description: '12oz prime cut, garlic mashed potatoes, red wine reduction', price: 45, dietary: ['gf'] },
-  { id: 7, category: 'mains', name: 'Wild Mushroom Risotto', description: 'Arborio rice, truffle oil, parmesan, fresh herbs', price: 26, dietary: ['v', 'gf'] },
-  { id: 8, category: 'mains', name: 'Herb-Crusted Chicken', description: 'Free-range chicken, roasted vegetables, pan jus', price: 28, dietary: ['gf'] },
-  { id: 9, category: 'desserts', name: 'Chocolate Lava Cake', description: 'Warm chocolate center, vanilla bean ice cream', price: 12, dietary: ['v'] },
-  { id: 10, category: 'desserts', name: 'Crème Brûlée', description: 'Classic vanilla custard, caramelized sugar', price: 10, dietary: ['v', 'gf'] },
-  { id: 11, category: 'desserts', name: 'Seasonal Fruit Tart', description: 'Fresh fruits, pastry cream, almond crust', price: 11, dietary: ['v'] },
-  { id: 12, category: 'drinks', name: 'House Red Wine', description: 'Cabernet Sauvignon, Napa Valley', price: 14, dietary: ['v', 'gf'] },
-  { id: 13, category: 'drinks', name: 'Craft Cocktail', description: 'Ask your server about today\'s creations', price: 16, dietary: [] },
-  { id: 14, category: 'drinks', name: 'Local Craft Beer', description: 'Rotating selection of local favorites', price: 8, dietary: ['v'] },
+  { id: 1, category: 'starters', name: 'Burrata & Heirloom Tomatoes', description: 'Creamy hand-pulled burrata from Bellwether Farms, vine-ripened heirlooms, fragrant basil oil, 25-year aged balsamic', price: 18, dietary: ['v', 'gf'] },
+  { id: 2, category: 'starters', name: 'Crispy Calamari', description: 'Tender Rhode Island calamari, flash-fried to golden perfection, house-made lemon-caper aioli', price: 16, dietary: [] },
+  { id: 3, category: 'starters', name: 'Farmers Market Soup', description: 'Chef Marcus\'s daily inspiration featuring the morning\'s freshest harvest, warm sourdough', price: 11, dietary: ['v'] },
+  { id: 4, category: 'starters', name: 'Roasted Beet Salad', description: 'Ruby and golden beets, creamy local chèvre, spiced candied walnuts, peppery arugula', price: 15, dietary: ['v', 'gf'] },
+  { id: 5, category: 'mains', name: 'Pan-Seared Scottish Salmon', description: 'Sustainably-caught Atlantic salmon, brown butter with capers, haricots verts, herb-crushed fingerlings', price: 36, dietary: ['gf'] },
+  { id: 6, category: 'mains', name: 'Prime Ribeye', description: '14oz dry-aged 45 days, bone-in, truffle whipped potatoes, charred broccolini, bourbon peppercorn sauce', price: 58, dietary: ['gf'] },
+  { id: 7, category: 'mains', name: 'Wild Mushroom Risotto', description: 'Carnaroli rice stirred to silky perfection, foraged chanterelles, white truffle oil, aged Parmigiano', price: 29, dietary: ['v', 'gf'] },
+  { id: 8, category: 'mains', name: 'Herb-Roasted Chicken', description: 'Mary\'s free-range half chicken, root vegetable medley, crispy skin, rich pan jus', price: 32, dietary: ['gf'] },
+  { id: 9, category: 'desserts', name: 'Molten Chocolate Cake', description: 'Dark Valrhona chocolate, liquid center, house-churned Madagascar vanilla gelato', price: 14, dietary: ['v'] },
+  { id: 10, category: 'desserts', name: 'Classic Crème Brûlée', description: 'Tahitian vanilla bean custard, crackling caramelized sugar, fresh berries', price: 12, dietary: ['v', 'gf'] },
+  { id: 11, category: 'desserts', name: 'Seasonal Fruit Galette', description: 'Buttery rustic pastry, stone fruits from Oak Glen, lavender honey, crème fraîche', price: 13, dietary: ['v'] },
+  { id: 12, category: 'drinks', name: 'Sonoma Cabernet', description: 'Jordan Vineyard, notes of blackcurrant and cedar, velvety finish', price: 18, dietary: ['v', 'gf'] },
+  { id: 13, category: 'drinks', name: 'The Golden Hour', description: 'Our signature cocktail: bourbon, honey-ginger, lemon, aromatic bitters', price: 16, dietary: [] },
+  { id: 14, category: 'drinks', name: 'Rotating Local Craft', description: 'Ask about today\'s selection from neighboring breweries', price: 9, dietary: ['v'] },
 ]
 
 const GALLERY: GalleryImage[] = [
@@ -78,9 +80,9 @@ const GALLERY: GalleryImage[] = [
 ]
 
 const TESTIMONIALS: Testimonial[] = [
-  { quote: "The best dining experience we've had in years. Every dish was a work of art, and the service was impeccable.", author: "Sarah Mitchell", role: "Food Critic, The Daily Gazette", rating: 5 },
-  { quote: "Impeccable service and incredible food. This is our go-to spot for special occasions and celebrations.", author: "James Thompson", role: "Regular Guest", rating: 5 },
-  { quote: "Fresh, creative, delicious. The seasonal menu keeps us coming back again and again.", author: "Emily Rodriguez", role: "Anniversary Dinner", rating: 5 },
+  { quote: "The pan-seared salmon was transcendent — buttery, perfectly cooked, with flavors that danced on my palate. This is dining elevated to an art form.", author: "Margaret Chen", role: "Food & Wine Magazine", rating: 5 },
+  { quote: "We celebrated our 25th anniversary here and it exceeded every expectation. The staff remembered our names, and the tasting menu was pure poetry.", author: "Robert & Linda Hayes", role: "Celebrated Anniversary", rating: 5 },
+  { quote: "Finally, a farm-to-table restaurant that delivers on its promise. You can taste the care in every single bite. Already booked our next visit.", author: "David Morales", role: "Verified Diner via OpenTable", rating: 5 },
 ]
 
 // Dietary label helper
@@ -93,107 +95,6 @@ const DIETARY_LABELS: Record<DietaryType, string> = {
 // ═══════════════════════════════════════════════════════════════
 // COMPONENTS
 // ═══════════════════════════════════════════════════════════════
-
-function Nav() {
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
-  const [scrolled, setScrolled] = useState(false)
-  
-  useEffect(() => {
-    const handleScroll = () => setScrolled(window.scrollY > 50)
-    window.addEventListener('scroll', handleScroll, { passive: true })
-    return () => window.removeEventListener('scroll', handleScroll)
-  }, [])
-
-  const closeMobileMenu = useCallback(() => setMobileMenuOpen(false), [])
-  
-  return (
-    <nav 
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
-        scrolled ? 'bg-white/95 backdrop-blur-lg shadow-sm border-b border-gray-100/50 dark:bg-dark-950/95 dark:border-gray-800/50' : 'bg-transparent'
-      }`}
-      role="navigation"
-      aria-label="Main navigation"
-    >
-      <div className="max-w-6xl mx-auto px-6">
-        <div className="flex items-center justify-between h-20">
-          <a 
-            href="/" 
-            className={`font-display text-2xl transition-colors duration-300 focus-visible:ring-2 focus-visible:ring-primary-500 focus-visible:ring-offset-2 rounded-sm ${scrolled ? 'text-dark-900 dark:text-white' : 'text-white'}`}
-            aria-label={`${RESTAURANT.name} - Home`}
-          >
-            {RESTAURANT.name}
-          </a>
-          
-          <div className="hidden md:flex items-center gap-10">
-            {['Menu', 'About', 'Gallery', 'Contact'].map((item) => (
-              <a 
-                key={item} 
-                href={`#${item.toLowerCase()}`} 
-                className={`relative font-medium transition-colors duration-200 group focus-visible:ring-2 focus-visible:ring-primary-500 focus-visible:ring-offset-2 rounded-sm ${scrolled ? 'text-gray-700 hover:text-primary-600 dark:text-gray-300 dark:hover:text-primary-400' : 'text-white/90 hover:text-white'}`}
-              >
-                {item}
-                <span className={`absolute -bottom-1 left-0 w-0 h-0.5 rounded-full transition-all duration-300 group-hover:w-full ${scrolled ? 'bg-primary-500' : 'bg-white'}`} aria-hidden="true" />
-              </a>
-            ))}
-          </div>
-          
-          <div className="hidden md:flex items-center gap-4">
-            <a 
-              href="#reservations" 
-              className={`btn-primary text-sm focus-visible:ring-2 focus-visible:ring-primary-500 focus-visible:ring-offset-2 ${!scrolled && 'bg-white text-dark-900 hover:bg-white/90'}`}
-            >
-              Reserve a Table
-            </a>
-          </div>
-          
-          <button 
-            className={`md:hidden p-2 transition-colors focus-visible:ring-2 focus-visible:ring-primary-500 focus-visible:ring-offset-2 rounded-sm ${scrolled ? 'text-dark-900 dark:text-white' : 'text-white'}`} 
-            onClick={() => setMobileMenuOpen(!mobileMenuOpen)} 
-            aria-label={mobileMenuOpen ? 'Close menu' : 'Open menu'}
-            aria-expanded={mobileMenuOpen}
-            aria-controls="mobile-menu"
-          >
-            <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-              {mobileMenuOpen ? <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" /> : <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />}
-            </svg>
-          </button>
-        </div>
-        
-        <AnimatePresence>
-          {mobileMenuOpen && (
-            <motion.div 
-              id="mobile-menu"
-              initial={{ height: 0, opacity: 0 }}
-              animate={{ height: 'auto', opacity: 1 }}
-              exit={{ height: 0, opacity: 0 }}
-              className="md:hidden overflow-hidden bg-white dark:bg-dark-950 rounded-b-lg"
-            >
-              <div className="py-4 space-y-4 border-t border-gray-100 dark:border-gray-800 px-2">
-                {['Menu', 'About', 'Gallery', 'Contact'].map((item) => (
-                  <a 
-                    key={item} 
-                    href={`#${item.toLowerCase()}`} 
-                    className="block text-gray-700 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 transition-colors py-2 px-4 rounded-md focus-visible:ring-2 focus-visible:ring-primary-500" 
-                    onClick={closeMobileMenu}
-                  >
-                    {item}
-                  </a>
-                ))}
-                <a 
-                  href="#reservations" 
-                  className="btn-primary text-center block mx-4 focus-visible:ring-2 focus-visible:ring-primary-500"
-                  onClick={closeMobileMenu}
-                >
-                  Reserve a Table
-                </a>
-              </div>
-            </motion.div>
-          )}
-        </AnimatePresence>
-      </div>
-    </nav>
-  )
-}
 
 function Hero() {
   const heroRef = useRef<HTMLElement>(null)
@@ -324,13 +225,13 @@ function Hero() {
         
         {/* CTAs */}
         <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-          <a href="#reservations" className="hero-cta btn-primary text-lg group focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-dark-950">
+          <Link href="/reservations" className="hero-cta btn-primary text-lg group focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-dark-950">
             Make a Reservation
             <svg className="w-5 h-5 ml-2 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
             </svg>
-          </a>
-          <a href="#menu" className="hero-cta btn-outline text-lg focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-dark-950">View Menu</a>
+          </Link>
+          <Link href="/menu" className="hero-cta btn-outline text-lg focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-dark-950">View Menu</Link>
         </div>
       </div>
       
@@ -410,11 +311,11 @@ function Menu() {
     <section ref={menuRef} id="menu" className="section-padding bg-[rgb(var(--background))]" aria-labelledby="menu-title">
       <div className="max-w-4xl mx-auto px-6">
         <div className="menu-header text-center mb-16">
-          <span className="section-eyebrow">Our Menu</span>
-          <h2 id="menu-title" className="section-title">Seasonal Favorites</h2>
+          <span className="section-eyebrow">The Menu</span>
+          <h2 id="menu-title" className="section-title">Crafted with Care</h2>
           <div className="divider mt-6 mb-6" aria-hidden="true" />
           <p className="section-description mx-auto">
-            Fresh, locally-sourced ingredients prepared with care and creativity.
+            A seasonal celebration of local farms, time-honored techniques, and bold flavors that surprise and delight.
           </p>
         </div>
         
@@ -476,21 +377,21 @@ function Menu() {
           <span className="flex items-center gap-2"><span className="dietary-icon dietary-gf" aria-hidden="true">GF</span> Gluten-Free</span>
         </div>
         
-        {/* Order Online CTA */}
+        {/* Explore More CTA */}
         <div className="mt-16 text-center p-10 bg-primary-50 dark:bg-primary-950/30 rounded-2xl border border-primary-100 dark:border-primary-900/50">
           <div className="inline-flex items-center justify-center w-14 h-14 rounded-full bg-primary-100 dark:bg-primary-900/50 mb-4" aria-hidden="true">
             <svg className="w-7 h-7 text-primary-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
             </svg>
           </div>
-          <h3 className="font-display text-2xl text-dark-900 dark:text-white mb-2">Order Online</h3>
-          <p className="text-[rgb(var(--muted-foreground))] mb-6">Skip the wait — order pickup or delivery</p>
-          <button className="btn-primary focus-visible:ring-2 focus-visible:ring-primary-500 focus-visible:ring-offset-2">
-            Order Now 
-            <svg className="w-4 h-4 ml-2 inline" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+          <h3 className="font-display text-2xl text-dark-900 dark:text-white mb-2">Discover More</h3>
+          <p className="text-[rgb(var(--muted-foreground))] mb-6">Explore our complete seasonal offerings, wine pairings, and chef's tasting menus</p>
+          <Link href="/menu" className="btn-primary focus-visible:ring-2 focus-visible:ring-primary-500 focus-visible:ring-offset-2 inline-flex items-center">
+            View Full Menu 
+            <svg className="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
             </svg>
-          </button>
+          </Link>
         </div>
       </div>
     </section>
@@ -569,17 +470,17 @@ function About() {
       <div className="max-w-6xl mx-auto px-6">
         <div className="grid md:grid-cols-2 gap-16 items-center">
           <div className="about-content">
-            <span className="section-eyebrow">Our Story</span>
-            <h2 id="about-title" className="section-title mb-8">A Passion for<br />Great Food</h2>
+            <span className="section-eyebrow">Est. 2015</span>
+            <h2 id="about-title" className="section-title mb-8">Where Passion<br />Meets Plate</h2>
             <div className="space-y-5 text-[rgb(var(--muted-foreground))] text-lg leading-relaxed">
-              <p>Founded in 2015, The Golden Fork started with a simple mission: bring farm-fresh ingredients and creative cuisine to our community.</p>
-              <p>Our chef partners directly with local farmers and producers to source the finest seasonal ingredients. Every dish tells a story of the land and the people who cultivate it.</p>
-              <p>Whether you're celebrating a special occasion or enjoying a casual dinner with friends, we're honored to be part of your experience.</p>
+              <p>The Golden Fork was born from a simple belief: that a meal shared is a moment cherished. What began as a 28-seat neighborhood bistro has blossomed into one of the region's most celebrated dining destinations.</p>
+              <p>Executive Chef Marcus Thompson works hand-in-hand with 12 local farms within a 50-mile radius, ensuring every ingredient arrives at peak freshness. Our menu changes with the seasons because nature knows best.</p>
+              <p>Whether you're marking a milestone anniversary or savoring a quiet Tuesday evening, we believe every guest deserves an experience that nourishes both body and soul.</p>
             </div>
             
             {/* Stats */}
             <div className="grid grid-cols-3 gap-6 mt-10 pt-10 border-t border-[rgb(var(--border))]" role="list" aria-label="Restaurant statistics">
-              {[{ number: '10+', label: 'Years' }, { number: '50k', label: 'Guests Served' }, { number: '4.9', label: 'Rating' }].map((stat) => (
+              {[{ number: '9', label: 'Years Strong' }, { number: '85k+', label: 'Guests Served' }, { number: '4.8', label: 'Google Rating' }].map((stat) => (
                 <div key={stat.label} role="listitem">
                   <div className="font-display text-3xl text-primary-600 dark:text-primary-400 mb-1">
                     <span className="stat-number" data-value={stat.number}>0</span>
@@ -609,8 +510,8 @@ function About() {
                   </svg>
                 </div>
                 <div>
-                  <div className="font-display text-2xl text-dark-900 dark:text-white">Award</div>
-                  <div className="text-sm text-[rgb(var(--muted-foreground))]">Best Fine Dining 2024</div>
+                  <div className="font-display text-2xl text-dark-900 dark:text-white">Acclaimed</div>
+                  <div className="text-sm text-[rgb(var(--muted-foreground))]">James Beard Semifinalist '23</div>
                 </div>
               </div>
             </div>
@@ -677,8 +578,8 @@ function Gallery() {
     <section ref={galleryRef} id="gallery" className="section-padding bg-[rgb(var(--background))]" aria-labelledby="gallery-title">
       <div className="max-w-6xl mx-auto px-6">
         <div className="gallery-header text-center mb-16">
-          <span className="section-eyebrow">Gallery</span>
-          <h2 id="gallery-title" className="section-title">A Feast for the Eyes</h2>
+          <span className="section-eyebrow">Inside Our World</span>
+          <h2 id="gallery-title" className="section-title">A Feast for the Senses</h2>
           <div className="divider mt-6" aria-hidden="true" />
         </div>
         
@@ -790,12 +691,15 @@ function Reservations() {
   return (
     <section ref={ctaRef} id="reservations" className="cta-section section-padding-sm" aria-labelledby="reservations-title">
       <div className="cta-content relative z-10 max-w-4xl mx-auto px-6 text-center text-white">
-        <h2 id="reservations-title" className="font-display text-4xl md:text-5xl mb-4">Make a Reservation</h2>
-        <p className="text-white/90 text-lg mb-10 max-w-xl mx-auto">Book your table online or call us directly. We look forward to welcoming you.</p>
+        <h2 id="reservations-title" className="font-display text-4xl md:text-5xl mb-4">Your Table Awaits</h2>
+        <p className="text-white/90 text-lg mb-10 max-w-xl mx-auto">Join us for an evening of exceptional cuisine and warm hospitality. Reserve your experience today.</p>
         <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-          <button className="bg-white text-primary-600 hover:bg-gray-50 px-8 py-4 rounded-sm font-medium text-lg transition-all duration-300 hover:shadow-xl focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-primary-600">
-            Book on OpenTable
-          </button>
+          <Link 
+            href="/reservations"
+            className="bg-white text-primary-600 hover:bg-gray-50 px-8 py-4 rounded-sm font-medium text-lg transition-all duration-300 hover:shadow-xl focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-primary-600"
+          >
+            Book Your Table
+          </Link>
           <a 
             href={`tel:${RESTAURANT.phone}`} 
             className="flex items-center gap-2 text-white hover:text-white/90 px-8 py-4 font-medium text-lg transition-colors focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-primary-600 rounded-sm"
@@ -889,72 +793,6 @@ function Contact() {
   )
 }
 
-function Footer() {
-  const currentYear = new Date().getFullYear()
-  
-  return (
-    <footer className="bg-dark-950 text-white py-16" role="contentinfo">
-      <div className="max-w-6xl mx-auto px-6">
-        <div className="grid md:grid-cols-4 gap-12 mb-12">
-          <div className="md:col-span-2">
-            <div className="font-display text-2xl mb-4">{RESTAURANT.name}</div>
-            <p className="text-gray-400 mb-6 max-w-sm">Farm to table excellence. Experience the finest locally-sourced ingredients prepared with passion.</p>
-            <div className="flex items-center gap-4">
-              {[
-                { name: 'Instagram', icon: <Instagram className="w-5 h-5" /> },
-                { name: 'Facebook', icon: <Facebook className="w-5 h-5" /> },
-                { name: 'Twitter', icon: <Twitter className="w-5 h-5" /> },
-              ].map((social) => (
-                <a 
-                  key={social.name} 
-                  href="#" 
-                  className="w-10 h-10 rounded-full bg-white/5 hover:bg-white/10 flex items-center justify-center transition-colors focus-visible:ring-2 focus-visible:ring-primary-500 focus-visible:ring-offset-2 focus-visible:ring-offset-dark-950" 
-                  aria-label={`Follow us on ${social.name}`}
-                >
-                  <span aria-hidden="true">{social.icon}</span>
-                </a>
-              ))}
-            </div>
-          </div>
-          
-          <nav aria-label="Footer navigation">
-            <h4 className="font-medium text-white mb-4">Quick Links</h4>
-            <ul className="space-y-3">
-              {['Menu', 'About', 'Gallery', 'Contact'].map((link) => (
-                <li key={link}>
-                  <a 
-                    href={`#${link.toLowerCase()}`} 
-                    className="text-gray-400 hover:text-white transition-colors focus-visible:ring-2 focus-visible:ring-primary-500 rounded-sm"
-                  >
-                    {link}
-                  </a>
-                </li>
-              ))}
-            </ul>
-          </nav>
-          
-          <div>
-            <h4 className="font-medium text-white mb-4">Contact</h4>
-            <address className="space-y-3 text-gray-400 not-italic">
-              <p>{RESTAURANT.address}</p>
-              <p>{RESTAURANT.phone}</p>
-              <p>{RESTAURANT.email}</p>
-            </address>
-          </div>
-        </div>
-        
-        <div className="border-t border-gray-800 pt-8 flex flex-col md:flex-row items-center justify-between gap-4">
-          <div className="text-gray-500 text-sm">© {currentYear} {RESTAURANT.name}. All rights reserved.</div>
-          <div className="flex items-center gap-6 text-sm text-gray-500">
-            <a href="#" className="hover:text-white transition-colors focus-visible:ring-2 focus-visible:ring-primary-500 rounded-sm">Privacy Policy</a>
-            <a href="#" className="hover:text-white transition-colors focus-visible:ring-2 focus-visible:ring-primary-500 rounded-sm">Terms of Service</a>
-          </div>
-        </div>
-      </div>
-    </footer>
-  )
-}
-
 // ═══════════════════════════════════════════════════════════════
 // MAIN PAGE
 // ═══════════════════════════════════════════════════════════════
@@ -963,8 +801,8 @@ export default function Home() {
   return (
     <>
       <SkipLink />
+      <Nav />
       <main id="main-content" className="overflow-hidden">
-        <Nav />
         <Hero />
         <Menu />
         <About />
@@ -972,8 +810,8 @@ export default function Home() {
         <Testimonials />
         <Reservations />
         <Contact />
-        <Footer />
       </main>
+      <Footer />
     </>
   )
 }

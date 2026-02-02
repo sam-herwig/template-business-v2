@@ -1,6 +1,7 @@
 {
   "name": "agency-portfolio-template",
   "version": "1.0.0",
+  "description": "Bold, dark portfolio template for creative agencies. Features GSAP SplitText animations, horizontal scroll galleries, magnetic buttons, and full case study pages. Built with Next.js 14, Tailwind CSS, and TypeScript.",
   "private": true,
   "scripts": {
     "dev": "next dev",

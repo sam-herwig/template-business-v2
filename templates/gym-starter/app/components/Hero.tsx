@@ -117,7 +117,7 @@ export function Hero() {
               Start Your Free Week
               <ArrowRightIcon className="w-5 h-5 ml-2 transition-transform group-hover:translate-x-1" />
             </a>
-            <a href="#classes" className="btn-outline text-lg">
+            <a href="/classes" className="btn-outline text-lg">
               View Schedule
             </a>
           </motion.div>

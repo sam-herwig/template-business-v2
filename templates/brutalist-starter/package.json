@@ -1,6 +1,7 @@
 {
   "name": "brutalist-starter",
   "version": "1.0.0",
+  "description": "Bold neo-brutalist creative agency template with Truchet shader backgrounds, Framer Motion animations, and full Next.js 14 App Router setup.",
   "private": true,
   "scripts": {
     "dev": "next dev",

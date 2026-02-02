@@ -67,7 +67,7 @@ export default function AboutPage() {
               >
                 <span className="section-eyebrow">About Us</span>
                 <h1 className="text-4xl md:text-5xl text-dark-900 mb-6 leading-tight">
-                  Quality Craftsmanship, Honest Service Since 2009
+                  Quality Craftsmanship, Honest Service Since 1999
                 </h1>
                 <p className="text-lg text-gray-600 leading-relaxed">
                   We're not just contractors — we're your neighbors. For {COMPANY.yearsInBusiness} years, 
@@ -91,20 +91,20 @@ export default function AboutPage() {
               <h2 className="section-title">How We Got Started</h2>
               <div className="text-gray-600 text-lg leading-relaxed space-y-4 mt-6 text-left">
                 <p>
-                  In 2009, Mike Johnson founded {COMPANY.name} with one truck and a commitment to 
-                  doing things the right way. After years of seeing other contractors cut corners 
-                  and leave homeowners frustrated, he knew there had to be a better way.
+                  In 1999, Mike Callahan founded {COMPANY.name} with one truck, a toolbox, and a 
+                  commitment to doing things the right way. After years working for contractors 
+                  who cut corners and left homeowners frustrated, he knew there had to be a better way.
                 </p>
                 <p>
                   Starting with small repair jobs and word-of-mouth referrals, we built our 
-                  reputation one project at a time. Our focus on quality craftsmanship, honest 
-                  communication, and standing behind our work helped us grow from a one-man 
-                  operation to a full-service construction company.
+                  reputation one satisfied customer at a time. Our focus on quality craftsmanship, 
+                  clear communication, and standing behind our work helped us grow from a one-man 
+                  operation to a team of skilled professionals.
                 </p>
                 <p>
-                  Today, with over {COMPANY.projectsCompleted} projects completed and a team of 
-                  skilled professionals, we're proud to be one of Denver's most trusted contractors. 
-                  But our values haven't changed — we still treat every project like it's our own home.
+                  Today, with over {COMPANY.projectsCompleted} projects completed across the Denver 
+                  Metro, we're proud to be one of Colorado's most trusted contractors. But our values 
+                  haven't changed — we still treat every project like it's our own home.
                 </p>
               </div>
             </motion.div>

@@ -30,9 +30,8 @@ const NAV_LINKS = [
   { href: '/about', label: 'About' },
   { href: '/gallery', label: 'Gallery' },
   { href: '/contact', label: 'Contact' },
-  { href: '#', label: 'Catering' },
-  { href: '#', label: 'Careers' },
-  { href: '#', label: 'Gift Cards' },
+  { href: '/contact?reason=catering', label: 'Catering' },
+  { href: '/contact?reason=general', label: 'Careers' },
 ]
 
 export function Footer() {
@@ -139,9 +138,7 @@ export function Footer() {
             <p className="text-white/40 text-xs">
               © {currentYear} {RESTAURANT.name}. Made with{' '}
               <Heart className="w-3 h-3 inline text-coral" aria-hidden="true" />{' '}
-              in Colorado. •{' '}
-              <Link href="#" className="hover:text-white transition-colors">Privacy</Link> •{' '}
-              <Link href="#" className="hover:text-white transition-colors">Terms</Link>
+              in Colorado.
             </p>
           </div>
         </div>

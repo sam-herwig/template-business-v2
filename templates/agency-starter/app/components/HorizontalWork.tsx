@@ -1,6 +1,7 @@
 'use client'
 
 import { useRef, useState, useEffect } from 'react'
+import Link from 'next/link'
 import { motion, AnimatePresence } from 'framer-motion'
 import { useGSAP } from '@gsap/react'
 import { gsap, ScrollTrigger } from '@/lib/gsap'
@@ -132,7 +133,7 @@ export default function HorizontalWork({ projects }: HorizontalWorkProps) {
       {/* Horizontal track */}
       <div ref={trackRef} className="flex items-center gap-8 pt-40 pb-20 pl-6 pr-[50vw]">
         {projects.map((project) => (
-          <a
+          <Link
             key={project.id}
             href={project.link}
             className="project-card flex-shrink-0 w-[70vw] md:w-[50vw] lg:w-[40vw] group"
@@ -152,7 +153,7 @@ export default function HorizontalWork({ projects }: HorizontalWorkProps) {
               {project.title}
             </h3>
             <p className="text-dark-400">{project.description}</p>
-          </a>
+          </Link>
         ))}
       </div>
     </section>

@@ -1,6 +1,7 @@
 {
   "name": "restaurant-starter-template",
   "version": "1.0.0",
+  "description": "A sophisticated restaurant website template featuring premium GSAP animations, farm-to-table aesthetic, online reservations, and full menu presentation. Built with Next.js 14, Tailwind CSS, and Framer Motion.",
   "private": true,
   "scripts": {
     "dev": "next dev",

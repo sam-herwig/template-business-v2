@@ -16,12 +16,20 @@ const inter = Inter({
 })
 
 export const metadata: Metadata = {
-  title: 'Gym Name | Fitness Studio',
-  description: 'Transform your body and mind. Classes, personal training, and state-of-the-art facilities.',
+  metadataBase: new URL('https://example.com'), // Update with your domain
+  title: 'Iron Athletics | Denver Premier Fitness & Training',
+  description: 'Denver\'s premier fitness community. 24/7 access, 50+ weekly classes, world-class trainers. Start your free 7-day trial today.',
+  keywords: ['gym', 'fitness', 'Denver', 'HIIT', 'yoga', 'personal training', 'spin classes', 'boxing'],
   openGraph: {
-    title: 'Gym Name | Fitness Studio',
-    description: 'Transform your body and mind.',
+    title: 'Iron Athletics | Denver Premier Fitness & Training',
+    description: 'Transform your body at Denver\'s premier fitness community. 24/7 access, 50+ classes weekly, expert trainers.',
     type: 'website',
+    images: ['/screenshots/og-image.png'],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Iron Athletics | Denver Premier Fitness',
+    description: 'Transform your body at Denver\'s premier fitness community.',
   },
 }
 

@@ -32,10 +32,10 @@ export const projects: Project[] = [
     description: 'Nike approached us to create a living type system for their new campaign. Words needed to feel athletic, fast, powerful—like sport itself. We developed a comprehensive motion language that transforms static typography into dynamic expressions of movement and energy.',
     videoUrl: 'https://player.vimeo.com/video/824804225',
     credits: [
-      { role: 'Creative Director', name: 'Jane Doe' },
-      { role: 'Motion Lead', name: 'John Smith' },
-      { role: 'Design', name: 'Sarah Chen' },
-      { role: 'Sound Design', name: 'Mike Williams' }
+      { role: 'Creative Director', name: 'Elena Voss' },
+      { role: 'Motion Lead', name: 'Marcus Chen' },
+      { role: 'Design', name: 'Priya Sharma' },
+      { role: 'Sound Design', name: 'James Okonkwo' }
     ],
     deliverables: ['Brand Motion System', '6 Hero Animations', 'Social Templates', 'Motion Guidelines'],
     gallery: [
@@ -58,9 +58,9 @@ export const projects: Project[] = [
     videoUrl: 'https://player.vimeo.com/video/824804225',
     credits: [
       { role: 'Creative Director', name: 'Alex Rivera' },
-      { role: 'Type Design', name: 'Emma Watson' },
+      { role: 'Type Design', name: 'Mika Tanaka' },
       { role: 'Motion Design', name: 'Chris Park' },
-      { role: 'Development', name: 'Sam Johnson' }
+      { role: 'Development', name: 'Jordan Ellis' }
     ],
     deliverables: ['Custom Type Family', 'Animation System', 'Interactive Templates', 'Brand Guidelines'],
     gallery: [
@@ -81,7 +81,7 @@ export const projects: Project[] = [
     credits: [
       { role: 'Director', name: 'Maria Santos' },
       { role: 'Lead Animator', name: 'David Kim' },
-      { role: 'Typography', name: 'Lisa Chen' }
+      { role: 'Typography', name: 'Lin Wei' }
     ],
     deliverables: ['Main Title Sequence', 'Segment Transitions', 'Lower Thirds System'],
     gallery: [
@@ -139,7 +139,7 @@ export const projects: Project[] = [
     role: 'Title Designer',
     description: 'We crafted bespoke title sequences for three Netflix original series, each with its own typographic personality. From noir drama to sci-fi thriller, every letter was designed to set the tone before a single word is spoken.',
     credits: [
-      { role: 'Title Designer', name: 'Oscar Wilde' },
+      { role: 'Title Designer', name: 'Oscar Mendez' },
       { role: 'Animation', name: 'Nina Foster' },
       { role: 'Sound', name: 'Ben Harrison' }
     ],
@@ -227,7 +227,7 @@ export interface TeamMember {
 
 export const team: TeamMember[] = [
   {
-    name: 'Jane Doe',
+    name: 'Elena Voss',
     role: 'Founder & Creative Director',
     image: 'https://images.unsplash.com/photo-1580489944761-15a19d654956?w=400&q=80',
     bio: 'Former Pentagram, 15 years in motion design',
@@ -237,7 +237,7 @@ export const team: TeamMember[] = [
     ]
   },
   {
-    name: 'John Smith',
+    name: 'Marcus Chen',
     role: 'Creative Director',
     image: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&q=80',
     bio: 'Award-winning title designer, D&AD winner',
@@ -247,7 +247,7 @@ export const team: TeamMember[] = [
     ]
   },
   {
-    name: 'Sarah Chen',
+    name: 'Priya Sharma',
     role: 'Motion Lead',
     image: 'https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?w=400&q=80',
     bio: 'Specialist in kinetic typography and brand motion',
@@ -257,7 +257,7 @@ export const team: TeamMember[] = [
     ]
   },
   {
-    name: 'Mike Williams',
+    name: 'James Okonkwo',
     role: 'Design Lead',
     image: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=400&q=80',
     bio: 'Typography obsessive, former Google Design',

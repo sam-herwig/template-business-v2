@@ -1,131 +1,170 @@
-# Brunch Starter Template
+# Brunch Starter 🍳☀️
 
-A warm, inviting restaurant landing page template perfect for cafes, brunch spots, and breakfast restaurants. Features organic typography, earthy colors, and appetizing food photography.
+A warm, inviting Next.js template designed for brunch cafes, breakfast spots, and casual dining restaurants. Built with modern web technologies and a cozy aesthetic that makes your guests hungry just looking at it.
 
-## Features
+![Preview](./screenshots/preview-desktop.jpg)
 
-- 🍳 **Restaurant-Focused Design** - Menu highlights, hours, location, reservations
-- 🌿 **Organic Aesthetic** - Warm cream tones with terracotta accents
-- 📸 **Instagram Integration** - Photo grid with hover captions
-- 📱 **Fully Responsive** - Mobile-first with hamburger menu
-- ⚡ **Next.js 14** - App Router with optimized images
-- ♿ **Accessible** - Skip links, focus states, reduced motion support
-- 🔍 **SEO Optimized** - Restaurant structured data, local SEO ready
+## ✨ Features
 
-## Lighthouse Estimates
+### Pages
+- **Homepage** - Warm hero section, quick actions, menu highlights, location info, Instagram feed, newsletter signup
+- **Menu** - Categorized menu with dietary labels (V/VG/GF), featured items with images, pricing
+- **About** - Team bios, brand story, values, local partners, company timeline
+- **Gallery** - Filterable photo gallery with lightbox viewer
+- **Contact** - Location map, hours, reservation section, contact form, FAQ
 
-| Metric | Score |
-|--------|-------|
-| Performance | 95+ |
-| Accessibility | 95+ |
-| Best Practices | 95+ |
-| SEO | 100 |
+### Design & UX
+- 🌗 **Dark/Light Mode** - Seamless theme switching with localStorage persistence
+- 📱 **Fully Responsive** - Mobile-first design that looks great on all devices
+- ✨ **Smooth Animations** - Framer Motion page transitions and scroll animations
+- 🎨 **Warm Color Palette** - Coral, sage, peach, and cream create an inviting atmosphere
+- 🖋️ **Beautiful Typography** - Fraunces display + DM Sans body fonts
 
-## Accessibility Features
+### Technical
+- ⚡ **Next.js 14** - App Router, React Server Components
+- 🎨 **Tailwind CSS** - Utility-first styling with custom design tokens
+- 🔄 **Framer Motion** - Smooth animations and page transitions
+- 📊 **Schema.org** - Restaurant structured data for rich search results
+- ♿ **Accessible** - WCAG compliant with skip links, ARIA labels, keyboard navigation
+- 🔍 **SEO Ready** - Open Graph tags, meta descriptions, semantic HTML
 
-- ✅ Skip link to main content
-- ✅ Focus-visible styles on all interactive elements
-- ✅ `prefers-reduced-motion` support (disables all animations)
-- ✅ Semantic HTML (`<header>`, `<main>`, `<section>`, `<footer>`, `<nav>`)
-- ✅ Proper heading hierarchy (single h1, logical h2-h6)
-- ✅ Touch targets minimum 44×44px
-- ✅ Alt text on all food images
-- ✅ Keyboard navigable throughout
-
-## SEO Features
-
-- ✅ Meta title and description optimized for local search
-- ✅ OpenGraph tags for social sharing
-- ✅ Twitter Card meta tags
-- ✅ JSON-LD structured data (Restaurant schema with hours, location, menu)
-- ✅ Semantic HTML landmarks
-- ✅ Local business schema for Google Maps
-
-## Sections
-
-1. **Navigation** - Sticky nav with reservation CTA and mobile menu
-2. **Hero** - Appetizing hero image with tagline
-3. **Features Marquee** - Scrolling feature badges
-4. **About** - Restaurant story with founders
-5. **Menu** - Highlighted dishes with photos and prices
-6. **Location** - Address, hours, contact, map placeholder
-7. **Reserve** - Reservation CTA with phone number
-8. **Instagram** - Photo grid with hover overlays
-9. **Footer** - Links and social media
-
-## Color Palette
-
-| Color | Hex | Usage |
-|-------|-----|-------|
-| Cream | `#FBF7F0` | Main background |
-| Peach | `#F5DDD0` | Accent background |
-| Terracotta | `#C66B3D` | Primary accent, CTAs |
-| Sage | `#8B9E7C` | Secondary accent |
-| Brown | `#3D2D1F` | Text, dark elements |
-
-## Quick Start
+## 🚀 Quick Start
 
 ```bash
-# Install dependencies
+# Clone the template
+npx create-next-app@latest my-restaurant --example https://github.com/your-repo/brunch-starter
+
+# Or if you have the template locally
+cd brunch-starter
 npm install
-
-# Start development server
 npm run dev
-
-# Build for production
-npm run build
 ```
 
-## Customization
+Open [http://localhost:3000](http://localhost:3000) to see your site.
 
-### Menu Items
-Edit the `menuHighlights` array in `app/page.tsx`:
+## 📁 Project Structure
 
-```tsx
-const menuHighlights = [
-  {
-    name: 'Your Dish Name',
-    description: 'Description',
-    price: '$XX',
-    image: 'image-url',
-    tag: 'Featured', // or null
-  },
-]
+```
+brunch-starter/
+├── app/
+│   ├── _components/         # Shared components (Nav, Footer)
+│   ├── about/page.tsx       # About page
+│   ├── contact/page.tsx     # Contact page with form
+│   ├── gallery/page.tsx     # Photo gallery
+│   ├── menu/page.tsx        # Restaurant menu
+│   ├── page.tsx             # Homepage
+│   ├── layout.tsx           # Root layout with fonts & meta
+│   └── globals.css          # Global styles & Tailwind
+├── components/
+│   └── shared/              # Reusable section components
+├── lib/
+│   └── lenis.tsx            # Smooth scroll provider
+├── public/                  # Static assets
+└── screenshots/             # Template preview images
+```
+
+## 🎨 Customization
+
+### Brand Colors
+Edit `tailwind.config.ts` to update the color palette:
+
+```js
+colors: {
+  coral: '#E07A5F',      // Primary accent
+  sage: '#81B29A',       // Secondary accent  
+  peach: '#FFE5D9',      // Warm background
+  cream: '#FAF7F2',      // Light background
+  charcoal: '#2D2926',   // Text color
+  sunny: '#F2CC8F',      // Highlight color
+}
 ```
 
 ### Restaurant Info
-Update the structured data and content in `app/page.tsx`:
-- Address and contact info
-- Hours of operation
-- Social media links
+Update site content in each page file. Key data objects:
+- `siteConfig` in `page.tsx` - Name, tagline, contact info, hours
+- `MENU_ITEMS` in `menu/page.tsx` - Full menu with prices
+- `TEAM` in `about/page.tsx` - Staff bios and photos
+- `RESTAURANT` in `contact/page.tsx` - Location details
+
+### Fonts
+The template uses Google Fonts loaded via `next/font`:
+- **Fraunces** - Display headings (warm, friendly serif)
+- **DM Sans** - Body text (clean, readable)
+- **Caveat** - Script accents (handwritten feel)
+
+Swap fonts in `app/layout.tsx`:
+```tsx
+const fraunces = Fraunces({ subsets: ['latin'], variable: '--font-display' })
+```
 
 ### Images
-Replace placeholder images with your own photos. Use `next/image` for optimization.
+Replace Unsplash placeholder images with your own:
+1. Add images to `/public` folder
+2. Update image `src` props in components
+3. Recommended sizes:
+   - Hero: 600x500px
+   - Menu items: 400x300px
+   - Team photos: 300x300px (square)
+   - Gallery: 800x600px
 
-## Dependencies
+## 🔧 Configuration
 
-- `next` - React framework
-- `react` & `react-dom` - UI library
-- `framer-motion` - Animation library
-- `tailwindcss` - CSS framework
-
-## Performance Notes
-
-- All images use `next/image` with proper sizing
-- Lazy loading for below-fold content
-- CSS-only marquee animation
-- Minimal JavaScript bundle
-
-## robots.txt
-
-Add to your `public/robots.txt`:
-```
-User-agent: *
-Allow: /
-
-Sitemap: https://yourdomain.com/sitemap.xml
+### Meta Tags
+Update SEO metadata in `app/layout.tsx`:
+```tsx
+export const metadata: Metadata = {
+  title: 'Your Restaurant | Tagline',
+  description: 'Your restaurant description...',
+  openGraph: { ... },
+  twitter: { ... },
+}
 ```
 
-## License
+### Structured Data
+The homepage includes Restaurant schema for rich search results. Update the `StructuredData` component with your actual business info:
+- Name, description, phone, email
+- Address coordinates
+- Opening hours
+- Social media links
 
-MIT - Use freely for personal and commercial projects.
+### Contact Form
+The contact form uses client-side state. To add real submission:
+1. Create an API route in `app/api/contact/route.ts`
+2. Connect to your email service (Resend, SendGrid, etc.)
+3. Update the `handleSubmit` function in `contact/page.tsx`
+
+## 📦 Deployment
+
+### Vercel (Recommended)
+```bash
+npm install -g vercel
+vercel
+```
+
+### Docker
+```dockerfile
+FROM node:20-alpine
+WORKDIR /app
+COPY . .
+RUN npm ci && npm run build
+CMD ["npm", "start"]
+```
+
+### Static Export
+```bash
+# Add to next.config.js: output: 'export'
+npm run build
+# Deploy the 'out' folder to any static host
+```
+
+## 🤝 Contributing
+
+Contributions welcome! Please read our contributing guidelines and submit PRs for any improvements.
+
+## 📄 License
+
+MIT License - feel free to use this template for personal or commercial projects.
+
+---
+
+Built with ☕ and ☀️ for restaurants who believe breakfast should make you smile.

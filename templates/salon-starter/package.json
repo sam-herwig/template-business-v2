@@ -1,6 +1,7 @@
 {
   "name": "salon-starter-template",
   "version": "1.0.0",
+  "description": "Elegant salon & spa website template with booking integration, team showcase, gallery, and premium feminine aesthetic. Built with Next.js 14, Framer Motion, and Tailwind CSS.",
   "private": true,
   "scripts": {
     "dev": "next dev",
