@@ -21,7 +21,7 @@ export default function Nav() {
   return (
     <nav className="fixed top-0 left-0 right-0 z-50 flex justify-between items-center px-4 md:px-16 py-4 bg-minimal-bg/80 dark:bg-minimal-dark-bg/80 backdrop-blur-xl border-b border-minimal-border dark:border-minimal-dark-border" aria-label="Main navigation">
       <div className="flex items-center gap-12">
-        <Link href="/" className="text-xl font-bold tracking-tight" aria-label="Acme - Home">▲ Acme</Link>
+        <Link href="/" className="text-xl font-bold tracking-tight" aria-label="Nexus - Home">◆ Nexus</Link>
         <div className="hidden md:flex gap-8" role="navigation">
           {navLinks.map((link) => (
             <Link 
@@ -43,7 +43,7 @@ export default function Nav() {
         <Link href="#login" className="hidden md:block text-minimal-muted dark:text-minimal-dark-muted text-sm font-medium hover:text-minimal-text dark:hover:text-minimal-dark-text transition-colors">
           Log In
         </Link>
-        <button className="nav-cta hidden md:block" aria-label="Sign up for an account">Sign Up</button>
+        <button className="nav-cta hidden md:block" aria-label="Start your free trial">Start Free Trial</button>
         
         {/* Mobile menu button */}
         <button 
@@ -76,7 +76,7 @@ export default function Nav() {
             ))}
             <div className="pt-4 border-t border-minimal-border dark:border-minimal-dark-border flex flex-col gap-3">
               <Link href="#login" className="text-sm font-medium text-minimal-muted dark:text-minimal-dark-muted">Log In</Link>
-              <button className="nav-cta w-full">Sign Up</button>
+              <button className="nav-cta w-full">Start Free Trial</button>
             </div>
           </div>
         </div>

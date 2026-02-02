@@ -35,8 +35,8 @@ export default function Footer() {
       <div className="max-w-6xl mx-auto">
         <div className="flex flex-col md:flex-row justify-between gap-8 mb-12">
           <div className="max-w-xs">
-            <Link href="/" className="text-xl font-bold tracking-tight" aria-label="Acme - Home">▲ Acme</Link>
-            <p className="text-minimal-muted dark:text-minimal-dark-muted text-sm mt-3">Build faster. Deploy smarter.</p>
+            <Link href="/" className="text-xl font-bold tracking-tight" aria-label="Nexus - Home">◆ Nexus</Link>
+            <p className="text-minimal-muted dark:text-minimal-dark-muted text-sm mt-3">Work smarter. Scale faster.</p>
           </div>
           
           <div className="flex flex-wrap gap-12 md:gap-20">
@@ -58,7 +58,7 @@ export default function Footer() {
         </div>
         
         <div className="pt-8 border-t border-minimal-border dark:border-minimal-dark-border text-center">
-          <p className="text-minimal-muted dark:text-minimal-dark-muted text-sm">© 2026 Acme Inc. All rights reserved.</p>
+          <p className="text-minimal-muted dark:text-minimal-dark-muted text-sm">© 2025 Nexus Inc. All rights reserved.</p>
         </div>
       </div>
     </footer>

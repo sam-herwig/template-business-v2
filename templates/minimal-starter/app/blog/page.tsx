@@ -8,64 +8,64 @@ import Nav from '@/components/Nav'
 import Footer from '@/components/Footer'
 import PageHeader from '@/components/PageHeader'
 
-const categories = ['All', 'Engineering', 'Product', 'Changelog']
+const categories = ['All', 'Product', 'Engineering', 'Guides', 'Company']
 
 const featuredPost = {
-  slug: 'introducing-edge-functions-v2',
-  title: 'Introducing Edge Functions v2: Faster, Smarter, Global',
-  excerpt: 'Today we\'re announcing Edge Functions v2, bringing sub-10ms execution times, expanded runtime support, and seamless integration with your existing workflows.',
+  slug: 'automating-workflows-ai',
+  title: 'How AI is Changing Workflow Automation in 2025',
+  excerpt: 'We analyzed 10 million automated workflows to understand how AI is transforming the way teams work. The results reveal a 47% productivity increase—and it\'s just the beginning.',
   category: 'Product',
-  date: 'January 15, 2025',
-  image: '/blog/edge-functions.jpg',
+  date: 'January 18, 2025',
+  image: '/blog/ai-automation.jpg',
   author: {
     name: 'Sarah Chen',
-    role: 'Head of Product',
+    role: 'Chief Product Officer',
     avatar: '/team/sarah.jpg',
   },
 }
 
 const posts = [
   {
-    slug: 'building-realtime-apps',
-    title: 'Building Real-time Applications with WebSockets',
+    slug: 'scaling-to-10k-customers',
+    title: 'What We Learned Scaling to 10,000 Customers',
+    category: 'Company',
+    date: 'January 15, 2025',
+    image: '/blog/scaling.jpg',
+  },
+  {
+    slug: 'building-integrations-at-scale',
+    title: 'Engineering 200+ Integrations: Our Architecture',
     category: 'Engineering',
     date: 'January 12, 2025',
-    image: '/blog/websockets.jpg',
+    image: '/blog/integrations.jpg',
   },
   {
-    slug: 'analytics-deep-dive',
-    title: 'Deep Dive: How We Built Our Analytics Engine',
-    category: 'Engineering',
+    slug: 'ultimate-workflow-guide',
+    title: 'The Ultimate Guide to Workflow Automation',
+    category: 'Guides',
     date: 'January 10, 2025',
-    image: '/blog/analytics.jpg',
+    image: '/blog/guide.jpg',
   },
   {
-    slug: 'nextjs-15-support',
-    title: 'Full Support for Next.js 15 Now Available',
-    category: 'Changelog',
-    date: 'January 8, 2025',
-    image: '/blog/nextjs.jpg',
-  },
-  {
-    slug: 'security-best-practices',
-    title: 'Security Best Practices for Modern Web Apps',
+    slug: 'soc2-journey',
+    title: 'Our SOC 2 Certification Journey: 6 Months to Compliance',
     category: 'Engineering',
-    date: 'January 5, 2025',
+    date: 'January 8, 2025',
     image: '/blog/security.jpg',
   },
   {
-    slug: 'year-in-review',
-    title: 'Acme 2024: A Year in Review',
-    category: 'Product',
+    slug: 'year-in-review-2024',
+    title: '2024 Year in Review: 50M Tasks and Counting',
+    category: 'Company',
     date: 'December 31, 2024',
     image: '/blog/review.jpg',
   },
   {
-    slug: 'performance-optimization',
-    title: 'Performance Optimization Tips from Our Team',
-    category: 'Engineering',
+    slug: 'team-velocity-metrics',
+    title: '5 Metrics That Actually Predict Team Velocity',
+    category: 'Guides',
     date: 'December 28, 2024',
-    image: '/blog/performance.jpg',
+    image: '/blog/metrics.jpg',
   },
 ]
 
@@ -129,7 +129,7 @@ function FeaturedPost() {
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
         <div className="featured-image aspect-video rounded-2xl overflow-hidden bg-gradient-to-br from-purple-500 to-blue-500">
           <div className="w-full h-full flex items-center justify-center text-white text-6xl">
-            ⚡
+            🤖
           </div>
         </div>
 
@@ -193,14 +193,14 @@ function PostGrid({ activeCategory }: { activeCategory: string }) {
 
   return (
     <section ref={ref} className="py-12 px-4 md:px-16 max-w-6xl mx-auto">
-      <h2 className="font-display text-2xl font-bold mb-8">Recent Posts</h2>
+      <h2 className="font-display text-2xl font-bold mb-8">Latest articles</h2>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
         {filteredPosts.map((post, i) => (
           <article key={post.slug} className="post-card group">
             <a href={`/blog/${post.slug}`}>
               <div className={`aspect-video rounded-xl overflow-hidden bg-gradient-to-br ${gradients[i % gradients.length]} mb-4`}>
                 <div className="w-full h-full flex items-center justify-center text-white text-3xl group-hover:scale-110 transition-transform duration-300">
-                  {post.category === 'Engineering' ? '⚙️' : post.category === 'Changelog' ? '📝' : '🚀'}
+                  {post.category === 'Engineering' ? '⚙️' : post.category === 'Guides' ? '📚' : post.category === 'Company' ? '🏢' : '🚀'}
                 </div>
               </div>
 
@@ -221,7 +221,7 @@ function PostGrid({ activeCategory }: { activeCategory: string }) {
       {filteredPosts.length > 0 && (
         <div className="text-center mt-12">
           <button className="btn-secondary">
-            Load More Posts <ArrowRight className="w-4 h-4" />
+            Load More Articles <ArrowRight className="w-4 h-4" />
           </button>
         </div>
       )}
@@ -257,16 +257,16 @@ function NewsletterSection() {
     <section ref={ref} className="py-16 md:py-24 px-4 md:px-16 bg-white dark:bg-minimal-dark-card border-y border-minimal-border dark:border-minimal-dark-border">
       <div className="newsletter-content max-w-xl mx-auto text-center">
         <h2 className="font-display text-2xl font-bold mb-4">
-          Subscribe to our newsletter
+          Get smarter about productivity
         </h2>
         <p className="text-minimal-muted dark:text-minimal-dark-muted mb-8">
-          Get the latest updates, tutorials, and product news delivered to your inbox.
+          Join 25,000+ operators getting weekly insights on workflows, automation, and building high-performing teams.
         </p>
 
         <form className="flex flex-col sm:flex-row gap-3 max-w-md mx-auto">
           <input
             type="email"
-            placeholder="you@example.com"
+            placeholder="you@company.com"
             className="flex-1 px-4 py-3 rounded-lg border border-minimal-border dark:border-minimal-dark-border bg-minimal-bg dark:bg-minimal-dark-bg focus:border-[#0070f3] focus:ring-2 focus:ring-blue-500/20 transition-all"
             required
           />
@@ -276,7 +276,7 @@ function NewsletterSection() {
         </form>
 
         <p className="text-xs text-minimal-muted dark:text-minimal-dark-muted mt-4">
-          No spam. Unsubscribe anytime.
+          No spam. Unsubscribe in one click.
         </p>
       </div>
     </section>
@@ -295,8 +295,8 @@ export default function BlogPage() {
       <main id="main-content" tabIndex={-1}>
         <PageHeader
           tag="Blog"
-          title="Blog"
-          description="Updates, tutorials, and insights from the Acme team."
+          title="Insights & Updates"
+          description="Lessons from building a platform used by 10,000+ teams. Product updates, engineering deep-dives, and tactical guides."
         >
           <CategoryTabs activeCategory={activeCategory} setActiveCategory={setActiveCategory} />
         </PageHeader>

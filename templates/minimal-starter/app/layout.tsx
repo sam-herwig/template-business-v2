@@ -20,19 +20,19 @@ export const viewport: Viewport = {
 }
 
 export const metadata: Metadata = {
-  title: 'Acme | Build and Deploy on the Modern Web',
-  description: 'The platform for developers to build, deploy, and scale applications with zero configuration. Deploy in seconds across 100+ edge locations.',
-  keywords: ['deployment', 'developer platform', 'edge computing', 'serverless', 'web hosting', 'CI/CD'],
+  title: 'Nexus | The Platform Teams Trust to Scale',
+  description: 'Join 10,000+ teams using Nexus to streamline workflows, boost productivity by 50%, and ship faster with 99.9% uptime. Start free today.',
+  keywords: ['SaaS platform', 'team productivity', 'workflow automation', 'enterprise software', 'collaboration tools', 'business operations'],
   openGraph: {
-    title: 'Acme | Build and Deploy on the Modern Web',
-    description: 'Zero configuration deployment for modern web applications.',
+    title: 'Nexus | The Platform Teams Trust to Scale',
+    description: 'Streamline workflows, boost productivity by 50%, and ship faster with 99.9% uptime.',
     type: 'website',
     locale: 'en_US',
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Acme | Build and Deploy on the Modern Web',
-    description: 'Zero configuration deployment platform.',
+    title: 'Nexus | The Platform Teams Trust to Scale',
+    description: 'Join 10,000+ teams shipping faster with Nexus.',
   },
   robots: { index: true, follow: true },
 }

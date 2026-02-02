@@ -12,19 +12,19 @@ const quickStartCards = [
   {
     icon: Rocket,
     title: 'Quick Start',
-    description: 'Get up and running in under 5 minutes with our step-by-step guide.',
+    description: 'Get your first workflow running in under 5 minutes with our interactive setup.',
     href: '/docs/quickstart',
   },
   {
     icon: BookOpen,
-    title: 'Guides',
-    description: 'Learn best practices and advanced patterns for building with Acme.',
-    href: '/docs/guides',
+    title: 'Core Concepts',
+    description: 'Understand workflows, triggers, actions, and how they work together.',
+    href: '/docs/concepts',
   },
   {
     icon: Code,
     title: 'API Reference',
-    description: 'Complete API documentation with examples and type definitions.',
+    description: 'Full REST and GraphQL API documentation with code examples in every language.',
     href: '/docs/api',
   },
 ]
@@ -33,68 +33,68 @@ const topicCategories = [
   {
     title: 'Getting Started',
     links: [
-      { title: 'Installation', href: '/docs/installation' },
-      { title: 'Project Setup', href: '/docs/project-setup' },
-      { title: 'First Deploy', href: '/docs/first-deploy' },
-      { title: 'Environment Variables', href: '/docs/env-vars' },
+      { title: 'Create your account', href: '/docs/signup' },
+      { title: 'Your first workflow', href: '/docs/first-workflow' },
+      { title: 'Invite your team', href: '/docs/team-setup' },
+      { title: 'Connect integrations', href: '/docs/integrations-setup' },
     ],
   },
   {
-    title: 'Frameworks',
+    title: 'Workflows',
     links: [
-      { title: 'Next.js', href: '/docs/nextjs' },
-      { title: 'Remix', href: '/docs/remix' },
-      { title: 'Astro', href: '/docs/astro' },
-      { title: 'SvelteKit', href: '/docs/sveltekit' },
-    ],
-  },
-  {
-    title: 'Platform',
-    links: [
-      { title: 'Edge Functions', href: '/docs/edge-functions' },
-      { title: 'Serverless Functions', href: '/docs/serverless' },
-      { title: 'Domains', href: '/docs/domains' },
-      { title: 'Analytics', href: '/docs/analytics' },
+      { title: 'Triggers explained', href: '/docs/triggers' },
+      { title: 'Actions & steps', href: '/docs/actions' },
+      { title: 'Conditions & filters', href: '/docs/conditions' },
+      { title: 'Error handling', href: '/docs/error-handling' },
     ],
   },
   {
     title: 'Integrations',
     links: [
-      { title: 'GitHub', href: '/docs/github' },
-      { title: 'GitLab', href: '/docs/gitlab' },
-      { title: 'Databases', href: '/docs/databases' },
-      { title: 'CMS', href: '/docs/cms' },
+      { title: 'Slack', href: '/docs/integrations/slack' },
+      { title: 'Salesforce', href: '/docs/integrations/salesforce' },
+      { title: 'GitHub', href: '/docs/integrations/github' },
+      { title: 'All integrations', href: '/docs/integrations' },
     ],
   },
   {
-    title: 'CLI',
+    title: 'Analytics',
     links: [
-      { title: 'Installation', href: '/docs/cli/install' },
-      { title: 'Commands', href: '/docs/cli/commands' },
-      { title: 'Configuration', href: '/docs/cli/config' },
-      { title: 'Debugging', href: '/docs/cli/debug' },
+      { title: 'Dashboard overview', href: '/docs/analytics' },
+      { title: 'Custom reports', href: '/docs/reports' },
+      { title: 'Metrics & KPIs', href: '/docs/metrics' },
+      { title: 'Exporting data', href: '/docs/export' },
     ],
   },
   {
-    title: 'Security',
+    title: 'API & Developers',
     links: [
-      { title: 'Authentication', href: '/docs/auth' },
-      { title: 'Secrets', href: '/docs/secrets' },
-      { title: 'Firewalls', href: '/docs/firewalls' },
-      { title: 'Compliance', href: '/docs/compliance' },
+      { title: 'Authentication', href: '/docs/api/auth' },
+      { title: 'REST endpoints', href: '/docs/api/rest' },
+      { title: 'GraphQL schema', href: '/docs/api/graphql' },
+      { title: 'Webhooks', href: '/docs/api/webhooks' },
+    ],
+  },
+  {
+    title: 'Security & Compliance',
+    links: [
+      { title: 'SSO/SAML setup', href: '/docs/sso' },
+      { title: 'Audit logs', href: '/docs/audit-logs' },
+      { title: 'Data encryption', href: '/docs/encryption' },
+      { title: 'Compliance (SOC 2)', href: '/docs/compliance' },
     ],
   },
 ]
 
-const frameworks = [
-  { name: 'Next.js', icon: '▲' },
-  { name: 'React', icon: '⚛' },
-  { name: 'Vue', icon: '🟢' },
-  { name: 'Svelte', icon: '🔥' },
-  { name: 'Astro', icon: '🚀' },
-  { name: 'Nuxt', icon: '💚' },
-  { name: 'Remix', icon: '💿' },
-  { name: 'Gatsby', icon: '🟣' },
+const integrations = [
+  { name: 'Slack', icon: '💬' },
+  { name: 'Salesforce', icon: '☁️' },
+  { name: 'HubSpot', icon: '🟠' },
+  { name: 'GitHub', icon: '🐙' },
+  { name: 'Jira', icon: '🔵' },
+  { name: 'Notion', icon: '📝' },
+  { name: 'Zapier', icon: '⚡' },
+  { name: 'Airtable', icon: '📊' },
 ]
 
 function DocsSearch() {
@@ -155,7 +155,7 @@ function QuickStartCards() {
             </h3>
             <p className="text-minimal-muted dark:text-minimal-dark-muted text-sm mb-4">{card.description}</p>
             <span className="inline-flex items-center gap-1 text-sm font-medium text-[#0070f3]">
-              Learn more <ArrowRight className="w-4 h-4" />
+              Get started <ArrowRight className="w-4 h-4" />
             </span>
           </a>
         ))}
@@ -191,7 +191,7 @@ function TopicGrid() {
 
   return (
     <section ref={ref} className="py-16 px-4 md:px-16 max-w-6xl mx-auto">
-      <h2 className="font-display text-2xl font-bold mb-8">Popular Topics</h2>
+      <h2 className="font-display text-2xl font-bold mb-8">Browse by topic</h2>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
         {topicCategories.map((category) => (
           <div key={category.title} className="topic-category">
@@ -218,7 +218,7 @@ function TopicGrid() {
   )
 }
 
-function FrameworksSection() {
+function IntegrationsSection() {
   const ref = useRef<HTMLElement>(null)
 
   useGSAP(() => {
@@ -227,7 +227,7 @@ function FrameworksSection() {
     if (prefersReducedMotion) return
 
     const ctx = gsap.context(() => {
-      gsap.from('.framework-badge', {
+      gsap.from('.integration-badge', {
         scale: 0.8,
         opacity: 0,
         stagger: 0.05,
@@ -246,26 +246,26 @@ function FrameworksSection() {
   return (
     <section ref={ref} className="py-16 md:py-24 px-4 md:px-16 bg-white dark:bg-minimal-dark-card border-y border-minimal-border dark:border-minimal-dark-border">
       <div className="max-w-6xl mx-auto text-center">
-        <h2 className="font-display text-2xl font-bold mb-4">Framework Guides</h2>
+        <h2 className="font-display text-2xl font-bold mb-4">Integration guides</h2>
         <p className="text-minimal-muted dark:text-minimal-dark-muted mb-8">
-          First-class support for all popular frameworks
+          Step-by-step setup guides for all 200+ integrations
         </p>
         <div className="flex flex-wrap justify-center gap-4">
-          {frameworks.map((fw) => (
+          {integrations.map((int) => (
             <a
-              key={fw.name}
-              href={`/docs/${fw.name.toLowerCase()}`}
-              className="framework-badge flex items-center gap-2 px-4 py-3 rounded-xl border border-minimal-border dark:border-minimal-dark-border bg-minimal-bg dark:bg-minimal-dark-bg hover:border-[#0070f3] transition-colors"
+              key={int.name}
+              href={`/docs/integrations/${int.name.toLowerCase()}`}
+              className="integration-badge flex items-center gap-2 px-4 py-3 rounded-xl border border-minimal-border dark:border-minimal-dark-border bg-minimal-bg dark:bg-minimal-dark-bg hover:border-[#0070f3] transition-colors"
             >
-              <span className="text-xl">{fw.icon}</span>
-              <span className="font-medium">{fw.name}</span>
+              <span className="text-xl">{int.icon}</span>
+              <span className="font-medium">{int.name}</span>
             </a>
           ))}
           <a
-            href="/docs/frameworks"
-            className="framework-badge flex items-center gap-2 px-4 py-3 rounded-xl border border-minimal-border dark:border-minimal-dark-border bg-minimal-bg dark:bg-minimal-dark-bg hover:border-[#0070f3] transition-colors text-[#0070f3]"
+            href="/docs/integrations"
+            className="integration-badge flex items-center gap-2 px-4 py-3 rounded-xl border border-minimal-border dark:border-minimal-dark-border bg-minimal-bg dark:bg-minimal-dark-bg hover:border-[#0070f3] transition-colors text-[#0070f3]"
           >
-            <span>More</span>
+            <span>View all 200+</span>
             <ExternalLink className="w-4 h-4" />
           </a>
         </div>
@@ -279,9 +279,9 @@ function HelpSection() {
     <section className="py-16 md:py-24 px-4 md:px-16 max-w-6xl mx-auto">
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
         <div className="p-8 rounded-2xl border border-minimal-border dark:border-minimal-dark-border bg-white dark:bg-minimal-dark-card">
-          <h3 className="font-bold text-xl mb-3">Need help?</h3>
+          <h3 className="font-bold text-xl mb-3">Still stuck?</h3>
           <p className="text-minimal-muted dark:text-minimal-dark-muted mb-6">
-            Can&apos;t find what you&apos;re looking for? Our support team is here to help.
+            Our support team responds in under 4 hours on business days. We&apos;re here to help.
           </p>
           <a href="/contact" className="btn-secondary inline-flex">
             Contact Support
@@ -290,10 +290,10 @@ function HelpSection() {
         <div className="p-8 rounded-2xl border border-minimal-border dark:border-minimal-dark-border bg-white dark:bg-minimal-dark-card">
           <h3 className="font-bold text-xl mb-3">Join the community</h3>
           <p className="text-minimal-muted dark:text-minimal-dark-muted mb-6">
-            Connect with other developers, share ideas, and get help from the community.
+            Connect with 5,000+ Nexus users. Share workflows, get tips, and learn from the best.
           </p>
-          <a href="https://discord.gg/acme" className="btn-secondary inline-flex" target="_blank" rel="noopener noreferrer">
-            Join Discord <ExternalLink className="w-4 h-4" />
+          <a href="https://community.nexus.io" className="btn-secondary inline-flex" target="_blank" rel="noopener noreferrer">
+            Join Community <ExternalLink className="w-4 h-4" />
           </a>
         </div>
       </div>
@@ -312,14 +312,14 @@ export default function DocsPage() {
         <PageHeader
           tag="Documentation"
           title="Documentation"
-          description="Learn how to build, deploy, and scale with Acme."
+          description="Everything you need to master Nexus—from first workflow to advanced automation."
         >
           <DocsSearch />
         </PageHeader>
 
         <QuickStartCards />
         <TopicGrid />
-        <FrameworksSection />
+        <IntegrationsSection />
         <HelpSection />
       </main>
       <Footer />

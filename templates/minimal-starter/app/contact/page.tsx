@@ -11,29 +11,29 @@ import PageHeader from '@/components/PageHeader'
 const contactOptions = [
   {
     icon: Mail,
-    title: 'Email',
-    description: 'Our team typically responds within 24 hours.',
-    action: 'support@acme.com',
-    href: 'mailto:support@acme.com',
+    title: 'Email Support',
+    description: 'Get a response within 4 hours on business days.',
+    action: 'support@nexus.io',
+    href: 'mailto:support@nexus.io',
   },
   {
     icon: MessageCircle,
     title: 'Live Chat',
-    description: 'Available Mon-Fri, 9am-5pm PST.',
+    description: 'Chat with our team in real-time, 24/7.',
     action: 'Start Chat',
     href: '#chat',
   },
   {
     icon: Twitter,
     title: 'Twitter',
-    description: 'Follow us for updates and quick support.',
-    action: '@acme',
-    href: 'https://twitter.com/acme',
+    description: 'Follow for updates, tips, and quick answers.',
+    action: '@nexushq',
+    href: 'https://twitter.com/nexushq',
   },
   {
     icon: MapPin,
-    title: 'Office',
-    description: '123 Developer Way\nSan Francisco, CA 94107',
+    title: 'Headquarters',
+    description: '548 Market Street, Suite 95\nSan Francisco, CA 94104',
     action: 'Get Directions',
     href: 'https://maps.google.com',
   },
@@ -42,19 +42,19 @@ const contactOptions = [
 const quickFaqs = [
   {
     question: 'How do I reset my password?',
-    answer: 'Go to Settings → Security → Reset Password, or use the "Forgot Password" link on the login page.',
+    answer: 'Click your avatar → Settings → Security → Reset Password. A reset link will be sent to your email within 60 seconds.',
   },
   {
-    question: 'How do I upgrade my plan?',
-    answer: 'Visit the Billing section in your dashboard to view available plans and upgrade instantly.',
+    question: 'How do I upgrade or downgrade my plan?',
+    answer: 'Go to Settings → Billing → Change Plan. Upgrades are instant; downgrades take effect at your next billing cycle.',
   },
   {
-    question: 'What\'s your refund policy?',
-    answer: 'We offer a 14-day money-back guarantee. Contact support within 14 days for a full refund.',
+    question: 'Can I export my data?',
+    answer: 'Yes! Go to Settings → Data → Export. You can download all your data as CSV or JSON anytime—your data is always yours.',
   },
   {
-    question: 'How do I connect my custom domain?',
-    answer: 'Go to Project Settings → Domains and follow the guided setup to connect your domain.',
+    question: 'How do I add integrations?',
+    answer: 'Navigate to Settings → Integrations → Browse. Click any app to connect. Most integrations take under 2 minutes to set up.',
   },
 ]
 
@@ -95,9 +95,9 @@ function ContactForm() {
         <div className="w-16 h-16 mx-auto mb-4 rounded-full bg-green-500/10 flex items-center justify-center">
           <Mail className="w-8 h-8 text-green-500" />
         </div>
-        <h3 className="font-bold text-xl mb-2">Message sent!</h3>
+        <h3 className="font-bold text-xl mb-2">Message received!</h3>
         <p className="text-minimal-muted dark:text-minimal-dark-muted">
-          Thanks for reaching out. We&apos;ll get back to you within 24 hours.
+          Thanks for reaching out. A member of our team will respond within 4 hours.
         </p>
       </div>
     )
@@ -115,19 +115,21 @@ function ContactForm() {
             id="name"
             name="name"
             required
+            placeholder="Jane Smith"
             className="w-full px-4 py-3 rounded-lg border border-minimal-border dark:border-minimal-dark-border bg-white dark:bg-minimal-dark-bg focus:border-[#0070f3] focus:ring-2 focus:ring-blue-500/20 transition-all"
           />
         </div>
 
         <div>
           <label htmlFor="email" className="block text-sm font-medium mb-2">
-            Email
+            Work Email
           </label>
           <input
             type="email"
             id="email"
             name="email"
             required
+            placeholder="jane@company.com"
             className="w-full px-4 py-3 rounded-lg border border-minimal-border dark:border-minimal-dark-border bg-white dark:bg-minimal-dark-bg focus:border-[#0070f3] focus:ring-2 focus:ring-blue-500/20 transition-all"
           />
         </div>
@@ -135,7 +137,7 @@ function ContactForm() {
 
       <div className="form-group">
         <label htmlFor="subject" className="block text-sm font-medium mb-2">
-          Subject
+          How can we help?
         </label>
         <select
           id="subject"
@@ -143,17 +145,18 @@ function ContactForm() {
           className="w-full px-4 py-3 rounded-lg border border-minimal-border dark:border-minimal-dark-border bg-white dark:bg-minimal-dark-bg focus:border-[#0070f3] focus:ring-2 focus:ring-blue-500/20 transition-all"
         >
           <option value="">Select a topic</option>
-          <option value="sales">Sales inquiry</option>
+          <option value="sales">Talk to sales</option>
           <option value="support">Technical support</option>
           <option value="billing">Billing question</option>
-          <option value="partnership">Partnership</option>
-          <option value="other">Other</option>
+          <option value="enterprise">Enterprise inquiry</option>
+          <option value="partnership">Partnership opportunity</option>
+          <option value="other">Something else</option>
         </select>
       </div>
 
       <div className="form-group">
         <label htmlFor="message" className="block text-sm font-medium mb-2">
-          Message
+          Tell us more
         </label>
         <textarea
           id="message"
@@ -161,7 +164,7 @@ function ContactForm() {
           rows={6}
           required
           className="w-full px-4 py-3 rounded-lg border border-minimal-border dark:border-minimal-dark-border bg-white dark:bg-minimal-dark-bg focus:border-[#0070f3] focus:ring-2 focus:ring-blue-500/20 transition-all resize-none"
-          placeholder="How can we help?"
+          placeholder="What's on your mind?"
         />
       </div>
 
@@ -258,7 +261,7 @@ function QuickFAQ() {
       <div className="max-w-6xl mx-auto">
         <div className="flex items-center gap-3 mb-8">
           <HelpCircle className="w-6 h-6 text-[#0070f3]" />
-          <h2 className="font-display text-2xl font-bold">Before you reach out...</h2>
+          <h2 className="font-display text-2xl font-bold">Quick answers</h2>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           {quickFaqs.map((faq) => (
@@ -273,7 +276,7 @@ function QuickFAQ() {
         </div>
         <div className="text-center mt-8">
           <a href="/docs" className="text-[#0070f3] hover:underline font-medium">
-            Browse all documentation →
+            Browse full documentation →
           </a>
         </div>
       </div>
@@ -291,8 +294,8 @@ export default function ContactPage() {
       <main id="main-content" tabIndex={-1}>
         <PageHeader
           tag="Contact"
-          title="Get in touch"
-          description="We'd love to hear from you. Send us a message and we'll respond as soon as possible."
+          title="Let's talk"
+          description="Have a question, feedback, or just want to say hi? We'd love to hear from you."
         />
 
         <section className="py-12 px-4 md:px-16 max-w-6xl mx-auto">

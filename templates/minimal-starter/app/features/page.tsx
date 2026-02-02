@@ -11,48 +11,48 @@ import CTA from '@/components/CTA'
 
 const featureShowcases = [
   {
-    tag: 'Deployment',
-    title: 'Push to deploy',
-    description: 'Connect your Git repository and every push automatically deploys to production. No manual steps, no waiting.',
-    benefits: ['Automatic preview deployments', 'Instant rollbacks', 'Branch-based environments'],
+    tag: 'Automation',
+    title: 'Eliminate repetitive tasks',
+    description: 'Set up powerful workflows once and let them run forever. Teams save an average of 12 hours per week on manual busywork.',
+    benefits: ['Visual workflow builder', 'Custom triggers and actions', '200+ integrations included'],
     visual: 'deploy',
   },
   {
-    tag: 'Performance',
-    title: 'Edge-first architecture',
-    description: 'Your code runs at the edge, closer to your users. Sub-50ms response times, globally.',
-    benefits: ['100+ edge locations', 'Automatic scaling', 'Zero cold starts'],
-    visual: 'edge',
+    tag: 'Insights',
+    title: 'Data-driven decisions',
+    description: 'Real-time dashboards give you complete visibility into team performance, project health, and resource allocation.',
+    benefits: ['Live team analytics', 'Customizable reports', 'Predictive forecasting'],
+    visual: 'analytics',
   },
   {
     tag: 'Collaboration',
-    title: 'Built for teams',
-    description: 'Review deployments together, share preview links, and collaborate in real-time with your entire team.',
-    benefits: ['Preview comments', 'Team workspaces', 'Role-based access'],
+    title: 'Break down silos',
+    description: 'Connect every team, tool, and conversation in one unified workspace. No more context-switching or lost information.',
+    benefits: ['Unified inbox for all channels', 'Real-time co-editing', 'Smart notifications'],
     visual: 'team',
   },
   {
-    tag: 'Analytics',
-    title: 'Real-time insights',
-    description: 'Understand your traffic, performance, and user behavior with built-in analytics. No setup required.',
-    benefits: ['Web vitals tracking', 'Real-time visitors', 'Error monitoring'],
-    visual: 'analytics',
+    tag: 'Scale',
+    title: 'Grows with your ambition',
+    description: 'From startups to enterprises, our infrastructure scales seamlessly. Handle 10 users or 10,000—same speed, same reliability.',
+    benefits: ['Auto-scaling infrastructure', 'Multi-region deployment', 'Enterprise SSO & SCIM'],
+    visual: 'edge',
   },
 ]
 
 const capabilities = [
-  { icon: Zap, title: 'Edge Functions', desc: 'Execute code at the edge for ultra-low latency responses.' },
-  { icon: Shield, title: 'DDoS Protection', desc: 'Enterprise-grade security and protection out of the box.' },
-  { icon: Globe, title: 'Global CDN', desc: 'Content delivered from 100+ edge locations worldwide.' },
-  { icon: Database, title: 'Serverless Storage', desc: 'Scalable databases with zero management overhead.' },
-  { icon: GitBranch, title: 'Git Integration', desc: 'Works seamlessly with GitHub, GitLab, and Bitbucket.' },
-  { icon: BarChart, title: 'Analytics', desc: 'Real-time insights into your traffic and performance.' },
-  { icon: Terminal, title: 'CLI Tools', desc: 'Powerful command-line tools for advanced workflows.' },
-  { icon: Layers, title: 'Framework Support', desc: 'First-class support for Next.js, Remix, Astro, and more.' },
-  { icon: Clock, title: 'Cron Jobs', desc: 'Schedule functions to run on any interval you need.' },
-  { icon: Lock, title: 'Environment Variables', desc: 'Secure secrets management with encryption at rest.' },
-  { icon: Cpu, title: 'Serverless Functions', desc: 'Auto-scaling functions that handle any load.' },
-  { icon: Shield, title: 'SSL Certificates', desc: 'Automatic HTTPS with free SSL certificates.' },
+  { icon: Zap, title: 'Smart Automation', desc: 'Reduce manual work by 50% with AI-powered workflow automation.' },
+  { icon: Shield, title: 'Enterprise Security', desc: 'SOC 2 Type II certified with end-to-end encryption.' },
+  { icon: Globe, title: 'Global Performance', desc: 'Sub-100ms response times from 50+ global edge locations.' },
+  { icon: Database, title: 'Unified Data', desc: 'All your data synced and searchable in one place.' },
+  { icon: GitBranch, title: 'Version Control', desc: 'Track every change with built-in versioning and rollback.' },
+  { icon: BarChart, title: 'Advanced Analytics', desc: 'Custom dashboards with real-time performance metrics.' },
+  { icon: Terminal, title: 'Developer API', desc: 'RESTful and GraphQL APIs for custom integrations.' },
+  { icon: Layers, title: 'Custom Workflows', desc: 'Build complex multi-step processes with visual tools.' },
+  { icon: Clock, title: 'Scheduled Tasks', desc: 'Automate recurring work with flexible scheduling.' },
+  { icon: Lock, title: 'Access Controls', desc: 'Granular permissions with role-based access management.' },
+  { icon: Cpu, title: 'AI Assistant', desc: 'Get intelligent suggestions to optimize your workflow.' },
+  { icon: Shield, title: 'Audit Logs', desc: 'Complete audit trail for compliance and security.' },
 ]
 
 function FeatureVisual({ type }: { type: string }) {
@@ -65,11 +65,11 @@ function FeatureVisual({ type }: { type: string }) {
           <div className="w-3 h-3 rounded-full bg-green-500" />
         </div>
         <code className="text-gray-300">
-          <span className="text-blue-400">$</span> git push origin main<br />
-          <span className="text-gray-500">Deploying...</span><br />
-          <span className="text-green-400">✓</span> Build completed in 12s<br />
-          <span className="text-green-400">✓</span> Deployed to production<br />
-          <span className="text-gray-500">→</span> <span className="text-blue-400">https://acme.vercel.app</span>
+          <span className="text-gray-500">// Automation running...</span><br />
+          <span className="text-green-400">✓</span> New lead captured<br />
+          <span className="text-green-400">✓</span> Assigned to sales team<br />
+          <span className="text-green-400">✓</span> Slack notification sent<br />
+          <span className="text-gray-500">→</span> <span className="text-blue-400">Task completed in 0.3s</span>
         </code>
       </div>
     )
@@ -83,7 +83,7 @@ function FeatureVisual({ type }: { type: string }) {
           <div className="absolute w-48 h-48 rounded-full border-2 border-dashed border-purple-500/20 animate-spin" style={{ animationDuration: '30s', animationDirection: 'reverse' }} />
         </div>
         <div className="relative z-10 flex flex-wrap gap-3 justify-center max-w-[200px]">
-          {['US', 'EU', 'APAC', 'SA'].map((region) => (
+          {['10 users', '1K users', '10K users', '100K+'].map((region) => (
             <span key={region} className="px-3 py-1.5 rounded-full bg-white dark:bg-minimal-dark-card border border-minimal-border dark:border-minimal-dark-border text-xs font-semibold">
               {region}
             </span>
@@ -102,12 +102,12 @@ function FeatureVisual({ type }: { type: string }) {
               <div key={i} className="w-8 h-8 rounded-full bg-gradient-to-br from-pink-500 to-purple-500 border-2 border-white dark:border-minimal-dark-card" style={{ opacity: 1 - i * 0.2 }} />
             ))}
           </div>
-          <span className="text-sm text-minimal-muted dark:text-minimal-dark-muted">3 reviewing</span>
+          <span className="text-sm text-minimal-muted dark:text-minimal-dark-muted">3 collaborating</span>
         </div>
         <div className="space-y-3">
           <div className="p-3 rounded-lg bg-minimal-bg dark:bg-minimal-dark-bg border border-minimal-border dark:border-minimal-dark-border">
-            <p className="text-sm">&ldquo;Looks good! Ship it 🚀&rdquo;</p>
-            <span className="text-xs text-minimal-muted dark:text-minimal-dark-muted">Sarah • 2m ago</span>
+            <p className="text-sm">&ldquo;Updated the Q4 roadmap—looks great! 🎯&rdquo;</p>
+            <span className="text-xs text-minimal-muted dark:text-minimal-dark-muted">Jordan • just now</span>
           </div>
         </div>
       </div>
@@ -117,8 +117,8 @@ function FeatureVisual({ type }: { type: string }) {
   return (
     <div className="bg-white dark:bg-minimal-dark-card rounded-xl border border-minimal-border dark:border-minimal-dark-border p-4">
       <div className="flex items-center justify-between mb-4">
-        <span className="text-sm font-semibold">Live Visitors</span>
-        <span className="text-2xl font-bold gradient-text">1,247</span>
+        <span className="text-sm font-semibold">Team Velocity</span>
+        <span className="text-2xl font-bold gradient-text">+47%</span>
       </div>
       <div className="h-24 flex items-end gap-1">
         {[40, 60, 45, 80, 65, 90, 75, 85, 70, 95].map((h, i) => (
@@ -224,10 +224,10 @@ function CapabilitiesGrid() {
     <section ref={ref} className="py-16 md:py-24 px-4 md:px-16 bg-white dark:bg-minimal-dark-card border-y border-minimal-border dark:border-minimal-dark-border">
       <div className="max-w-6xl mx-auto">
         <h2 className="text-center font-display text-3xl font-bold mb-4">
-          And so much more
+          Everything you need to succeed
         </h2>
         <p className="text-center text-minimal-muted dark:text-minimal-dark-muted mb-12 max-w-2xl mx-auto">
-          Everything you need to build, deploy, and scale modern web applications.
+          One platform. Every tool. No compromises. Built for teams that want to move fast without breaking things.
         </p>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
           {capabilities.map((cap) => (
@@ -253,8 +253,8 @@ export default function FeaturesPage() {
       <main id="main-content" tabIndex={-1}>
         <PageHeader
           tag="Features"
-          title="Built for modern developers"
-          description="Everything you need to ship faster—from instant deploys to real-time collaboration."
+          title="Tools that teams actually love"
+          description="Powerful enough for enterprises. Simple enough to get started in 5 minutes. See why 10,000+ teams choose Nexus."
         />
 
         {featureShowcases.map((feature, i) => (

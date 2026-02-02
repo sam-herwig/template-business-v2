@@ -9,44 +9,44 @@ import Footer from '@/components/Footer'
 import PageHeader from '@/components/PageHeader'
 
 const stats = [
-  { value: '10M+', label: 'Deployments' },
-  { value: '100+', label: 'Edge Regions' },
-  { value: '50K+', label: 'Customers' },
-  { value: '2019', label: 'Founded' },
+  { value: '10K+', label: 'Teams worldwide' },
+  { value: '50M+', label: 'Tasks completed' },
+  { value: '99.9%', label: 'Uptime SLA' },
+  { value: '2020', label: 'Founded' },
 ]
 
 const values = [
   {
     icon: Zap,
-    title: 'Ship fast',
-    description: 'We believe in rapid iteration. Ship early, get feedback, improve. Perfection is the enemy of progress.',
+    title: 'Move with urgency',
+    description: 'Speed is a feature. We ship weekly, iterate constantly, and never let perfection be the enemy of progress.',
   },
   {
     icon: Heart,
-    title: 'Developer love',
-    description: 'Every decision we make starts with the developer experience. If it\'s not delightful, we\'re not done.',
+    title: 'Obsess over customers',
+    description: 'Every feature, every fix, every decision starts with one question: does this make our customers more successful?',
   },
   {
     icon: Users,
-    title: 'Community first',
-    description: 'We\'re building in public with our community. Your feedback shapes our roadmap.',
+    title: 'Win as a team',
+    description: 'The best ideas come from collaboration. We debate openly, decide quickly, and commit fully.',
   },
   {
     icon: Target,
-    title: 'Radical focus',
-    description: 'We do a few things exceptionally well rather than many things poorly. Focus enables excellence.',
+    title: 'Raise the bar',
+    description: 'Good enough never is. We set ambitious goals, measure relentlessly, and celebrate outcomes—not effort.',
   },
 ]
 
 const team = [
   { name: 'Alex Rivera', role: 'CEO & Co-founder', gradient: 'from-pink-500 to-rose-500' },
-  { name: 'Sarah Chen', role: 'Head of Product', gradient: 'from-blue-500 to-cyan-500' },
-  { name: 'Marcus Johnson', role: 'CTO', gradient: 'from-purple-500 to-violet-500' },
-  { name: 'Emily Park', role: 'Head of Engineering', gradient: 'from-green-500 to-emerald-500' },
-  { name: 'David Kim', role: 'Head of Design', gradient: 'from-orange-500 to-amber-500' },
-  { name: 'Lisa Wang', role: 'Head of Marketing', gradient: 'from-indigo-500 to-blue-500' },
-  { name: 'James Wilson', role: 'Head of Sales', gradient: 'from-red-500 to-pink-500' },
-  { name: 'Ana Martinez', role: 'Head of Support', gradient: 'from-teal-500 to-cyan-500' },
+  { name: 'Sarah Chen', role: 'Chief Product Officer', gradient: 'from-blue-500 to-cyan-500' },
+  { name: 'Marcus Johnson', role: 'Chief Technology Officer', gradient: 'from-purple-500 to-violet-500' },
+  { name: 'Emily Park', role: 'VP of Engineering', gradient: 'from-green-500 to-emerald-500' },
+  { name: 'David Kim', role: 'VP of Design', gradient: 'from-orange-500 to-amber-500' },
+  { name: 'Lisa Wang', role: 'VP of Marketing', gradient: 'from-indigo-500 to-blue-500' },
+  { name: 'James Wilson', role: 'VP of Sales', gradient: 'from-red-500 to-pink-500' },
+  { name: 'Ana Martinez', role: 'VP of Customer Success', gradient: 'from-teal-500 to-cyan-500' },
 ]
 
 function StatsBar() {
@@ -129,26 +129,24 @@ function StorySection() {
     <section ref={ref} className="py-16 md:py-24 px-4 md:px-16 max-w-6xl mx-auto">
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
         <div className="story-image aspect-square rounded-2xl overflow-hidden bg-gradient-to-br from-purple-500/20 to-blue-500/20 flex items-center justify-center">
-          <div className="text-8xl">🚀</div>
+          <div className="text-8xl">◆</div>
         </div>
 
         <div className="story-content">
           <h2 className="font-display text-3xl font-bold tracking-tight mb-6">Our Story</h2>
           <div className="space-y-4 text-minimal-muted dark:text-minimal-dark-muted leading-relaxed">
             <p>
-              Acme started in 2019 with a simple idea: deploying web applications should be as easy as pushing code. 
-              We were frustrated with the complexity of existing solutions—too many steps, too much configuration, 
-              too much time wasted.
+              Nexus started in 2020 when our founders noticed something broken: teams were drowning in tools 
+              but starving for clarity. Slack, Jira, Notion, email—information was everywhere and nowhere.
             </p>
             <p>
-              What began as a side project quickly grew into something bigger. Developers around the world 
-              resonated with our vision of zero-configuration deployment. Within a year, we had thousands of 
-              projects deployed on our platform.
+              We built the product we wished existed. A single platform that connects everything, 
+              automates the mundane, and gives teams superpowers to focus on work that actually matters.
             </p>
             <p>
-              Today, Acme powers millions of deployments for companies of all sizes, from solo developers 
-              to Fortune 500 enterprises. But we&apos;re just getting started. Our mission remains the same: 
-              make the web faster and more accessible for everyone.
+              Today, over 10,000 teams trust Nexus to run their operations—from 5-person startups to 
+              Fortune 500 enterprises. We&apos;ve processed 50+ million tasks and saved our customers 
+              an estimated 2 million hours of busywork. And we&apos;re just getting started.
             </p>
           </div>
         </div>
@@ -185,9 +183,9 @@ function ValuesSection() {
   return (
     <section ref={ref} className="py-16 md:py-24 px-4 md:px-16 bg-white dark:bg-minimal-dark-card border-y border-minimal-border dark:border-minimal-dark-border">
       <div className="max-w-6xl mx-auto">
-        <h2 className="font-display text-3xl font-bold text-center mb-4">What we believe</h2>
+        <h2 className="font-display text-3xl font-bold text-center mb-4">What drives us</h2>
         <p className="text-center text-minimal-muted dark:text-minimal-dark-muted mb-12 max-w-2xl mx-auto">
-          Our values guide everything we do—from the products we build to how we treat each other.
+          These aren&apos;t values we hang on a wall. They&apos;re how we make decisions every day.
         </p>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           {values.map((value) => (
@@ -232,9 +230,9 @@ function TeamSection() {
 
   return (
     <section ref={ref} className="py-16 md:py-24 px-4 md:px-16 max-w-6xl mx-auto">
-      <h2 className="font-display text-3xl font-bold text-center mb-4">Meet the team</h2>
+      <h2 className="font-display text-3xl font-bold text-center mb-4">Leadership team</h2>
       <p className="text-center text-minimal-muted dark:text-minimal-dark-muted mb-12 max-w-2xl mx-auto">
-        We&apos;re a remote-first team spread across the globe, united by our passion for building great products.
+        Operators who&apos;ve scaled companies from zero to billions, united by a mission to make teams unstoppable.
       </p>
       <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
         {team.map((member) => (
@@ -288,13 +286,13 @@ function CareersCTA() {
   return (
     <section ref={ref} id="careers" className="py-16 md:py-24 px-4 md:px-16">
       <div className="careers-content max-w-4xl mx-auto text-center p-12 rounded-2xl bg-gradient-to-br from-purple-500/10 to-blue-500/10 border border-minimal-border dark:border-minimal-dark-border">
-        <h2 className="font-display text-3xl font-bold mb-4">We&apos;re hiring!</h2>
+        <h2 className="font-display text-3xl font-bold mb-4">Join a team that moves fast</h2>
         <p className="text-minimal-muted dark:text-minimal-dark-muted mb-8 max-w-2xl mx-auto">
-          Join our team and help shape the future of web deployment. We&apos;re looking for passionate people 
-          who want to make a difference.
+          We&apos;re hiring exceptional engineers, designers, and operators who want to build something 
+          people love. Remote-first, competitive equity, and the chance to shape a product used by thousands.
         </p>
         <a href="/careers" className="btn-primary inline-flex">
-          View Open Positions <ArrowRight className="w-4 h-4" />
+          View Open Roles <ArrowRight className="w-4 h-4" />
         </a>
       </div>
     </section>
@@ -311,8 +309,8 @@ export default function AboutPage() {
       <main id="main-content" tabIndex={-1}>
         <PageHeader
           tag="About"
-          title="We're building the future of deployment"
-          description="Our mission is to make the web faster and more accessible for developers everywhere."
+          title="We're on a mission to eliminate busywork"
+          description="So teams can focus on the work that actually moves the needle."
         />
 
         <StatsBar />

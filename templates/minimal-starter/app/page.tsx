@@ -3,7 +3,7 @@
 import { useRef } from 'react'
 import { useGSAP } from '@gsap/react'
 import { gsap, ScrollTrigger, SplitText } from '@/lib/gsap'
-import { Zap, Globe, TrendingUp } from 'lucide-react'
+import { Zap, Shield, TrendingUp } from 'lucide-react'
 import Nav from '@/components/Nav'
 import Footer from '@/components/Footer'
 import CTA from '@/components/CTA'
@@ -14,18 +14,18 @@ import CTA from '@/components/CTA'
 // ═══════════════════════════════════════════════════════════════
 
 const logos = [
-  { name: 'OpenAI', icon: '◯' },
   { name: 'Stripe', icon: '◈' },
   { name: 'Shopify', icon: '◇' },
-  { name: 'Netflix', icon: '◆' },
+  { name: 'Slack', icon: '◆' },
   { name: 'Notion', icon: '□' },
   { name: 'Linear', icon: '◎' },
+  { name: 'Figma', icon: '◯' },
 ] as const
 
 const features = [
-  { title: 'Lightning Fast', description: 'Deploy in seconds with zero configuration. Your code goes live the moment you push.', icon: Zap },
-  { title: 'Global Edge', description: 'Automatically distributed across 100+ edge locations for instant loading worldwide.', icon: Globe },
-  { title: 'Built for Scale', description: 'From prototype to production, handle millions of requests without breaking a sweat.', icon: TrendingUp },
+  { title: 'Instant Setup', description: 'Go from signup to productive in under 5 minutes. No complex onboarding, no lengthy configurations.', icon: Zap },
+  { title: 'Enterprise Security', description: 'SOC 2 Type II certified with end-to-end encryption. Your data is protected at every layer.', icon: Shield },
+  { title: 'Proven Results', description: 'Teams using Nexus report 50% faster project completion and 3x better cross-team visibility.', icon: TrendingUp },
 ]
 
 // ═══════════════════════════════════════════════════════════════
@@ -101,19 +101,19 @@ function Hero() {
     <section ref={heroRef} className="min-h-screen flex items-center justify-between px-4 md:px-16 lg:px-32 pt-24 pb-16 gap-16 max-w-7xl mx-auto hero-grid grid grid-cols-1 lg:grid-cols-2" aria-labelledby="hero-heading">
       <div className="flex-1 max-w-xl">
         <h1 id="hero-heading" ref={headlineRef} className="font-display text-[clamp(3rem,5vw,4.5rem)] font-bold leading-[1.05] tracking-tight mb-6">
-          Build and deploy
+          Work smarter,
           <br />
-          <span className="gradient-text">on the modern web.</span>
+          <span className="gradient-text">not harder.</span>
         </h1>
         <p className="hero-subheadline text-xl text-minimal-muted dark:text-minimal-dark-muted leading-relaxed mb-10 max-w-lg">
-          The platform for developers to build, deploy, and scale applications with zero configuration.
+          The all-in-one platform that helps teams cut busywork by 50% and ship products faster. Trusted by 10,000+ companies worldwide.
         </p>
         <div className="flex gap-4 flex-wrap">
-          <button className="hero-cta btn-primary" aria-label="Start deploying your application">
-            Start Deploying <span aria-hidden="true">→</span>
+          <button className="hero-cta btn-primary" aria-label="Start your free trial today">
+            Start Free Trial <span aria-hidden="true">→</span>
           </button>
-          <button className="hero-cta btn-secondary" aria-label="Request a demo of Acme">
-            Get a Demo
+          <button className="hero-cta btn-secondary" aria-label="Watch a demo of Nexus">
+            Watch Demo
           </button>
         </div>
       </div>
@@ -160,7 +160,7 @@ function LogoBar() {
   
   return (
     <section ref={logoRef} className="py-16 px-4 md:px-16 border-y border-minimal-border dark:border-minimal-dark-border bg-white dark:bg-minimal-dark-card" aria-labelledby="trusted-by-heading">
-      <h2 id="trusted-by-heading" className="text-center text-xs text-minimal-muted dark:text-minimal-dark-muted uppercase tracking-widest mb-8">Trusted by the best teams</h2>
+      <h2 id="trusted-by-heading" className="text-center text-xs text-minimal-muted dark:text-minimal-dark-muted uppercase tracking-widest mb-8">Trusted by industry leaders</h2>
       <ul className="flex justify-center items-center gap-8 md:gap-16 flex-wrap" role="list">
         {logos.map((logo) => (
           <li key={logo.name} className="logo-item flex items-center gap-2 text-minimal-muted dark:text-minimal-dark-muted hover:text-minimal-text dark:hover:text-minimal-dark-text transition-colors">
@@ -209,13 +209,13 @@ function BentoSection() {
         <article className="bento-card bento-large">
           <div className="absolute top-0 left-0 right-0 h-[60%] rounded-t-2xl opacity-10" style={{ background: 'linear-gradient(135deg, #ff0080 0%, #7928ca 50%, #0070f3 100%)' }} aria-hidden="true" />
           <div className="absolute top-6 right-6 text-right">
-            <span className="block font-display text-5xl font-bold tracking-tight" style={{ background: 'linear-gradient(135deg, #ff0080, #7928ca)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>~50ms</span>
-            <span className="text-sm text-minimal-muted dark:text-minimal-dark-muted">avg deploy</span>
+            <span className="block font-display text-5xl font-bold tracking-tight" style={{ background: 'linear-gradient(135deg, #ff0080, #7928ca)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>99.9%</span>
+            <span className="text-sm text-minimal-muted dark:text-minimal-dark-muted">uptime SLA</span>
           </div>
           <div className="relative z-10">
-            <span className="block text-xs font-semibold uppercase tracking-wider text-minimal-muted dark:text-minimal-dark-muted mb-2">Performance</span>
-            <h3 className="font-display text-xl font-semibold tracking-tight mb-1">Sub-second deploys</h3>
-            <p className="text-sm text-minimal-muted dark:text-minimal-dark-muted">From git push to live in milliseconds.</p>
+            <span className="block text-xs font-semibold uppercase tracking-wider text-minimal-muted dark:text-minimal-dark-muted mb-2">Reliability</span>
+            <h3 className="font-display text-xl font-semibold tracking-tight mb-1">Enterprise-grade uptime</h3>
+            <p className="text-sm text-minimal-muted dark:text-minimal-dark-muted">Your team depends on us. We don&apos;t let them down.</p>
           </div>
         </article>
         
@@ -226,8 +226,8 @@ function BentoSection() {
             <div className="absolute bottom-[20px] right-0 w-[50px] h-[50px] rounded-full opacity-60 orb-animate" style={{ background: 'linear-gradient(135deg, #0070f3, #00d4ff)', animationDelay: '1s' }} />
           </div>
           <div className="relative z-10">
-            <span className="block text-xs font-semibold uppercase tracking-wider text-minimal-muted dark:text-minimal-dark-muted mb-2">Scale</span>
-            <h3 className="font-display text-xl font-semibold tracking-tight">100+ edge locations</h3>
+            <span className="block text-xs font-semibold uppercase tracking-wider text-minimal-muted dark:text-minimal-dark-muted mb-2">Reach</span>
+            <h3 className="font-display text-xl font-semibold tracking-tight">10,000+ teams</h3>
           </div>
         </article>
         
@@ -238,16 +238,16 @@ function BentoSection() {
             ))}
           </div>
           <div className="relative z-10">
-            <span className="block text-xs font-semibold uppercase tracking-wider text-minimal-muted dark:text-minimal-dark-muted mb-2">Analytics</span>
-            <h3 className="font-display text-xl font-semibold tracking-tight">Real-time insights</h3>
+            <span className="block text-xs font-semibold uppercase tracking-wider text-minimal-muted dark:text-minimal-dark-muted mb-2">Speed</span>
+            <h3 className="font-display text-xl font-semibold tracking-tight">50% faster delivery</h3>
           </div>
         </article>
         
         <article className="bento-card bento-wide">
           <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 px-8 py-6 rounded-xl" style={{ background: '#171717', fontFamily: 'SF Mono, Fira Code, monospace' }}>
             <code className="text-gray-300">
-              <span className="text-gray-500">// Deploy with one command</span><br/>
-              <span className="text-blue-400">$</span> vercel --prod
+              <span className="text-gray-500">// Get started in seconds</span><br/>
+              <span className="text-blue-400">$</span> npx nexus init
             </code>
           </div>
         </article>
@@ -298,11 +298,11 @@ function Features() {
   return (
     <section ref={featuresRef} id="features" className="py-16 md:py-32 px-4 md:px-16 max-w-6xl mx-auto" aria-labelledby="features-heading">
       <div className="features-header text-center mb-16">
-        <span className="feature-tag mb-6">Features</span>
+        <span className="feature-tag mb-6">Why Nexus</span>
         <h2 id="features-heading" className="font-display text-[clamp(2rem,4vw,3rem)] font-bold leading-tight tracking-tight">
-          Everything you need.
+          Built for teams that
           <br />
-          Nothing you don&apos;t.
+          demand excellence.
         </h2>
       </div>
       

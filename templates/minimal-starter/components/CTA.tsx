@@ -11,9 +11,9 @@ interface CTAProps {
 }
 
 export default function CTA({ 
-  title = "Start building today.", 
-  description = "Join thousands of developers shipping faster with Acme.",
-  buttonText = "Get Started Free"
+  title = "Ready to transform your workflow?", 
+  description = "Join 10,000+ teams already working smarter with Nexus.",
+  buttonText = "Start Your Free Trial"
 }: CTAProps) {
   const ctaRef = useRef<HTMLElement>(null)
   const headlineRef = useRef<HTMLHeadingElement>(null)

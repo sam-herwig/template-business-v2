@@ -10,90 +10,90 @@ import PageHeader from '@/components/PageHeader'
 
 const tiers = [
   {
-    name: 'Hobby',
-    description: 'Perfect for side projects and experiments.',
+    name: 'Starter',
+    description: 'For small teams getting organized.',
     monthlyPrice: 0,
     yearlyPrice: 0,
     features: [
-      '100 deployments/month',
-      '100GB bandwidth',
-      'Automatic HTTPS',
+      'Up to 5 team members',
+      '10 workflows per month',
+      'Core integrations',
       'Community support',
-      '1 team member',
+      '7-day history',
     ],
-    cta: 'Get Started',
+    cta: 'Get Started Free',
     popular: false,
   },
   {
     name: 'Pro',
-    description: 'For professional developers and small teams.',
-    monthlyPrice: 20,
-    yearlyPrice: 16,
+    description: 'For growing teams that need power.',
+    monthlyPrice: 29,
+    yearlyPrice: 24,
     features: [
-      'Unlimited deployments',
-      '1TB bandwidth',
+      'Unlimited team members',
+      'Unlimited workflows',
+      'All 200+ integrations',
+      'Priority support (24hr)',
+      'Unlimited history',
       'Advanced analytics',
-      'Priority support',
-      'Up to 10 team members',
-      'Password protection',
-      'Custom domains',
+      'Custom branding',
     ],
-    cta: 'Start Free Trial',
+    cta: 'Start 14-Day Free Trial',
     popular: true,
   },
   {
     name: 'Enterprise',
-    description: 'For large teams with custom requirements.',
+    description: 'For organizations that demand the best.',
     monthlyPrice: 'Custom',
     yearlyPrice: 'Custom',
     features: [
-      'Unlimited everything',
-      'Custom bandwidth',
-      'Advanced security',
-      'Dedicated support',
-      'Unlimited team members',
-      'SLA guarantee',
-      'SSO/SAML',
-      'Audit logs',
+      'Everything in Pro',
+      'SSO/SAML authentication',
+      'Dedicated success manager',
+      'Custom SLA (99.99%)',
+      'Advanced security controls',
+      'Audit logs & compliance',
+      'On-premise option',
+      'Custom contracts',
     ],
-    cta: 'Contact Sales',
+    cta: 'Talk to Sales',
     popular: false,
   },
 ]
 
 const comparisonFeatures = [
-  { name: 'Deployments', hobby: '100/mo', pro: 'Unlimited', enterprise: 'Unlimited' },
-  { name: 'Bandwidth', hobby: '100GB', pro: '1TB', enterprise: 'Custom' },
-  { name: 'Build Minutes', hobby: '6,000/mo', pro: '20,000/mo', enterprise: 'Custom' },
-  { name: 'Team Members', hobby: '1', pro: '10', enterprise: 'Unlimited' },
-  { name: 'Custom Domains', hobby: false, pro: true, enterprise: true },
-  { name: 'Analytics', hobby: 'Basic', pro: 'Advanced', enterprise: 'Advanced' },
-  { name: 'Password Protection', hobby: false, pro: true, enterprise: true },
-  { name: 'Priority Support', hobby: false, pro: true, enterprise: true },
-  { name: 'SLA', hobby: false, pro: false, enterprise: true },
+  { name: 'Team members', hobby: '5', pro: 'Unlimited', enterprise: 'Unlimited' },
+  { name: 'Workflows', hobby: '10/mo', pro: 'Unlimited', enterprise: 'Unlimited' },
+  { name: 'Integrations', hobby: 'Core (20+)', pro: 'All (200+)', enterprise: 'All + Custom' },
+  { name: 'History retention', hobby: '7 days', pro: 'Unlimited', enterprise: 'Unlimited' },
+  { name: 'API access', hobby: false, pro: true, enterprise: true },
+  { name: 'Analytics', hobby: 'Basic', pro: 'Advanced', enterprise: 'Custom' },
+  { name: 'Custom branding', hobby: false, pro: true, enterprise: true },
+  { name: 'Priority support', hobby: false, pro: true, enterprise: true },
+  { name: 'SLA guarantee', hobby: false, pro: '99.9%', enterprise: '99.99%' },
   { name: 'SSO/SAML', hobby: false, pro: false, enterprise: true },
 ]
 
 const faqs = [
   {
-    question: 'What counts as a deployment?',
-    answer: 'A deployment is triggered each time you push to a connected Git branch or use our CLI to deploy. Preview deployments to non-production branches are included in your count.',
+    question: 'How does the 14-day trial work?',
+    answer: 'Start with full access to Pro features—no credit card required. At the end of 14 days, choose a plan or continue on our free Starter tier. Your data is always safe.',
   },
   {
-    question: 'Can I change plans anytime?',
-    answer: 'Yes, you can upgrade or downgrade your plan at any time. When upgrading, you\'ll be prorated for the remainder of the billing cycle. Downgrades take effect at the next billing date.',
-  },
-  {
-    question: 'Do you offer refunds?',
-    answer: 'We offer a 14-day money-back guarantee for all paid plans. If you\'re not satisfied, contact support within 14 days of purchase for a full refund.',
+    question: 'Can I switch plans anytime?',
+    answer: 'Absolutely. Upgrade instantly and get prorated billing. Downgrade anytime—changes take effect at your next billing date. No penalties, no hassle.',
   },
   {
     question: 'What payment methods do you accept?',
-    answer: 'We accept all major credit cards (Visa, Mastercard, American Express) as well as PayPal. Enterprise customers can also pay via invoice.',
+    answer: 'All major credit cards (Visa, Mastercard, Amex), ACH/wire for annual plans, and PayPal. Enterprise customers can pay via invoice with NET-30 terms.',
   },
   {
-    question: 'Is there a free trial?',
-    answer: 'Yes! The Pro plan comes with a 14-day free trial, no credit card required. You can explore all Pro features before committing.',
+    question: 'Is my data secure?',
+    answer: 'Security is non-negotiable. We\'re SOC 2 Type II certified, use end-to-end encryption, and never sell your data. Enterprise plans include additional compliance features.',
+  },
+  {
+    question: 'Do you offer discounts for startups or nonprofits?',
+    answer: 'Yes! Qualified startups get 50% off their first year. Nonprofits receive 25% off all plans. Contact sales to apply.',
   },
 ]
 
@@ -113,7 +113,7 @@ function PricingToggle({ yearly, setYearly }: { yearly: boolean; setYearly: (v: 
         <span className={`absolute top-1 w-5 h-5 rounded-full bg-minimal-text dark:bg-minimal-dark-text transition-transform ${yearly ? 'left-8' : 'left-1'}`} />
       </button>
       <span className={`text-sm ${yearly ? 'font-semibold text-minimal-text dark:text-minimal-dark-text' : 'text-minimal-muted dark:text-minimal-dark-muted'}`}>
-        Yearly <span className="text-green-500 font-semibold">-20%</span>
+        Yearly <span className="text-green-500 font-semibold">Save 17%</span>
       </span>
     </div>
   )
@@ -170,7 +170,7 @@ function PricingCards({ yearly }: { yearly: boolean }) {
               {typeof price === 'number' ? (
                 <>
                   <span className="font-display text-4xl font-bold">${price}</span>
-                  <span className="text-minimal-muted dark:text-minimal-dark-muted">/month</span>
+                  <span className="text-minimal-muted dark:text-minimal-dark-muted">/user/mo</span>
                 </>
               ) : (
                 <span className="font-display text-4xl font-bold">Custom</span>
@@ -233,13 +233,13 @@ function ComparisonTable() {
 
   return (
     <section ref={ref} className="py-16 md:py-24 px-4 md:px-16 max-w-5xl mx-auto">
-      <h2 className="font-display text-2xl font-bold text-center mb-12">Compare plans</h2>
+      <h2 className="font-display text-2xl font-bold text-center mb-12">Compare all features</h2>
       <div className="comparison-table overflow-x-auto">
         <table className="w-full text-left">
           <thead>
             <tr className="border-b border-minimal-border dark:border-minimal-dark-border">
               <th className="py-4 px-4 font-semibold">Feature</th>
-              <th className="py-4 px-4 text-center font-semibold">Hobby</th>
+              <th className="py-4 px-4 text-center font-semibold">Starter</th>
               <th className="py-4 px-4 text-center font-semibold">Pro</th>
               <th className="py-4 px-4 text-center font-semibold">Enterprise</th>
             </tr>
@@ -288,7 +288,7 @@ function FAQSection() {
 
   return (
     <section ref={ref} className="py-16 md:py-24 px-4 md:px-16 max-w-3xl mx-auto">
-      <h2 className="font-display text-2xl font-bold text-center mb-12">Frequently asked questions</h2>
+      <h2 className="font-display text-2xl font-bold text-center mb-12">Common questions</h2>
       <div className="space-y-4">
         {faqs.map((faq, i) => (
           <div
@@ -327,8 +327,8 @@ export default function PricingPage() {
       <main id="main-content" tabIndex={-1}>
         <PageHeader
           tag="Pricing"
-          title="Simple, transparent pricing"
-          description="No hidden fees. No surprises. Cancel anytime."
+          title="Plans that scale with you"
+          description="Start free. Upgrade when you're ready. No hidden fees, no surprises."
         >
           <PricingToggle yearly={yearly} setYearly={setYearly} />
         </PageHeader>
