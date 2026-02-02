@@ -174,7 +174,18 @@ function FeaturedProject({ project }: { project: typeof projects[0] }) {
   )
 }
 
-function ProjectGrid({ projects }: { projects: typeof projects }) {
+type Project = {
+  slug: string
+  title: string
+  category: string
+  year: number
+  description: string
+  colors: string[]
+  span: 'normal' | 'wide' | 'tall' | 'large'
+  featured?: boolean
+}
+
+function ProjectGrid({ projects: projectList }: { projects: Project[] }) {
   const isMobile = useIsMobile()
   const isTablet = useIsTablet()
 
@@ -185,7 +196,7 @@ function ProjectGrid({ projects }: { projects: typeof projects }) {
       auto-rows-[180px]
     `}>
       <AnimatePresence mode="popLayout">
-        {projects.map((project, i) => (
+        {projectList.map((project, i) => (
           <motion.div
             key={project.slug}
             layout
