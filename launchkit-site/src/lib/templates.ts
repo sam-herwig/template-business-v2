@@ -2,7 +2,7 @@ export interface Template {
   id: string;
   slug: string;
   name: string;
-  category: 'SaaS' | 'Agency' | 'Local' | 'Creative' | 'Coach';
+  category: 'SaaS' | 'Agency' | 'Local' | 'Creative' | 'Coach' | 'Professional' | 'Education';
   price: number;
   description: string;
   longDescription: string;
@@ -201,9 +201,65 @@ export const templates: Template[] = [
     features: ['Personal branding', 'Service packages', 'Testimonial showcase', 'Blog section', 'Booking integration', 'Newsletter signup', 'Dark mode'],
     techStack: ['Next.js 14', 'TypeScript', 'Tailwind CSS', 'Framer Motion', 'Cal.com'],
   },
+  {
+    id: 'realestate-starter',
+    slug: 'realestate-starter',
+    name: 'Real Estate Starter',
+    category: 'Local',
+    price: 129,
+    description: 'Luxury real estate agency with listings',
+    longDescription: 'A premium real estate template for agencies and brokers. Features property listings with filters, agent profiles, neighborhood guides, and contact forms.',
+    image: '/templates/realestate-starter.png',
+    demoUrl: 'https://realestate-starter.vercel.app',
+    pages: ['Home', 'Listings', 'Listing Detail', 'Agents', 'Agent Detail', 'About', 'Contact'],
+    features: ['Property listings', 'Search & filters', 'Agent profiles', 'Image galleries', 'Neighborhood guides', 'Contact forms', 'Dark mode'],
+    techStack: ['Next.js 14', 'TypeScript', 'Tailwind CSS', 'Framer Motion'],
+  },
+  {
+    id: 'lawfirm-starter',
+    slug: 'lawfirm-starter',
+    name: 'Law Firm Starter',
+    category: 'Professional',
+    price: 129,
+    description: 'Professional law firm with practice areas',
+    longDescription: 'A trustworthy and authoritative template for law firms and legal services. Features practice areas, attorney profiles, case results, and consultation booking.',
+    image: '/templates/lawfirm-starter.png',
+    demoUrl: 'https://lawfirm-starter.vercel.app',
+    pages: ['Home', 'Practice Areas', 'Practice Area Detail', 'Attorneys', 'Attorney Detail', 'About', 'Results', 'Contact'],
+    features: ['Practice areas', 'Attorney profiles', 'Case results', 'Legal disclaimers', 'Consultation forms', 'Trust badges', 'Dark mode'],
+    techStack: ['Next.js 14', 'TypeScript', 'Tailwind CSS', 'Framer Motion'],
+  },
+  {
+    id: 'course-starter',
+    slug: 'course-starter',
+    name: 'Course Starter',
+    category: 'Education',
+    price: 119,
+    description: 'Online course platform with curriculum',
+    longDescription: 'A conversion-focused template for course creators and educators. Features curriculum breakdown, pricing tiers, student testimonials, and enrollment CTAs.',
+    image: '/templates/course-starter.png',
+    demoUrl: 'https://course-starter.vercel.app',
+    pages: ['Home', 'Curriculum', 'About', 'Testimonials', 'Pricing', 'FAQ', 'Contact'],
+    features: ['Curriculum modules', 'Pricing tiers', 'Video testimonials', 'Instructor profile', 'FAQ accordion', 'Newsletter signup', 'Light mode'],
+    techStack: ['Next.js 14', 'TypeScript', 'Tailwind CSS', 'Framer Motion'],
+  },
+  {
+    id: 'photographer-starter',
+    slug: 'photographer-starter',
+    name: 'Photographer Starter',
+    category: 'Creative',
+    price: 99,
+    description: 'Visual portfolio for photographers',
+    longDescription: 'An elegant, visual-first portfolio template for photographers and visual artists. Features masonry galleries, lightbox viewer, service packages, and booking.',
+    image: '/templates/photographer-starter.png',
+    demoUrl: 'https://photographer-starter.vercel.app',
+    pages: ['Home', 'Portfolio', 'Project Detail', 'About', 'Services', 'Contact'],
+    features: ['Masonry gallery', 'Lightbox viewer', 'Category filters', 'Service packages', 'Contact form', 'Social links', 'Dark mode'],
+    techStack: ['Next.js 14', 'TypeScript', 'Tailwind CSS', 'Framer Motion'],
+  },
 ];
 
-export const categories = ['All', 'SaaS', 'Agency', 'Local', 'Creative', 'Coach'] as const;
+export const categories = ['All', 'SaaS', 'Agency', 'Local', 'Creative', 'Coach', 'Professional', 'Education'] as const;
 export type Category = (typeof categories)[number];
 
 export function getTemplateBySlug(slug: string): Template | undefined {

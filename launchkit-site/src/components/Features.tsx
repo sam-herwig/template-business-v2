@@ -180,7 +180,7 @@ export default function Features() {
           className="mt-20 grid grid-cols-2 md:grid-cols-4 gap-6"
         >
           {[
-            { value: '13', label: 'Templates' },
+            { value: '17', label: 'Templates' },
             { value: '100+', label: 'Components' },
             { value: '50+', label: 'Pages' },
             { value: '24/7', label: 'Support' },

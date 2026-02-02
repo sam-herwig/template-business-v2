@@ -67,7 +67,7 @@ export default function Hero() {
               className="inline-flex items-center gap-2 px-4 py-2 rounded-full glass mb-8"
             >
               <Sparkles className="w-4 h-4 text-purple-400" />
-              <span className="text-sm text-gray-300">13 Premium Templates</span>
+              <span className="text-sm text-gray-300">17 Premium Templates</span>
             </motion.div>
 
             {/* Headline */}
@@ -78,7 +78,7 @@ export default function Hero() {
 
             {/* Subheadline */}
             <p className="text-xl text-gray-400 mb-4 max-w-lg">
-              13 production-ready Next.js templates. Multi-page. Dark mode. Responsive. 
+              17 production-ready Next.js templates. Multi-page. Dark mode. Responsive. 
               Sanity CMS included. Just add your content.
             </p>
             <p className="text-sm text-gray-500 mb-8 max-w-lg">
