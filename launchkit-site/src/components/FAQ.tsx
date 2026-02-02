@@ -7,35 +7,35 @@ import { Plus, Minus, HelpCircle } from 'lucide-react';
 const faqs = [
   {
     question: "What's included in each template?",
-    answer: "Every template includes the complete source code, multiple pre-built pages (Home, About, Services, Contact, etc.), reusable components, detailed documentation, and high-quality screenshots. You get everything you need to launch a professional website.",
+    answer: "Every template includes the complete source code, multiple pre-built pages (Home, About, Services, Contact, etc.), Sanity CMS configured for easy content editing, reusable components, video setup guide, detailed documentation, and screenshots. Everything you need to launch.",
+  },
+  {
+    question: "I'm a founder, not a developer. Can I use these?",
+    answer: "If you're comfortable following a step-by-step guide and have deployed a website before, yes! Our templates come with video tutorials, clear documentation, and Sanity CMS for editing content without touching code. That said, these are built with Next.js — if you've never touched code before, you may want to hire a developer for initial setup.",
   },
   {
     question: "Can I use these templates for client projects?",
-    answer: "Absolutely! You can use our templates for unlimited personal and client projects. There's no per-project fee or additional licensing required. Build as many websites as you want.",
+    answer: "Absolutely! You can use our templates for unlimited personal and client projects. No per-project fee or additional licensing required. Build as many websites as you want — then hand clients the Sanity CMS to manage their own content.",
+  },
+  {
+    question: "What kind of support do you offer?",
+    answer: "All purchases include comprehensive docs and video tutorials. Category Pack and Bundle customers get access to our private Discord community where you can ask questions and connect with other users. Bundle customers also get email support with 48-hour response times.",
   },
   {
     question: "Do you offer refunds?",
-    answer: "Yes, we offer a 30-day money-back guarantee. If you're not satisfied with your purchase for any reason, just reach out to us and we'll process a full refund, no questions asked.",
+    answer: "Yes, we offer a 30-day money-back guarantee. If you're not satisfied with your purchase for any reason, reach out and we'll process a full refund, no questions asked.",
   },
   {
     question: "How do I get updates?",
-    answer: "After purchase, you'll receive access to download the templates. For bundle customers, you get lifetime updates — we'll email you whenever we release improvements or new features. Single template purchases include 1 year of updates.",
-  },
-  {
-    question: "What if I need help setting up?",
-    answer: "We're here to help! Each template comes with comprehensive documentation covering setup, customization, and deployment. If you get stuck, just email us at support@launchkit.dev and we'll get back to you within 24 hours.",
+    answer: "After purchase, you'll get access to download the templates. Bundle customers get lifetime updates — we'll notify you whenever we release improvements or new templates. Single template purchases include 1 year of updates.",
   },
   {
     question: "Do I need to credit LaunchKit?",
-    answer: "Nope! Our templates are fully white-label. Remove our branding, add yours, and make it completely your own. Your clients will never know you used a template.",
+    answer: "Nope! Our templates are fully white-label. Remove our branding, add yours, and make it completely your own. Your clients will never know you started from a template.",
   },
   {
     question: "What tech stack do the templates use?",
-    answer: "All templates are built with Next.js 14 (App Router), TypeScript, Tailwind CSS, and Framer Motion. Some templates also include GSAP for advanced animations. Everything is modern, well-documented, and production-ready.",
-  },
-  {
-    question: "Can I request a custom template?",
-    answer: "We're always working on new templates! If you have a specific niche or design in mind, reach out to us. We prioritize requests from bundle customers and may include your idea in a future release.",
+    answer: "All templates are built with Next.js 14 (App Router), TypeScript, Tailwind CSS, Sanity CMS, and Framer Motion. Some templates also include GSAP for advanced animations. Modern, well-documented, production-ready code.",
   },
 ];
 

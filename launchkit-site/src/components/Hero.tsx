@@ -77,9 +77,12 @@ export default function Hero() {
             </h1>
 
             {/* Subheadline */}
-            <p className="text-xl text-gray-400 mb-8 max-w-lg">
+            <p className="text-xl text-gray-400 mb-4 max-w-lg">
               13 production-ready Next.js templates. Multi-page. Dark mode. Responsive. 
               Sanity CMS included. Just add your content.
+            </p>
+            <p className="text-sm text-gray-500 mb-8 max-w-lg">
+              Built for developers and agencies. Loved by tech-savvy founders.
             </p>
 
             {/* CTAs */}
@@ -89,7 +92,7 @@ export default function Hero() {
                 <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" />
               </Link>
               <Link href="#pricing" className="btn-secondary">
-                Get Full Bundle — $249
+                Get Full Bundle — $299
               </Link>
             </div>
 
