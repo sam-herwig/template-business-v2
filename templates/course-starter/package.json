@@ -1,7 +1,6 @@
 {
-  "name": "lawfirm-starter",
+  "name": "course-starter",
   "version": "0.1.0",
-  "description": "Professional law firm website template with practice areas, attorney profiles, case results, and contact forms. Built with Next.js 14, Tailwind CSS, and Framer Motion.",
   "private": true,
   "scripts": {
     "dev": "next dev",

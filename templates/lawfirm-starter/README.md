@@ -1,36 +1,146 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Law Firm Starter Template
 
-## Getting Started
+A professional, conversion-optimized website template designed for law firms and legal practices. Built with Next.js 14, Tailwind CSS, and Framer Motion.
 
-First, run the development server:
+![Preview](./screenshots/preview-desktop.png)
+
+## ✨ Features
+
+- **Modern Design** - Professional navy/gold color scheme conveying trust and authority
+- **Fully Responsive** - Optimized for desktop, tablet, and mobile devices
+- **Performance Optimized** - Built on Next.js 14 with App Router
+- **SEO Ready** - Proper meta tags, semantic HTML, and optimized structure
+- **Animated** - Smooth scroll animations powered by Framer Motion
+- **Type Safe** - Full TypeScript implementation
+
+## 📄 Pages Included
+
+| Page | Description |
+|------|-------------|
+| **Home** | Hero section, practice areas, case results, testimonials, attorney highlights |
+| **Practice Areas** | Grid of all practice areas with detailed individual pages |
+| **Attorneys** | Team directory with individual attorney profile pages |
+| **Results** | Case results and verdicts showcase with disclaimers |
+| **About** | Firm history, values, community involvement, awards |
+| **Contact** | Contact form, office locations, FAQ section |
+
+## 🏗️ Tech Stack
+
+- **Framework**: Next.js 14 (App Router)
+- **Styling**: Tailwind CSS
+- **Animations**: Framer Motion
+- **Language**: TypeScript
+- **Images**: Next/Image with Unsplash
+
+## 🚀 Quick Start
 
 ```bash
+# Install dependencies
+npm install
+
+# Run development server
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+
+# Build for production
+npm run build
+
+# Start production server
+npm start
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## 📁 Project Structure
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```
+src/
+├── app/
+│   ├── about/page.tsx
+│   ├── attorneys/
+│   │   ├── [slug]/page.tsx
+│   │   └── page.tsx
+│   ├── contact/page.tsx
+│   ├── practice-areas/
+│   │   ├── [slug]/page.tsx
+│   │   └── page.tsx
+│   ├── results/page.tsx
+│   ├── layout.tsx
+│   ├── page.tsx
+│   └── globals.css
+├── components/
+│   ├── AttorneyCard.tsx
+│   ├── CaseResultCard.tsx
+│   ├── ContactForm.tsx
+│   ├── Footer.tsx
+│   ├── Navbar.tsx
+│   ├── PageHero.tsx
+│   ├── PracticeAreaCard.tsx
+│   ├── SectionHeading.tsx
+│   └── TestimonialCard.tsx
+└── data/
+    └── mockData.ts
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## 🎨 Customization
 
-## Learn More
+### Colors
 
-To learn more about Next.js, take a look at the following resources:
+The template uses a custom color palette defined in `tailwind.config.ts`:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- **Navy** - Primary brand color (dark blues)
+- **Gold** - Accent color for CTAs and highlights
+- **Charcoal** - Text and neutral tones
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+### Content
 
-## Deploy on Vercel
+All content is centralized in `src/data/mockData.ts`:
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+- **Firm Info** - Name, tagline, founded date, mission, values
+- **Attorneys** - Team members with bios, credentials, photos
+- **Practice Areas** - Services with descriptions, FAQs, case types
+- **Case Results** - Verdicts and settlements with proper disclaimers
+- **Testimonials** - Client reviews with ratings
+- **Office Locations** - Contact info and addresses
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+### Images
+
+Images are sourced from Unsplash. To use your own:
+
+1. Replace URLs in `mockData.ts`
+2. Update `next.config.mjs` with your image domains
+
+## 📱 Responsive Design
+
+- **Mobile** (< 640px): Single column, hamburger menu
+- **Tablet** (640px - 1024px): Two column grids
+- **Desktop** (> 1024px): Full multi-column layouts
+
+## ⚖️ Legal Compliance
+
+This template includes:
+
+- Attorney advertising disclaimer in footer
+- "Past results do not guarantee future outcomes" notices
+- Privacy/confidentiality messaging
+- Proper legal disclaimers on case results
+
+## 📸 Screenshots
+
+### Desktop
+![Desktop Preview](./screenshots/preview-desktop.png)
+
+### Mobile
+![Mobile Preview](./screenshots/preview-mobile.png)
+
+### Social Share
+![OG Image](./screenshots/og-image.png)
+
+## 📝 License
+
+MIT License - Free for personal and commercial use.
+
+## 🤝 Support
+
+For questions or customization requests, please open an issue.
+
+---
+
+Built with ❤️ for the legal profession
